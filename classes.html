@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -123,12 +122,16 @@
     }
 
     .race-card img {
-      width: 90%;
-      max-height: 250px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px #b56ddf77;
-      object-fit: cover;
-    }
+  width: 90%;
+  aspect-ratio: 1 / 1; /* mantém formato quadrado */
+  border-radius: 20px;
+  box-shadow: 0 0 20px #b56ddf77;
+  object-fit: cover; /* corta o excesso mantendo proporção */
+  margin: auto;
+  display: block;
+}
+
+
 
     .race-name {
       font-family: 'Cinzel Decorative', serif;
@@ -175,9 +178,13 @@
 
     /* mobile */
     @media (max-width: 600px) {
-      header { font-size: 1.6rem; }
-      .arrow { font-size: 1.6rem; }
-    }
+  header { font-size: 1.6rem; }
+  .arrow {
+    font-size: 3rem; /* aumenta o tamanho do ícone */
+    padding: 15px; /* aumenta a área clicável */
+  }
+}
+
 
     .menu.open ~ .content,
     .menu:hover ~ .content {
@@ -222,63 +229,63 @@
     <div class="arrow left" onclick="moveSlide(-1)">❮</div>
     <div class="carousel" id="carousel">
       <div class="race-card" onclick="scrollToRace('artificer')">
-        <img src="assets/humano.png" alt="artificer">
+        <img src="assets/artificer.png" alt="artificer">
         <div class="race-name">Artificer</div>
       </div>
       <div class="race-card" onclick="scrollToRace('assassino')">
-        <img src="assets/humano.png" alt="assassino">
+        <img src="assets/assassino.png" alt="assassino">
         <div class="race-name">Assassino</div>
       </div>
       <div class="race-card" onclick="scrollToRace('bardo')">
-        <img src="assets/humano.png" alt="bardo">
+        <img src="assets/bardo.png" alt="bardo">
         <div class="race-name">Bardo</div>
       </div>
       <div class="race-card" onclick="scrollToRace('berserker')">
-        <img src="assets/humano.png" alt="berserker">
+        <img src="assets/berserker.png" alt="berserker">
         <div class="race-name">Berserker</div>
       </div>
       <div class="race-card" onclick="scrollToRace('cavaleiro')">
-        <img src="assets/humano.png" alt="cavaleiro">
+        <img src="assets/cavaleiro.png" alt="cavaleiro">
         <div class="race-name">Cavaleiro</div>
       </div>
       <div class="race-card" onclick="scrollToRace('cartomante')">
-        <img src="assets/humano.png" alt="cartomante">
+        <img src="assets/cartomante.png" alt="cartomante">
         <div class="race-name">Cartomante</div>
       </div>
       <div class="race-card" onclick="scrollToRace('feiticeiro')">
-        <img src="assets/humano.png" alt="feiticeiro">
+        <img src="assets/feiticeiro.png" alt="feiticeiro">
         <div class="race-name">Feiticeiro</div>
       </div>
       <div class="race-card" onclick="scrollToRace('kensei')">
-        <img src="assets/humano.png" alt="kensei">
+        <img src="assets/kensei.png" alt="kensei">
         <div class="race-name">Kensei</div>
       </div>
       <div class="race-card" onclick="scrollToRace('mago')">
-        <img src="assets/humano.png" alt="mago">
+        <img src="assets/mago.png" alt="mago">
         <div class="race-name">Mago</div>
       </div>
       <div class="race-card" onclick="scrollToRace('monge')">
-        <img src="assets/humano.png" alt="monge">
+        <img src="assets/monge.png" alt="monge">
         <div class="race-name">Monge</div>
       </div>
       <div class="race-card" onclick="scrollToRace('paladinoalgoz')">
-        <img src="assets/humano.png" alt="paladinoalgoz">
+        <img src="assets/paladino.png" alt="paladinoalgoz">
         <div class="race-name">Paladino Algoz</div>
       </div>
       <div class="race-card" onclick="scrollToRace('patrulheiro')">
-        <img src="assets/humano.png" alt="patrulheiro">
+        <img src="assets/patrulheiro.png" alt="patrulheiro">
         <div class="race-name">Patrulheiro</div>
       </div>
       <div class="race-card" onclick="scrollToRace('pirata')">
-        <img src="assets/humano.png" alt="pirata">
+        <img src="assets/pirata.png" alt="pirata">
         <div class="race-name">Pirata</div>
       </div>
       <div class="race-card" onclick="scrollToRace('samurai')">
-        <img src="assets/humano.png" alt="samurai">
+        <img src="assets/samurai.png" alt="samurai">
         <div class="race-name">Samurai</div>
       </div>
       <div class="race-card" onclick="scrollToRace('shinobi')">
-        <img src="assets/humano.png" alt="shinobi">
+        <img src="assets/shinobi.png" alt="shinobi">
         <div class="race-name">Shinobi</div>
       </div>
     </div>
@@ -294,331 +301,337 @@ Este guia reúne as classes disponíveis, suas habilidades, vantagens e progress
   <!-- Raças -->
   <div class="raca" id="artificer">
     <h2>Artificer</h2>
-    Descrição da classe
+    O artificer é um inventor e engenheiro arcano que combina magiae tecnologia. Ele cria itens mágicos, constrói engenhocas, e usa seu conhecimento para improvisar soluções em combate, sendo capaz de transformar objetos comuns em poderosas ferramentas de guerra.
 </div>
   <div>
     <h3 class="raca">
-        Nível 0 -
+        Nível 0 - Artífices são inventores, engenheiros, alquimistas, e acima de tudo, excêntricos. Criadores de máquinas engenhosas com tecnologia e magia, são exímios usuários de suas estranhas invenções, tendo naturalmente a capacidade de criar poções e artefatos arcanos.
     </h3>
     <h3 class="raca">
-        Nível 2 -
+        Nível 2 - Artífices lutam com base nos itens que possuem, sendo capazes de usar magias apenas através desses equipamentos, costumam ter consigo uma bolsa de tralhas. Pode puxar de sua bolsa quantidades infinitas de até 5 itens distintos, como bombas, armadilhas e etc. Os dispositivos são a escolha e devem ser mandados a aprovação.
     </h3>
     <h3 class="raca">
-        Nível 4 -
+        Nível 4 - Quando se está quase no auge de sua genialidade, Artífices aprendem a remover os limites de certos itens, podendo adicionar até dois poderes extras em um item.
     </h3>
     <h3 class="raca">
-        Nível 6 -
+        Nível 6 - Ao aprimorar suas capacidades como um inventor, Artífices aprendem a identificar padrões, e entender perfeitamente o funcionamento de itens e máquinas, dos mais simples aos mais complexos. Podendo por exemplo, ao visualizar um item, já ser capaz de identificar seu material e todas as suas capacidades.
     </h3>
     <h3 class="raca">
-        Nível 8 -
+        Nível 8 - Em seu auge, Artífices se tornam inventores inigualáveis, tendo capacidades de criar e controlar livremente materiais e componentes tecnológicos, podendo usar tal capacidade para criar máquinas e armas mirabolantes em meio aos mais intensos combates.
     </h3>
   </div>
 
   <div class="raca" id="assassino">
     <h2>Assassino</h2>
-    Descrição da classe
+    Um assassino é capaz de trazer a morte a seus oponentes de forma furtiva, através de ocultação, envenenamento, assassinato e por vezes roubo, sendo um profissional na arte de matar evitando grandes alardes.
 </div>
   <div>
     <h3 class="raca">
-        Nível 0 -
+        Nível 0 - Mestres na arte da ocultação, são capazes de ocultar completamente sua presença, seja sua aura, energia, cheiro ou sons, se tornando imperceptível a maioria dos seres.
     </h3>
     <h3 class="raca">
-        Nível 2 -
+        Nível 2 - Possuem uma grande variedade de equipamentos para praticar seus crimes, como adagas, bestas, lâminas ocultas, bombas de fumaça e estoques de veneno para conseguir finalizar seus oponentes rapidamente, além de espadas curtas e socos ingleses em casos de descoberta e risco. Além disso, é capaz de identificar o que é necessário para matar qualquer ser que encontre, até mesmo instintivamente descobrir as brechas de uma possível imortalidade.
     </h3>
     <h3 class="raca">
-        Nível 4 -
+        Nível 4 - Quando deixa sua presença vazar, carrega uma aura fria e mórbida que parece roubar toda a vida em que toca, uma sensação de morte iminente toma o corpo daqueles de nível e poder equivalente, tremores involuntários e o descontrole de poderes cinéticos e fluxos energéticos acompanham. A troca de golpes com assassinos leva a ter sua energia física e espirituais, como mana, roubadas por eles a cada toque, que levam seu oponente até a exaustão e esgotamento energético enquanto recuperam constantemente suas forças, até ser capaz de finalizá-lo.
     </h3>
     <h3 class="raca">
-        Nível 6 -
+        Nível 6 - Adquire controle sobre sua aura pútrida, além de aprimorar suas capacidades anteriores, é capaz de adquirir controlar essa aura como uma forma de energia, quando em uma batalha com múltiplos oponentes ou contra aqueles capazes de conjurar criaturas, essa aura recebe mais poder a cada vítima.
     </h3>
     <h3 class="raca">
-        Nível 8 -
+        Nível 8 - A imortalidade não é mais uma barreira, e a morte trazida por suas mãos se torna absoluta. Atingir pontos vitais do alvo, mesmo que originalmente mortais, cravarão sua morte certa, ao mesmo tempo, aqueles mortos por ele, não podem mais retornar a vida. Quando abate invocações, o usuário não pode mais conjura-los até o fim do combate.
     </h3>
   </div>
 
   <div class="raca" id="bardo">
     <h2>Bardo</h2>
-    Descrição da raça
+    O bardo é um artista carismático que usa música, poesia, e histórias para inspirar aliados e desmoralizar inimigos. Ele combina habilidades sociais com magia encantadora, manipulando o campo de batalha com ilusões, buffs, e debuffs, enquanto mantém o grupo unido e motivado.
   </div>
   <div>
     <h3 class="raca">
-      Nível 0 - 
+      Nível 0 - Bardos são proficientes em praticamente todos os tipos existentes de manifestações artísticas e derivados, seja música, desenho, pintura, escrita ou outro. Recebe Perfeição Artística.
     </h3>
     <h3 class="raca">
-      Nível 2 -  
+      Nível 2 -  Encantador e um mestre na arte da sedução. É capaz de encantar qualquer criatura, sendo capaz de domar qualquer ser com 20% a menos de caracteres nas missões de caça. Também pode encantar criaturas caçadas ou invocadas por outros, que se recusarão a ataca-lo, e é capaz de atiçar os mais profundos desejos carnais de qualquer um.
     </h3>
     <h3 class="raca">
-      Nível 4 - 
+      Nível 4 - Bardos são incríveis inspiradores em campo de batalha, moldando o combate em sua performance artística épica enquanto se desenrola a sanguinolência. Durante um combate, bardos podem elevar os atributos físicos e mágicos dos aliados em 2 níveis, com um diferencial que é acumulativo aos que os aliados já possui. Caso algum aliado esteja no nível máximo(15), todos os seus ataques, físicos ou mágicos, agora são considerados como +1x.
     </h3>
     <h3 class="raca">
-      Nível 6 - 
+      Nível 6 - Adquire um item de rank l envolvido com sua forma de arte, como um músico ganhar um violino ou um pintor receber um godê. Não há arma maior que sua arte.
     </h3>
     <h3 class="raca">
-      Nível 8 - 
+      Nível 8 - Nesse ponto, os artistas mágicos passam a trazer sua realidade para o mundo real. Transformar desenhos em realidade, controlar a musica ou gerar palavras poderosas. O bardo recebe um poder extra a escolha que seja ligado à sua forma principal de arte.
     </h3>
   </div>
 
   <div class="raca" id="berserker">
     <h2>Berserker</h2>
-    Descrição da raça
+    Berserkers são guerreiros brutais e selvagens, ancorando suas capacidades de combates em sua brutalidade e poder bruto carregados por um intenso e incontrolável estado de fúria.
   </div>
   <div>
     <h3 class="raca">
-      Nível 0 - 
+      Nível 0 - Possuem uma constituição física moldada pelos campos de batalha, com músculos e ossos largos que proporcionam grande força e resistência, podendo absorver melhor os impactos de ataques, além de um controle básico que o permite contrair seus músculos para aumentar a resistência de uma área em específica do corpo ou até mesmo fechar forçadamente ferimentos abertos. Aptos para combate a mãos nuas e armas brancas.
     </h3>
     <h3 class="raca">
-      Nível 2 -  
+      Nível 2 -  Passam a conseguir dominar melhor a sua fúria, em que seus corpos não apenas produzam uma quantia colossal de adrenalina, mas faz um uso aprimorado dela, o que torna o guerreiro inabalável. Não apenas ataca sempre com força total, parece ser imune a exaustão e a dor, e mesmo condições como toxinas e outros malefícios parecem surtir pouco efeito enquanto a luta continuar. 
     </h3>
     <h3 class="raca">
-      Nível 4 - 
+      Nível 4 - Nenhum ser escapa de ser presa do berserker, que é capaz de ignorar imunidades a danos físicos. Não só isso, caçadas para estes possuem seus carácteres reduzidos em 20%.
     </h3>
     <h3 class="raca">
-      Nível 6 - 
+      Nível 6 - Teimosos e imprevisíveis, berserkers não são controlados por nada além de seus próprios instintos, nem mesmo pelo tempo. Tentativas de controle mental ou paralisia no alvo são ineficazes, assim, como tentativas de previsão do futuro.
     </h3>
     <h3 class="raca">
-      Nível 8 - 
+      Nível 8 - No auge de seu estilo de combate e capacidades, é capaz de regredir a um poder bestial e primal. o Berserker ascende a um estado de fúria que rompe mesmo as barreiras da lógica, se tornando um ser completamente imparável. Durante 4 turnos inteiros, enquanto está em seu auge de força, o berserker se torna completamente incapaz de ser contido de qualquer maneira se não a morte, ignorando a defesa de qualquer escudo ou barreira e não podendo ter seus movimentos interrompidos seja física ou magicamente, com um ímpeto que rasga qualquer tentativa de paralisia, selamento, maldição, banimento ou ao próprio tempo que mesmo parado não impedirá a criatura bestial de continuar a atacar até que sua fúria ou a vida de seu inimigo acabe. Após o passar desses turnos, independente das condições, o berserker deve obrigatoriamente sofrer com o baque dessa condição, conhecendo pela primeira vez a exaustão e enfrentando as dificuldades pelo desgaste de seu corpo, que também será prejudicado não conseguindo utilizar poderes complexos ou manter transformações pelos próximos dois turnos.
     </h3>
   </div>
 
   <div class="raca" id="cavaleiro">
     <h2>Cavaleiro</h2>
-    Descrição da raça
+    Um cavaleiro é um guerreiro altamente treinado e honrado, especializado em combate corpo a corpo e proteção. Geralmente equipado com armadura pesada e armas como espadas e lanças, ele segue um código de ética, muitas vezes servindo a um senhor ou uma causa nobre.
   </div>
   <div>
     <h3 class="raca">
-      Nível 0 - 
+      Nível 0 - Além de poderosos, são guerreiros justos e sábios. São capazes de identificar mentiras e também condições injustas de combate, como efeitos aplicados em pessoas ou sobre o terreno, sempre conseguindo saber a intenção por trás de cada ataque. Também, é capaz de utilizar qualquer arma branca.
     </h3>
     <h3 class="raca">
-      Nível 2 -  
+      Nível 2 - Nível - Um cavaleiro deve servir de líder e inspiração a seus companheiros. Aqueles que lutam ao lado dele, recebem uma força e vigor extra, junto de uma alta resistência a dor. Além de, a vontade de ultrapassar os próprios limites, aqueles ao lado do cavaleiro conseguem uma chance a mais de usar um ataque de uso limitado, ou seja, uma técnica que pode ser usada uma única vez em batalha, passa a poder ser usado uma segunda.
     </h3>
     <h3 class="raca">
-      Nível 4 - 
+      Nível 4 - A experiência em combate o torna um guerreiro excepcional. É capaz de processar e formular rapidamente informações e estratégias de combate, podendo compreender facilmente o estilo de combate de seu adversário e absorver para incrementar a seu próprio estilo, se tornando um oponente cada vez mais perigoso a medida que o combate se estende.
     </h3>
     <h3 class="raca">
-      Nível 6 - 
+      Nível 6 - Um cavaleiro não se pode nunca lutar sozinho, ao chegar nesse nível, ganha acesso gratuito a uma criatura de rank l, para ser usada como montaria.
     </h3>
     <h3 class="raca">
-      Nível 8 - 
+      Nível 8 - Exibe grandeza e carrega grande legado por seu poder e contribuições, em que mesmo plebeus recebem a confiança e títulos semelhantes a nobres, sendo muitas vezes adotado como guardião e representa de suas famílias. Ao ascender a esse título, o cavaleiro pode ganhar para si os bônus de alguma família nobre da região em que atua, mesmo se já for um nobre de outra família. Suas contribuições garantem pequenas porções de terras, que permite uma vida de lazer e uma renda fixa de 1.000 dracmas.
     </h3>
   </div>
 
   <div class="raca" id="cartomante">
     <h2>Cartomante</h2>
-    Descrição da raça
+    Cartomantes são arcanistas peculiares, capazes de ver o futuro, prever movimentos, ler o presente e deslumbrar o passado, além de atacar com cartas afiadas banhadas em magia mística. Um tipo peculiar de conjurador. 
   </div>
   <div>
     <h3 class="raca">
-      Nível 0 - 
+      Nível 0 - Um cartomante ainda inexperiente. É capaz de ter vislumbres de até 10 segundos do futuro, podendo ser usado defensivamente para evitar possíveis ataques. Sua capacidade ofensiva é geralmente subestimada, mas bastante eficiente, já sendo capaz de conjurar cartas quase que magicamente, cartas essas, que podem ser usadas como arma, tendo resistência e força igual a do cartomante e podendo ser arremessada ou usada como uma adaga com extrema capacidade de corte, podendo até mesmo disputar com armas de verdade.
     </h3>
     <h3 class="raca">
-      Nível 2 -  
+      Nível 2 - Suas técnicas de adivinhação e percepção evoluem, já sendo capaz de sentir e detectar a alma dos seres, podendo ler as pessoas a bel prazer, como suas emoções, verdades e mentiras, seu nível de força e até mesmo descobrir de que tipos de energias espirituais é usuária.
     </h3>
     <h3 class="raca">
-      Nível 4 - 
+      Nível 4 - Seu lado místico se desenvolve, conseguindo ampliar suas capacidades ofensivas e estratégicas. O cartomante pode canalizar e banhar suas cartas de magia ou outras fontes de poder, passando a controlar tais cartas magicamente, podendo mudar sua trajetória ao arremessa-las ou apenas move-las e manifesta-las sem sequer precisar toca-las. É capaz também de controlar a energia que as cerca para diversos fins, como ampliar impacto e corte, fazer explodir ao contato com o alvo, ou espalhar um número de cartas sobre o ambiente e marcar um local para que um inimigo seja atingido quando passe, ou criar barreiras de energia para proteger ou prender algo ou alguém.
     </h3>
     <h3 class="raca">
-      Nível 6 - 
+      Nível 6 - Se tornam devidamente experientes, com as cartas revelando as verdades do mundo. Agora as cartas já revelam o passado e a índole de um alvo de maneira superficial, e suas capacidades de percepção os permitem ouvir a voz de todas as coisas. Não apenas é capaz de compreender e e dialogar com qualquer criatura, mas ouvir a voz de tudo que existe, as mensagens e a história guardada por uma antiga relíquia ou santuário, os traumas de guerra gravadas nos antigos campos de batalha e etc, deixando o mundo contar sua própria história.
     </h3>
     <h3 class="raca">
-      Nível 8 - 
+      Nível 8 - Após masterizar suas habilidades, o cartomante recebe o seu próprio baralho, com cartas com efeitos únicos, que podem ir desde a conjuração de uma criatura a efeitos que se aplicam ao cenário e oponente.
     </h3>
   </div>
 
   <div class="raca" id="feiticeiro">
     <h2>Feiticeiro</h2>
-    Descrição da raça
+    Um feiticeiro é um mestre das artes ocultas que usa energia amaldiçoada para combater maldições e espiritos malígnos, lançando técnicas poderosas e invocando entidades espirituais.
   </div>
   <div>
     <h3 class="raca">
-      Nível 0 - 
+      Nível 0 - Um feiticeiro iniciante, ainda aprendendo o básico sobre a feitiçaria jujutsu, sendo capaz de controlar energia amaldiçoada de forma básica, para reforço corporal ou disparar rajadas de energia, mas nada complexo. Já nesse ponto, aprende o funcionamento de votos vinculativos, sendo capaz de criar votos e pactos para combate, desde que haja uma vantagem e uma consequência, ou fornecer uma vantagem ao adversário em troca desse bônus, como explicar o funcionamento de um poder ou técnico para aprimorar sua eficácia, sacrificar o alcance de uma técnica para fortalece-la, limitar seu uso em troca de uma nova habilidade a ela, sacrificar uma parte de seu corpo para proteção de outra, ou até mesmo realizar acordos com outros players, que não podem ser quebrados.
     </h3>
     <h3 class="raca">
-      Nível 2 -  
+      Nível 2 - Seu controle de energia amaldiçoada já se torna devidamente complexo, sendo capaz de utilizar quaisquer técnicas que envolvam a pura manipulação dessa energia, como o kokusen, a energia amaldiçoada reversa, técnicas anti domínio, amplificação de domínio e cortinas amaldiçoadas. Recebe também um sorteio, onde têm 30% de chance de que sua energia amaldiçoada possua propriedades especiais.
     </h3>
     <h3 class="raca">
-      Nível 4 - 
+      Nível 4 - Sua técnica finalmente é marcada em seu corpo. Já é capaz de despertar uma técnica amaldiçoada, seja inata ou hereditária, podendo até mesmo cria-la se preferir. Junto disso, pode fazer um sorteio em que possui 20% de chance de conseguir uma "segunda técnica", que têm como utilidade apenas auxiliar a primeira ou ser uma capacidade extra dela, como por exemplo a técnica dos seis olhos ou um usuário das 10 sombras ganhar uma umbracinese ou a capacidade de usar a própria sombra de inventário.
     </h3>
     <h3 class="raca">
-      Nível 6 - 
+      Nível 6 - O feiticeiro recebe gratuitamente um aliado de rank l para auxiliá-lo quando necessário, podendo ser desde uma arma, a uma maldição, um shikigami especial, bonecos amaldiçoados, ou até mesmo uma criatura transformada em um objeto amaldiçoada, para ser absorvido e transformar o feiticeiro em um hospedeiro.
     </h3>
     <h3 class="raca">
-      Nível 8 - 
+      Nível 8 - Chega ao ápice do jujutsu, sendo capaz de utilizar suas técnicas mais poderosas e elevar seus feitiços ao ápice. Adquire a criação de uma técnica máxima, em que é capaz de utilizar uma técnica, como um feitiço que utiliza a totalidade do poder de sua técnica amaldiçoada, sendo seu ápice de poder cru, e também, o ápice total da feitiçaria jujutsu, adquirindo sua própria expansão de domínio baseada na sua técnica amaldiçoada. No entanto, existem diferentes tipos de domínio, e dependendo de qual será o método escolhido, pode se tornar mais fácil de adquiri-la, mas também será menos poderosa. Domínio Incompleto. Chegando nesse modo, contate um dos ADM, para que ele te envie as devidas variações de uma expansão de domínio.
     </h3>
   </div>
 
   <div class="raca" id="kensei">
     <h2>Kensei</h2>
-    Descrição da raça
+    Por mais que o nome remeta ao título de Santo da Espada, o caminho de um Kensei faz jus àtécnica absoluta, o mestre máximo em um tipo de forma de combate. Seja usando o corpo como arma ou com algum tipo de armamento, o Kensei, também chamado de lutador, se especializa na luta utilizando um tipo específico de equipamento, se tornando o mestre absoluto nessa arte da guerra.
   </div>
   <div>
     <h3 class="raca">
-      Nível 0 - 
+      Nível 0 - O Kensei deve escolher seu equipamento jurado. Dos mais clássicos como espada, até os mais distintos como chicotes ou pistolas, até mesmo seu corpo com punhos e pés, você se tornará o mestre absoluto no uso delas. O jogador recebe uma arma de nível 3 como equipamento inicial, que determinará sua arma jurada. Caso escolha combate desarmado, seus ataques contam como 1 nível acima me aspectos de força e velocidade. O jogador também recebe um estilo de combate que deve, obrigatoriamente, ser ligado ao seu armamento jurado.
     </h3>
     <h3 class="raca">
-      Nível 2 -  
+      Nível 2 - O Kensei agora se torna capaz de trespassar qualquer defesa com seu armamento, ignorando qualquer tipo de imunidade ou resistência a dano físico, desde que esteja atacando com seu armamento jurado escolhido no nível anterior.
     </h3>
     <h3 class="raca">
-      Nível 4 - 
+      Nível 4 - O Kensei se aprimora ainda mais no uso de sua arma jurada. A arma recebida no nível 0 agora se torna de Nível 2, e no caso do desarmado, recebe uma vestimenta/acessório de nível 2. Sua curva de aprendizado também se torna mais eficiente, com um potencial de evolução absurdo, o Kensei passa a receber o dobro de XP em qualquer ocasião. No caso de evolução em exércitos e organizações, necessita de 20% carácteres a menos.
     </h3>
     <h3 class="raca">
-      Nível 6 - 
+      Nível 6 - O Kensei evolui ainda mais no uso de sua arma devotada, aprimorando agora seu equipamento para o nível 1. Para aqueles que decidiram trilhar o caminho do combate desarmado, adquirem a técnica da auto consciência corporal, cada músculo, cada litro de sangue e até o padrão da respiração, se tornam capazes de controlar tudo como movimentos voluntários, permitindo-os acelerar a corrente sanguínea, desacelerar a respiração, mesma coisa com o coração e a contração muscular. Isso permite diversas façanhas em combate que os tornam exímios lutadores. Por fim, recebem um estilo de luta novo, para sua arma jurada, com apenas uma evolução. Aprendendo a condensar seu espírito inabalável de combate em seus ataques, o Kensei que optou pelo caminho do combate sem armas recebe a habilidade do Haki do Armamento avançado nesse nível, o qual não conta como poderes mágicos ou derivados para usuários de restrições.
     </h3>
     <h3 class="raca">
-      Nível 8 - 
+      Nível 8 - O Kensei chega ao ápice do combate, se torna o oficial mestre de seu armamento jurado, aquele invencível sob o céu. Seus ataques passam a possuir força equivalente a metade do nível do Kensei. Por exemplo: Cada golpe de um Kensei nível 8 com essa habilidade equivale a 4 golpes. Além disso, usuários de armas agora recebem armas de nível 0, enquanto os desarmados recebem a habilidade Tocar o Intocável e mais uma veste, esta também de Rank 0. O Kensei que optou pelo caminho do combate armado aprende a condensar seu espírito de combate em sua arma, recebendo a capacidade de usar o Haki do armamento avançado exclusivamente em seu equipamento, o qual não contará como poder mágico para critérios de restrições e derivados.
     </h3>
   </div>
 
   <div class="raca" id="mago">
     <h2>Mago</h2>
-    Descrição da raça
+    O mago um mestre das artes arcanas, capaz de lançar poderosos feitiços e manipular energias mágicas. Ele usa seu vasto conhecimento de encantamentos, rituais e grimórios para controlar elementos, conjurar criaturas, e alterar a realidade, geralmente com foco em sabedoria e estudo contínuo. 
   </div>
   <div>
     <h3 class="raca">
-      Nível 0 - 
+      Nível 0 - Seu estudo permite ao mago ter controle completo sobre seus próprios poderes, conseguindo utilizar técnicas complexas mesmo sob efeitos ou quando enfraquecido, podendo até mesmo juntar dois de seus poderes, como dois elementos diferentes, para criar uma técnica mista.
     </h3>
     <h3 class="raca">
-      Nível 2 -  
+      Nível 2 - Seus conhecimentos também flertam com as áreas da ciência, mesmo se não tiverem grandes experiências com forja, possuem o mínimo de conhecimento para criar amuletos, artefatos, poções e elixires com efeitos mágicos.
     </h3>
     <h3 class="raca">
-      Nível 4 - 
+      Nível 4 - Eleva seu conhecimento e proximidade com a magia, sendo amado e respondido pela mana, podendo manipula-la a vontade, podendo desde usar técnicas básicas como magia de reforço, pele e zona de mana, ou até mesmo ter controle ofensivo através de construtos ou feixes mágicos.
     </h3>
     <h3 class="raca">
-      Nível 6 - 
+      Nível 6 - Seu poder mágico e natural evolue, podendo converter sua mana em algum elemento ou dar a ela novas propriedades, ganhando uma nova cinese mágica.
     </h3>
     <h3 class="raca">
-      Nível 8 - 
+      Nível 8 - Seu controle mágico chega ao máximo, pode agora criar um total de até 5 feitiços com efeitos únicos, não precisando se relacionar a seus poderes.
     </h3>
   </div>
 
   <div class="raca" id="monge">
     <h2>Monge</h2>
-    Descrição da raça
+    Um monge em um RPG é um lutador disciplinado que domina arte smarciais e habilidades espirituais. Ele combate usando técnicas de combate desarmado, canaliza energia interior (como chi) para realizar feitos extraordinários, e muitas vezes segue um caminho de autocontrole e iluminação.
   </div>
   <div>
     <h3 class="raca">
-      Nível 0 - 
+      Nível 0 - Guerreiros que elevam seu corpo e espírito ao máximo, possuem grande aptidão e conhecimento para utilizar qualquer arte marcial humana(estilos de luta do RPG não inclusos).
     </h3>
     <h3 class="raca">
-      Nível 2 -  
+      Nível 2 - Monges são especializados no combate corpo a corpo, e muitas vezes, tiveram de adaptar suas técnicas para torna-las efetivas. Poderes, técnicas ou espécies que conferem imunidade a ataques físicos não funcionam com os ataques dos monges, capazes de ferir qualquer inimigo.
     </h3>
     <h3 class="raca">
-      Nível 4 - 
+      Nível 4 - Monges agora tem seu corpo, mente e espírito em total sintonia. Adquirem a capacidade de controlar o chi, para fortalecimento de seu corpo, sentidos, adquirindo percepção sobre o chi, e conseguindo utilizá-lo como forma de energia para diversos tipos de ataque.
     </h3>
     <h3 class="raca">
-      Nível 6 - 
+      Nível 6 - São capazes de entrar em sintonia e camuflar-se totalmente na natureza, apagando suas presenças, e mesmo quando percebidos, não são idênticos pelos instintos do alvo como uma ameaça, tornando técnicas como instinto superior ou semelhantes totalmente ineficazes.
     </h3>
     <h3 class="raca">
-      Nível 8 - 
+      Nível 8 - Aprimorando seu controle sobre o chi, passa a ter acesso a duas vertentes opostas, que juntam seu chi, a habilidade de luta e a força bruta em duas poderosas técnicas.
+    </h3>
+    <h3 class="raca">
+      Punho Leve: É uma técnica que o permite enxergar pequenos pontos vermelhos no corpo de qualquer tipo de matéria, seja tangível ou intangível, até mesmo em seres espirituais ou coisas inanimadas. Esses pontos vermelhos são lugares que se mostram totalmente vulneráveis, uma vez que a prole consiga atingir essa área, seu dano é aumentando em 100% quebrando defesas físicas facilmente, podendo até mesmo danificar o interior do corpo como artérias, veias, ossos e etc sem causar tantos danos externos a partir do Chi.
+    </h3>
+    <h3 class="raca">
+      Punho Pesado: Uma técnica totalmente oposta a do punho leve, buscando atingir esses pontos para causar o maior dano destrutivo possível com sua maior força bruta, podendo destruir qualquer coisa. A força aplicada em seus golpes é tanta que o usuário passa a criar ondas de choque com cada um de seus ataques, ou até fazer seus dedos cortarem tanto como uma lâmina devido a essa força.
     </h3>
   </div>
 
   <div class="raca" id="paladinoalgoz">
     <h2>Paladino Algoz</h2>
-    Descrição da raça
+    Um paladino é um guerreiro sagrado, devoto a uma causa justa ou divina. Ele combina habilidades de combate com poderes divinos para proteger os inocentes, curar aliados ebanir o mal, sendo um símbolo de honra,justiça efé no campo de batalha. Sua vertente é o algoz, um executor implacável, especializado em caçar e eliminar inimigos com precisão letal. Movido por vingança ou dever, ele domina táticas furtivas, venenos, e combate corpo a corpo, focando em derrubar alvos específicos com eficiência e sem piedade.
   </div>
   <div>
     <h3 class="raca">
-      Nível 0 - 
+      Nível 0 - Seus ataques, ao infligirem mesmo o menor dano, geram o efeito de absorver a energia do inimigo para si, para aprimorar sua resistência, fôlego, e até mesmo para aprimorar poderes de cura e regeneração, enquanto o alvo é prejudicado nesses quesitos.
     </h3>
     <h3 class="raca">
-      Nível 2 -  
+      Nível 2 - Os ataques de um paladino, seguidores de entidades benignas, naturalmente são mais eficazes, dolorosos e mortais a criaturas da noite, e seus poderes possuem vantagem em superar, atravessando e cancelando poderes malignos, negativos e umbracineticos. Algozes, seguidores de entidades malignas possuem o mesmo efeito aplicado a criaturas sagradas e benignas, possuindo a capacidade também de superar poderes de energia positiva, luminocinese e variações.
     </h3>
     <h3 class="raca">
-      Nível 4 - 
+      Nível 4 - A fidelidade do seguidor impede que seja alcançável a qualquer outra entidade. Se torna imune a qualquer poder que tenha origem em alguma entidade, como de fisiologias, sobrenaturalismos, e até mesmo as cineses divinas de um semi-deus.
     </h3>
     <h3 class="raca">
-      Nível 6 - 
+      Nível 6 - O seguidor muitas vezes pode ser protegido por milagres, conseguindo negar ataques não fatais desferidos a si a cada 3 turnos, e evitar ferimento fatal que seria fatal até uma vez por luta. 
     </h3>
     <h3 class="raca">
-      Nível 8 - 
+      Nível 8 - São capazes de pregar e impor a justiça daquilo que acreditam, adquirindo magia de balança.
     </h3>
   </div>
 
   <div class="raca" id="patrulheiro">
     <h2>Patrulheiro</h2>
-    Descrição da raça
+    o Patrulheiro é um caçador e explorador habilidoso, mestre na sobrevivência e no combate à distância. Ele é especialista em rastreamento, conhece bem a natureza e utiliza arcos, armadilhas, e táticas furtivas para proteger seu território e abater inimigos com precisão.
   </div>
   <div>
     <h3 class="raca">
-      Nível 0 - 
+      Nível 0 - Possuem naturalmente grande conhecimento de sobrevivência, sendo capazes de reconhecer recursos, cozinhar, entender qualquer forma de vida que encontre e se pode ser ser perigosa ou não, e até mesmo possuem conhecimento de medicina básica, sua capacidade de sobrevivência também permite aptidão na criação improvisada, como abrigos, armadilhas e pequenas armas.
     </h3>
     <h3 class="raca">
-      Nível 2 -  
+      Nível 2 - Suas explorações o tornaram bastante forte a adaptável, possuem grande capacidade adaptativa com o ambiente, facilmente se adaptando a condições do ambiente como oxigênio escasso, temperatura, e também a condições físicas, podendo facilmente se adaptar e se imunizar a um veneno que o atinja por exemplo.
     </h3>
     <h3 class="raca">
-      Nível 4 - 
+      Nível 4 - São capazes de entrar em sintonia e camuflar-se totalmente na natureza, apagando suas presenças, e mesmo quando percebidos, não são idênticos pelos instintos do alvo como uma ameaça, tornando técnicas como instinto superior ou semelhantes totalmente ineficazes. Passam a receber mais recompensas a cada missão realizada, o dinheiro será sempre dobrado por exemplo.
     </h3>
     <h3 class="raca">
-      Nível 6 - 
+      Nível 6 - Por se tratar de um patrulheiro de alto nível, suas habilidades inerentes de se conectar e se tornar um só com a natureza ao seu redor em prol do sucesso de suas explorações se torna tão forte e refinado que acaba por desenvolver um espécie de radar, tendo ciência de tudo que acontece no espaço ao seu redor, lhe possibilitando detectar a presença de seres e perceber acontecimentos sem o uso de seus sentidos
     </h3>
     <h3 class="raca">
-      Nível 8 - 
+      Nível 8 - Passa a poder se comunicar, comandar, e também se transformar total ou parcialmente em qualquer animal terreno(não válido a mágicos ou ficcionais, embora ainda possa se comunicar com eles). Adquirindo mimetismo animal.
     </h3>
   </div>
 
   <div class="raca" id="pirata">
     <h2>Pirata</h2>
-    Descrição da raça
+    O pirata é um aventureiro audacioso dos mares, especializado em combate naval, saque e exploração. Ele é astuto e versátil, utilizando táticas engenhosas e combate acrobático para superar adversários, sempre em busca de tesouros e glória.
   </div>
   <div>
     <h3 class="raca">
-      Nível 0 - 
+      Nível 0 - Um noviço de valor. Possuem plena aptidão e conhecimento para combate, seja com armas brancas ou de fogo, e como um navegador em busca de novas terras, pode se adaptar a qualquer ambiente.
     </h3>
     <h3 class="raca">
-      Nível 2 -  
+      Nível 2 - Possui direcionamento absoluto e uma intuição mais afiada que qualquer sabre. De maneira puramente intuitiva e instintiva, o pirata sabe sempre exatamente qual caminho seguir para o lugar, algo ou alguém que deseja alcançar, pode até mesmo saber os caminhos e os pontos fracos de qualquer ser.
     </h3>
     <h3 class="raca">
-      Nível 4 - 
+      Nível 4 - Já está pronto para adentrar os mais perigosos mares. Desperta e adquire o uso do haki, podendo utilizar as tonalidades do armamento e observação, bem como seus estágios avançados.
     </h3>
     <h3 class="raca">
-      Nível 6 - 
+      Nível 6 - Já um exímio e respeitado capitão, em nenhuma hipótese poderia navegar sem seu devido navio. Adquire gratuitamente um navio de rank l para sua tripulação.
     </h3>
     <h3 class="raca">
-      Nível 8 - 
+      Nível 8 - Antes um mero pirata, agora um capitão. Você recebe a autoridade de um rei, adquirindo a capacidade de impor sua vontade sobre os outros, como um verdadeiro conquistador dos sete(ou mais) mares. Além disso, recebe uma arma lendária, como um sabre de um capitão ancestral, um tridente de um reino pedidos ou uma pistola de um pirata lendário. Recebe Haki do Rei Avançado e uma arma de Rank 0.
     </h3>
   </div>
 
   <div class="raca" id="samurai">
     <h2>Samurai</h2>
-    Descrição da raça
+    O samurai é um guerreiro honrado e habilidoso, mestre na espada e nas artes marciais, que segue um rígido código de conduta enquanto protege seus aliados e enfrenta inimigos com técnicas precisas e mortais.
   </div>
   <div>
     <h3 class="raca">
-      Nível 0 - 
+      Nível 0 - São guerreiros talentosos, possuindo grande aptidão para o combate armado, podendo usar plenamente qualquer tipo de Jutsu baseado em armas, como Naginatajutsu, Kenjutsu ou derivados.
     </h3>
     <h3 class="raca">
-      Nível 2 -  
+      Nível 2 - O samurai se adapta ao combate a medida que ele vai se desenrolando, de modo a permiti-lo ficar mais forte com o decorrer da luta. Recebe adaptação combativa. Além disso, recebe uma arma de Rank III, iniciando o legado de sua arma lendária como um samurai.
     </h3>
     <h3 class="raca">
-      Nível 4 - 
+      Nível 4 - Sua técnica nunca deixa de evoluir, e é capaz de adapta-la para cada adversário. Seus golpes cortes se tornam adaptativos, onde caso falhem quando por exemplo um inimigo for imune a cortes, o golpe seguinte terá êxito em fatia-lo. Sua arma agora se torna Rank II, após banhar ela em batalhas e técnica, seu legado evolui.
     </h3>
     <h3 class="raca">
-      Nível 6 - 
+      Nível 6 - Sua arma evolui para Rank I, exibindo sua evolução nítida e a construção de uma lenda através do gume de sua espada.
     </h3>
     <h3 class="raca">
-      Nível 8 - 
+      Nível 8 - Recebe um estilo de luta extra, aparte dos 3 estilos que o personagem é capaz de aprender. Obrigatoriamente, o estilo de luta precisa se basear na sua arma escolhida. A arma agora se torna de Rank 0, se tornando uma arma lendária, da qual todas as gerações futuras reconhecerão só de olhar.
     </h3>
   </div>
 
   <div class="raca" id="shinobi">
     <h2>Shinobi</h2>
-    Descrição da raça
+    O shinobi é um ninja furtivo e letal, mestre em espionagem, sabotagem, e combate ágil. Ele usa técnicas de disfarce, venenos, e ninjutsu para eliminar alvos silenciosamente, movendo-se nas sombras e realizando missões com precisão e sigilo.
   </div>
   <div>
     <h3 class="raca">
-      Nível 0 - 
+      Nível 0 - O ninja, ainda um iniciante, realiza o treinamento e aprende a utilizar diversas armas, a qual sempre carrega consigo e pode usar a qualquer momento. O Shinobi tem acesso a uma grande variedade de equipamentos, como kunais, shuriken, agulhas, bombas de fumaça e papéis bombas. A resistência e a força dos itens aumenta conforme seu nível.
     </h3>
     <h3 class="raca">
-      Nível 2 -  
+      Nível 2 - Já é capaz de adquirir o controle sobre o seu chakra, podendo utiliza-lo para fortalecer seu corpo, banhar armas, andar sobre estruturas ou a água, ou até mesmo disparar rajadas e cortes de chakra. 
     </h3>
     <h3 class="raca">
-      Nível 4 - 
+      Nível 4 -  Já é capaz de dominar o Ninjutsu. Realizando um sorteio que decidirá qual das liberações da natureza será capaz de dominar, e assim, receber uma dentre Katon, Doton, Mokuton, Raiton, Fuuton e Suiton.
     </h3>
     <h3 class="raca">
-      Nível 6 - 
+      Nível 6 - Sua técnica e controle se aprimoram, sendo capaz de adquirir capacidade raras e totalmente únicas. Recebendo um sorteio em que o shinobi recebe uma kekkei genkai.
     </h3>
     <h3 class="raca">
-      Nível 8 - 
+      Nível 8 - Habilidoso e sábio, seu controle e compreensão do chakra permite aprimorar e dar novas prioridades a uma de suas kekkei genkai ou liberação da natureza, podendo por exemplo, evoluir o sharingan para o mangekyo sharingan. Além disso, recebe a criação de mais 5 jutsus a escolha.
     </h3>
   </div>
 
@@ -687,693 +700,3 @@ Este guia reúne as classes disponíveis, suas habilidades, vantagens e progress
 </html>
 </body>
 </html>
-=======
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Penumba RPG — Classes</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Merriweather&display=swap" rel="stylesheet">
-  <style>
-    * {margin: 0; padding: 0; box-sizing: border-box;}
-    body {
-      font-family: 'Merriweather', serif;
-      background: radial-gradient(circle at top, #2d1740, #1b0e24);
-      color: #f3e9d2;
-      overflow-x: hidden;
-    }
-
-    header {
-      position: relative;
-      text-align: center;
-      padding: 1.5rem 0 1rem;
-      font-family: 'Cinzel Decorative', serif;
-      font-size: 2rem;
-      color: #d4b36e;
-      text-shadow: 0 0 10px #b56ddf, 0 0 20px #b56ddf;
-    }
-
-    .menu-icon {
-      position: absolute;
-      top: 1.2rem;
-      left: 1rem;
-      font-size: 1.8rem;
-      cursor: pointer;
-      color: #f3e9d2;
-      text-shadow: 0 0 8px #b56ddf;
-    }
-
-    /* Ícone do menu (visível no topo - clicável) */
-    .menu-toggle {
-      position: absolute;
-      left: 1rem;
-      top: 1rem;
-      font-size: 1.6rem;
-      color: #f3e9d2;
-      text-shadow: 0 0 8px #b56ddf;
-      cursor: pointer;
-      background: rgba(0,0,0,0.15);
-      padding: 6px 10px;
-      border-radius: 8px;
-      user-select: none;
-    }
-
-    /* menu lateral - padrão fechado (70px) */
-    .menu {
-      position: fixed;
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 70px;
-      background: rgba(40,20,60,0.95);
-      transition: width 0.28s ease, transform 0.28s ease;
-      overflow: hidden;
-      z-index: 50;
-      border-right: 1px solid #d4b36e;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* quando hover (desktop) ou .open (mobile), expande */
-    .menu:hover,
-    .menu.open {
-      width: 260px;
-    }
-
-    .menu .menu-inner {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .menu a {
-      color: #f3e9d2;
-      text-decoration: none;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      padding: 8px 10px;
-      border-radius: 8px;
-      transition: background 0.18s ease, color 0.18s ease;
-      font-size: 1rem;
-    }
-
-    .menu a .icon {
-      width: 36px;
-      text-align: center;
-      font-size: 1.1rem;
-    }
-
-    .menu a:hover {
-      background: rgba(181,109,223,0.08);
-      color: #b56ddf;
-      text-shadow: 0 0 8px #b56ddf;
-    }
-
-    /* carrossel */
-    .carousel-container {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      margin: 1rem auto;
-      max-width: 600px;
-    }
-
-    .carousel {
-      display: flex;
-      transition: transform 0.5s ease;
-    }
-
-    .race-card {
-      min-width: 100%;
-      text-align: center;
-    }
-
-    .race-card img {
-      width: 90%;
-      max-height: 250px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px #b56ddf77;
-      object-fit: cover;
-    }
-
-    .race-name {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: 1.4rem;
-      margin-top: 0.5rem;
-      color: #d4b36e;
-      text-shadow: 0 0 8px #b56ddf;
-    }
-
-    .arrow {
-      position: absolute;
-      top: 45%;
-      transform: translateY(-50%);
-      font-size: 4rem;
-      color: #b56ddf;
-      text-shadow: 0 0 10px #b56ddf;
-      cursor: pointer;
-      user-select: none;
-      z-index: 2;
-    }
-
-    .arrow.left { left: 30px; }
-    .arrow.right { right: 30px; }
-
-    /* conteúdo das raças */
-    .raca {
-      padding: 2rem 1rem;
-      max-width: 600px;
-      margin: auto;
-      line-height: 1.8;
-      white-space: pre-line;
-      text-align: justify;
-      text-indent: 2em;
-      border-top: 1px solid #d4b36e44;
-    }
-
-    .raca h2 {
-      font-family: 'Cinzel Decorative', serif;
-      color: #b56ddf;
-      text-shadow: 0 0 10px #b56ddf;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    /* mobile */
-    @media (max-width: 600px) {
-      header { font-size: 1.6rem; }
-      .arrow { font-size: 1.6rem; }
-    }
-
-    .menu.open ~ .content,
-    .menu:hover ~ .content {
-      margin-left: 280px;
-    }
-
-    .footer {
-        text-align: center;
-    }
-
-    /* comportamento responsivo (celular) */
-    @media (max-width: 700px) {
-      .site-header { font-size: 1.4rem; padding: 0.9rem; }
-      .menu { width: 0; transform: translateX(-2px); } /* escondido por padrão no mobile */
-      .menu.open { width: 86%; min-width: 260px; } /* ocupa a maior parte da tela */
-      .menu .menu-inner { padding-top: 40px; }
-      .menu a { font-size: 1.05rem; padding: 12px; }
-      .content { margin-left: 0; padding: 1rem; }
-      .menu.open ~ .content { margin-left: 0; } /* o conteúdo não precisa se deslocar no mobile */
-      .menu-toggle { left: 0.8rem; top: 0.9rem; }
-    }
-  </style>
-</head>
-<body>
-  <!-- Menu lateral -->
-  <nav class="menu" id="sidebar" aria-label="Menu principal">
-    <div class="menu-inner">
-      <!-- (icone + label) - links para páginas de conteúdo -->
-      <a href="index.html" class="menu-link" data-target="classes.html"><span class="icon">🏠</span><span class="label">Início</span></a>
-      <a href="raças.html" class="menu-link" data-target="raças.html"><span class="icon">🧬</span><span class="label">Raças</span></a>
-      <a href="classes.html" class="menu-link" data-target="classes.html"><span class="icon">⚔️</span><span class="label">Classes</span></a>
-      <a href="reinos.html" class="menu-link" data-target="classes.html"><span class="icon">👑</span><span class="label">reinos</span></a>
-
-        </div>
-  </nav>
-  <header>
-    <div class="menu-icon">☰</div>
-    Classes
-  </header>
-
-  <div class="carousel-container">
-    <div class="arrow left" onclick="moveSlide(-1)">❮</div>
-    <div class="carousel" id="carousel">
-      <div class="race-card" onclick="scrollToRace('artificer')">
-        <img src="assets/humano.png" alt="artificer">
-        <div class="race-name">Artificer</div>
-      </div>
-      <div class="race-card" onclick="scrollToRace('assassino')">
-        <img src="assets/humano.png" alt="assassino">
-        <div class="race-name">Assassino</div>
-      </div>
-      <div class="race-card" onclick="scrollToRace('bardo')">
-        <img src="assets/humano.png" alt="bardo">
-        <div class="race-name">Bardo</div>
-      </div>
-      <div class="race-card" onclick="scrollToRace('berserker')">
-        <img src="assets/humano.png" alt="berserker">
-        <div class="race-name">Berserker</div>
-      </div>
-      <div class="race-card" onclick="scrollToRace('cavaleiro')">
-        <img src="assets/humano.png" alt="cavaleiro">
-        <div class="race-name">Cavaleiro</div>
-      </div>
-      <div class="race-card" onclick="scrollToRace('cartomante')">
-        <img src="assets/humano.png" alt="cartomante">
-        <div class="race-name">Cartomante</div>
-      </div>
-      <div class="race-card" onclick="scrollToRace('feiticeiro')">
-        <img src="assets/humano.png" alt="feiticeiro">
-        <div class="race-name">Feiticeiro</div>
-      </div>
-      <div class="race-card" onclick="scrollToRace('kensei')">
-        <img src="assets/humano.png" alt="kensei">
-        <div class="race-name">Kensei</div>
-      </div>
-      <div class="race-card" onclick="scrollToRace('mago')">
-        <img src="assets/humano.png" alt="mago">
-        <div class="race-name">Mago</div>
-      </div>
-      <div class="race-card" onclick="scrollToRace('monge')">
-        <img src="assets/humano.png" alt="monge">
-        <div class="race-name">Monge</div>
-      </div>
-      <div class="race-card" onclick="scrollToRace('paladinoalgoz')">
-        <img src="assets/humano.png" alt="paladinoalgoz">
-        <div class="race-name">Paladino Algoz</div>
-      </div>
-      <div class="race-card" onclick="scrollToRace('patrulheiro')">
-        <img src="assets/humano.png" alt="patrulheiro">
-        <div class="race-name">Patrulheiro</div>
-      </div>
-      <div class="race-card" onclick="scrollToRace('pirata')">
-        <img src="assets/humano.png" alt="pirata">
-        <div class="race-name">Pirata</div>
-      </div>
-      <div class="race-card" onclick="scrollToRace('samurai')">
-        <img src="assets/humano.png" alt="samurai">
-        <div class="race-name">Samurai</div>
-      </div>
-      <div class="race-card" onclick="scrollToRace('shinobi')">
-        <img src="assets/humano.png" alt="shinobi">
-        <div class="race-name">Shinobi</div>
-      </div>
-    </div>
-    <div class="arrow right" onclick="moveSlide(1)">❯</div>
-  </div>
-
-  <div class="raca">
-      Neste mundo, cada guerreiro, mago ou andarilho carrega dentro de si um poder único, moldado por sua origem, escolhas e provações. As classes são mais do que rótulos:
-são caminhos de vida, filosofias de combate e legados de força. Ser um herói neste cenário não é apenas empunhar uma espada ou conjurar feitiços; é abraçar a essência de sua classe e expandir seus limites a cada batalha. Com o tempo, seus feitos ecoam, e o simples aprendiz pode tornar-se lenda.
-Este guia reúne as classes disponíveis, suas habilidades, vantagens e progressões. Aqui você encontrará a estrutura para forjar sua jornada, seja como um protetor incansável, um destruidor de muralhas, um mestre da furtividade ou um conjurador capaz de dobrar as forças da realidade. Cada classe cresce em poder conforme sobe de nível, refletindo a evolução do personagem. De humano comum a força comparável a fenômenos naturais, a progressão é o testemunho da sua jornada. Escolha com sabedoria, lute com coragem e trilhe o caminho que ecoará na eternidade.
-  </div>
-
-  <!-- Raças -->
-  <div class="raca" id="artificer">
-    <h2>Artificer</h2>
-    Descrição da classe
-</div>
-  <div>
-    <h3 class="raca">
-        Nível 0 -
-    </h3>
-    <h3 class="raca">
-        Nível 2 -
-    </h3>
-    <h3 class="raca">
-        Nível 4 -
-    </h3>
-    <h3 class="raca">
-        Nível 6 -
-    </h3>
-    <h3 class="raca">
-        Nível 8 -
-    </h3>
-  </div>
-
-  <div class="raca" id="assassino">
-    <h2>Assassino</h2>
-    Descrição da classe
-</div>
-  <div>
-    <h3 class="raca">
-        Nível 0 -
-    </h3>
-    <h3 class="raca">
-        Nível 2 -
-    </h3>
-    <h3 class="raca">
-        Nível 4 -
-    </h3>
-    <h3 class="raca">
-        Nível 6 -
-    </h3>
-    <h3 class="raca">
-        Nível 8 -
-    </h3>
-  </div>
-
-  <div class="raca" id="bardo">
-    <h2>Bardo</h2>
-    Descrição da raça
-  </div>
-  <div>
-    <h3 class="raca">
-      Nível 0 - 
-    </h3>
-    <h3 class="raca">
-      Nível 2 -  
-    </h3>
-    <h3 class="raca">
-      Nível 4 - 
-    </h3>
-    <h3 class="raca">
-      Nível 6 - 
-    </h3>
-    <h3 class="raca">
-      Nível 8 - 
-    </h3>
-  </div>
-
-  <div class="raca" id="berserker">
-    <h2>Berserker</h2>
-    Descrição da raça
-  </div>
-  <div>
-    <h3 class="raca">
-      Nível 0 - 
-    </h3>
-    <h3 class="raca">
-      Nível 2 -  
-    </h3>
-    <h3 class="raca">
-      Nível 4 - 
-    </h3>
-    <h3 class="raca">
-      Nível 6 - 
-    </h3>
-    <h3 class="raca">
-      Nível 8 - 
-    </h3>
-  </div>
-
-  <div class="raca" id="cavaleiro">
-    <h2>Cavaleiro</h2>
-    Descrição da raça
-  </div>
-  <div>
-    <h3 class="raca">
-      Nível 0 - 
-    </h3>
-    <h3 class="raca">
-      Nível 2 -  
-    </h3>
-    <h3 class="raca">
-      Nível 4 - 
-    </h3>
-    <h3 class="raca">
-      Nível 6 - 
-    </h3>
-    <h3 class="raca">
-      Nível 8 - 
-    </h3>
-  </div>
-
-  <div class="raca" id="cartomante">
-    <h2>Cartomante</h2>
-    Descrição da raça
-  </div>
-  <div>
-    <h3 class="raca">
-      Nível 0 - 
-    </h3>
-    <h3 class="raca">
-      Nível 2 -  
-    </h3>
-    <h3 class="raca">
-      Nível 4 - 
-    </h3>
-    <h3 class="raca">
-      Nível 6 - 
-    </h3>
-    <h3 class="raca">
-      Nível 8 - 
-    </h3>
-  </div>
-
-  <div class="raca" id="feiticeiro">
-    <h2>Feiticeiro</h2>
-    Descrição da raça
-  </div>
-  <div>
-    <h3 class="raca">
-      Nível 0 - 
-    </h3>
-    <h3 class="raca">
-      Nível 2 -  
-    </h3>
-    <h3 class="raca">
-      Nível 4 - 
-    </h3>
-    <h3 class="raca">
-      Nível 6 - 
-    </h3>
-    <h3 class="raca">
-      Nível 8 - 
-    </h3>
-  </div>
-
-  <div class="raca" id="kensei">
-    <h2>Kensei</h2>
-    Descrição da raça
-  </div>
-  <div>
-    <h3 class="raca">
-      Nível 0 - 
-    </h3>
-    <h3 class="raca">
-      Nível 2 -  
-    </h3>
-    <h3 class="raca">
-      Nível 4 - 
-    </h3>
-    <h3 class="raca">
-      Nível 6 - 
-    </h3>
-    <h3 class="raca">
-      Nível 8 - 
-    </h3>
-  </div>
-
-  <div class="raca" id="mago">
-    <h2>Mago</h2>
-    Descrição da raça
-  </div>
-  <div>
-    <h3 class="raca">
-      Nível 0 - 
-    </h3>
-    <h3 class="raca">
-      Nível 2 -  
-    </h3>
-    <h3 class="raca">
-      Nível 4 - 
-    </h3>
-    <h3 class="raca">
-      Nível 6 - 
-    </h3>
-    <h3 class="raca">
-      Nível 8 - 
-    </h3>
-  </div>
-
-  <div class="raca" id="monge">
-    <h2>Monge</h2>
-    Descrição da raça
-  </div>
-  <div>
-    <h3 class="raca">
-      Nível 0 - 
-    </h3>
-    <h3 class="raca">
-      Nível 2 -  
-    </h3>
-    <h3 class="raca">
-      Nível 4 - 
-    </h3>
-    <h3 class="raca">
-      Nível 6 - 
-    </h3>
-    <h3 class="raca">
-      Nível 8 - 
-    </h3>
-  </div>
-
-  <div class="raca" id="paladinoalgoz">
-    <h2>Paladino Algoz</h2>
-    Descrição da raça
-  </div>
-  <div>
-    <h3 class="raca">
-      Nível 0 - 
-    </h3>
-    <h3 class="raca">
-      Nível 2 -  
-    </h3>
-    <h3 class="raca">
-      Nível 4 - 
-    </h3>
-    <h3 class="raca">
-      Nível 6 - 
-    </h3>
-    <h3 class="raca">
-      Nível 8 - 
-    </h3>
-  </div>
-
-  <div class="raca" id="patrulheiro">
-    <h2>Patrulheiro</h2>
-    Descrição da raça
-  </div>
-  <div>
-    <h3 class="raca">
-      Nível 0 - 
-    </h3>
-    <h3 class="raca">
-      Nível 2 -  
-    </h3>
-    <h3 class="raca">
-      Nível 4 - 
-    </h3>
-    <h3 class="raca">
-      Nível 6 - 
-    </h3>
-    <h3 class="raca">
-      Nível 8 - 
-    </h3>
-  </div>
-
-  <div class="raca" id="pirata">
-    <h2>Pirata</h2>
-    Descrição da raça
-  </div>
-  <div>
-    <h3 class="raca">
-      Nível 0 - 
-    </h3>
-    <h3 class="raca">
-      Nível 2 -  
-    </h3>
-    <h3 class="raca">
-      Nível 4 - 
-    </h3>
-    <h3 class="raca">
-      Nível 6 - 
-    </h3>
-    <h3 class="raca">
-      Nível 8 - 
-    </h3>
-  </div>
-
-  <div class="raca" id="samurai">
-    <h2>Samurai</h2>
-    Descrição da raça
-  </div>
-  <div>
-    <h3 class="raca">
-      Nível 0 - 
-    </h3>
-    <h3 class="raca">
-      Nível 2 -  
-    </h3>
-    <h3 class="raca">
-      Nível 4 - 
-    </h3>
-    <h3 class="raca">
-      Nível 6 - 
-    </h3>
-    <h3 class="raca">
-      Nível 8 - 
-    </h3>
-  </div>
-
-  <div class="raca" id="shinobi">
-    <h2>Shinobi</h2>
-    Descrição da raça
-  </div>
-  <div>
-    <h3 class="raca">
-      Nível 0 - 
-    </h3>
-    <h3 class="raca">
-      Nível 2 -  
-    </h3>
-    <h3 class="raca">
-      Nível 4 - 
-    </h3>
-    <h3 class="raca">
-      Nível 6 - 
-    </h3>
-    <h3 class="raca">
-      Nível 8 - 
-    </h3>
-  </div>
-
-  <script>
-  // --- MENU LATERAL (abre/fecha no clique) ---
-  const menuToggle = document.querySelector('.menu-icon');
-  const menu = document.getElementById('sidebar');
-
-  menuToggle.addEventListener('click', (e) => {
-    e.stopPropagation(); // impede que o clique no botão feche o menu imediatamente
-    menu.classList.toggle('open');
-  });
-
-  // Fecha o menu ao clicar fora (apenas se estiver aberto)
-  document.addEventListener('click', (e) => {
-    const target = e.target;
-
-    // se clicou no botão menu, ignora
-    if (menuToggle.contains(target)) return;
-
-    // se clicou dentro do menu e for link, fecha o menu após um pequeno delay
-    if (menu.contains(target)) {
-      if (target.closest('a')) {
-        setTimeout(() => menu.classList.remove('open'), 100);
-      }
-      return;
-    }
-
-    // se clicou em qualquer outro lugar e o menu estiver aberto, fecha
-    if (menu.classList.contains('open')) {
-      menu.classList.remove('open');
-    }
-  });
-
-  // Fecha o menu com tecla ESC
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && menu.classList.contains('open')) {
-      menu.classList.remove('open');
-    }
-  });
-
-  // --- CARROSSEL DE RAÇAS ---
-  let currentSlide = 0;
-  const carousel = document.getElementById('carousel');
-  const slides = document.querySelectorAll('.race-card');
-
-  function moveSlide(direction) {
-    currentSlide = (currentSlide + direction + slides.length) % slides.length;
-    carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
-  }
-
-  // --- SCROLL ATÉ RAÇA ---
-  function scrollToRace(raceId) {
-    const raceElement = document.getElementById(raceId);
-    if (raceElement) {
-      raceElement.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-</script>
-
-
-<footer class="footer">
-      <p>© 2025 Penumbra RPG | por Mia Fritz</p>
-    </footer>
-  </body>
-</html>
-</body>
-</html>
->>>>>>> 98e54678f707a9011803b93e3f2b18ac8fd9c9d6
