@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Penumba RPG — Reinos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Merriweather&display=swap" rel="stylesheet">
+  <style>
+    /* --- mesmo estilo da tua página de classes --- */
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      font-family: 'Merriweather', serif;
+      background: radial-gradient(circle at top, #2d1740, #1b0e24);
+      color: #f3e9d2;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: relative;
+      text-align: center;
+      padding: 1.5rem 0 1rem;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2rem;
+      color: #d4b36e;
+      text-shadow: 0 0 10px #b56ddf, 0 0 20px #b56ddf;
+    }
+
+    .menu-icon {
+      position: absolute;
+      top: 1.2rem;
+      left: 1rem;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #f3e9d2;
+      text-shadow: 0 0 8px #b56ddf;
+    }
+
+    .menu-toggle {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    font-size: 1.6rem;
+    color: #f3e9d2;
+    text-shadow: 0 0 8px #b56ddf;
+    cursor: pointer;
+    background: rgba(0,0,0,0.15);
+    padding: 6px 10px;
+    border-radius: 8px;
+    user-select: none;
+    z-index: 101;
+  }
+
+  /* MENU LATERAL */
+  .menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 70px;
+    background: rgba(40,20,60,0.95);
+    transition: width 0.28s ease, transform 0.28s ease;
+    overflow: hidden;
+    z-index: 100;
+    border-right: 1px solid #d4b36e;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* quando hover (desktop) ou aberto (mobile) */
+  .menu:hover,
+  .menu.open {
+    width: 260px;
+  }
+
+  .menu .menu-inner {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .menu a {
+    color: #f3e9d2;
+    text-decoration: none;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 8px 10px;
+    border-radius: 8px;
+    transition: background 0.18s ease, color 0.18s ease;
+    font-size: 1rem;
+  }
+
+  .menu a .icon {
+    width: 36px;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+
+  .menu a:hover {
+    background: rgba(181,109,223,0.08);
+    color: #b56ddf;
+    text-shadow: 0 0 8px #b56ddf;
+  }
+
+  /* MOBILE */
+  @media (max-width: 700px) {
+    .menu { width: 0; transform: translateX(-2px); }
+    .menu.open { width: 86%; min-width: 260px; }
+    .menu .menu-inner { padding-top: 40px; }
+    .menu a { font-size: 1.05rem; padding: 12px; }
+    .menu-toggle { display: block; }
+  }
+
+    /* --- carrossel --- */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      margin: 1rem auto;
+      max-width: 600px;
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .reino-card {
+      min-width: 100%;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .reino-card img {
+      width: 90%;
+      max-height: 250px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #b56ddf77;
+      object-fit: cover;
+    }
+
+    .reino-name {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.4rem;
+      margin-top: 0.5rem;
+      color: #d4b36e;
+      text-shadow: 0 0 8px #b56ddf;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 45%;
+      transform: translateY(-50%);
+      font-size: 4rem;
+      color: #b56ddf;
+      text-shadow: 0 0 10px #b56ddf;
+      cursor: pointer;
+      user-select: none;
+      z-index: 2;
+    }
+    .arrow.left { left: 30px; }
+    .arrow.right { right: 30px; }
+
+    /* --- conteúdo dinâmico --- */
+    #reino-content {
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 1rem;
+      border-top: 1px solid #d4b36e44;
+      line-height: 1.8;
+    }
+
+    .reino-section {
+      background: rgba(255,255,255,0.04);
+      border-radius: 12px;
+      margin: 1rem 0;
+      padding: 1rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .reino-section:hover {
+      background: rgba(255,255,255,0.07);
+    }
+
+    .section-title {
+      font-family: 'Cinzel Decorative', serif;
+      color: #b56ddf;
+      text-shadow: 0 0 10px #b56ddf;
+      font-size: 1.3rem;
+    }
+
+    .section-content {
+      display: none;
+      margin-top: 0.6rem;
+      color: #f3e9d2;
+      text-align: justify;
+    }
+
+    .reino-section.open .section-content {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .footer {
+        text-align: center;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-5px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+  </style>
+</head>
+
+<body>
+    <!-- Botão de menu -->
+<div class="menu-toggle" id="menuToggle">☰</div>
+
+  <nav class="menu" id="sidebar">
+    <div class="menu-inner">
+      <a href="index.html"><span class="icon">🏠</span>Início</a>
+      <a href="raças.html"><span class="icon">🧬</span>Raças</a>
+      <a href="classes.html"><span class="icon">⚔️</span>Classes</a>
+      <a href="reinos.html"><span class="icon">👑</span>Reinos</a>
+    </div>
+  </nav>
+
+  <header>Reinos</header>
+
+  <!-- Carrossel -->
+  <div class="carousel-container">
+    <div class="arrow left" onclick="moveSlide(-1)">❮</div>
+    <div class="carousel" id="carousel">
+      <div class="reino-card" data-reino="egito">
+        <img src="assets/humano.png" alt="egito">
+        <div class="reino-name">Egito</div>
+      </div>
+      <div class="reino-card" data-reino="joseon">
+        <img src="assets/humano.png" alt="joseon">
+        <div class="reino-name">Joseon</div>
+      </div>
+      <div class="reino-card" data-reino="mortalia">
+        <img src="assets/humano.png" alt="mortalia">
+        <div class="reino-name">Mortalia</div>
+      </div>
+      <div class="reino-card" data-reino="hinokumi">
+        <img src="assets/humano.png" alt="hinokumi">
+        <div class="reino-name">Hinokumi</div>
+      </div>
+      <div class="reino-card" data-reino="temiscera">
+        <img src="assets/humano.png" alt="temiscera">
+        <div class="reino-name">Temíscera</div>
+      </div>
+      <div class="reino-card" data-reino="roma">
+        <img src="assets/humano.png" alt="roma">
+        <div class="reino-name">Roma</div>
+      </div>
+      <div class="reino-card" data-reino="fjordheim">
+        <img src="assets/humano.png" alt="fjordheim">
+        <div class="reino-name">Fjördheim</div>
+      </div>
+      <div class="reino-card" data-reino="clover">
+        <img src="assets/humano.png" alt="clover">
+        <div class="reino-name">Clover</div>
+      </div>
+      <div class="reino-card" data-reino="grecia">
+        <img src="assets/humano.png" alt="grecia">
+        <div class="reino-name">Grécia</div>
+      </div>
+      <div class="reino-card" data-reino="zhongya">
+        <img src="assets/humano.png" alt="zhongya">
+        <div class="reino-name">Zhong Ya</div>
+      </div>
+      <div class="reino-card" data-reino="tapejara">
+        <img src="assets/humano.png" alt="tapejara">
+        <div class="reino-name">Tapejara</div>
+      </div>
+      <div class="reino-card" data-reino="rodinamat">
+        <img src="assets/humano.png" alt="rodinamat">
+        <div class="reino-name">Rodinamat</div>
+      </div>
+    </div>
+    <div class="arrow right" onclick="moveSlide(1)">❯</div>
+  </div>
+
+  <!-- Conteúdo dinâmico -->
+  <div id="reino-content"></div>
+
+  <script>
+  // --- MENU ---
+  const menuToggle = document.getElementById('menuToggle');
+  const menu = document.getElementById('sidebar');
+
+  // abre/fecha no mobile
+  menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menu.classList.toggle('open');
+  });
+
+  // fecha ao clicar fora
+  document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
+
+  // fecha com ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') menu.classList.remove('open');
+  });
+
+  // --- CARROSSEL E CONTEÚDO ---
+  const reinos = {
+    "egito": [
+      { titulo: "Visão Geral", texto: "descrição" },
+      { titulo: "Governo", texto: "descrição" },
+      { titulo: "Decreto de cidadania", texto: "descrição" },
+      { titulo: "Relações externas", texto: "descrição" },
+      { titulo: "Stands", texto: "descrição" },
+      { titulo: "Defesa do reino", texto: "descrição" }
+    ],
+    "joseon": [
+      { titulo: "Visão Geral", texto: "descrição" },
+      { titulo: "Governo", texto: "descrição" },
+      { titulo: "Decreto de cidadania", texto: "descrição" },
+      { titulo: "Relações externas", texto: "descrição" },
+      { titulo: "Nen", texto: "descrição" },
+      { titulo: "Defesa do reino", texto: "descrição" }
+    ],
+    "mortalia": [
+      { titulo: "Visão Geral", texto: "descrição" },
+      { titulo: "Governo", texto: "descrição" },
+      { titulo: "Decreto de cidadania", texto: "descrição" },
+      { titulo: "Relações externas", texto: "descrição" },
+      { titulo: "Dons de xamã", texto: "descrição" },
+      { titulo: "Defesa do reino", texto: "descrição" }
+    ],
+    "hinokumi": [
+      { titulo: "Visão Geral", texto: "descrição" },
+      { titulo: "Governo", texto: "descrição" },
+      { titulo: "Decreto de cidadania", texto: "descrição" },
+      { titulo: "Relações externas", texto: "descrição" },
+      { titulo: "Zanpakuto", texto: "descrição" },
+      { titulo: "Defesa do reino", texto: "descrição" }
+    ],
+    "temíscera": [
+      { titulo: "Visão Geral", texto: "descrição" },
+      { titulo: "Governo", texto: "descrição" },
+      { titulo: "Decreto de cidadania", texto: "descrição" },
+      { titulo: "Relações externas", texto: "descrição" },
+      { titulo: "Toque divino", texto: "descrição" },
+      { titulo: "Defesa do reino", texto: "descrição" }
+    ],
+    "roma": [
+      { titulo: "Visão Geral", texto: "descrição" },
+      { titulo: "Governo", texto: "descrição" },
+      { titulo: "Decreto de cidadania", texto: "descrição" },
+      { titulo: "Relações externas", texto: "descrição" },
+      { titulo: "Armas divinas", texto: "descrição" },
+      { titulo: "Defesa do reino", texto: "descrição" }
+    ],
+    "fjördheim": [
+      { titulo: "Visão Geral", texto: "descrição" },
+      { titulo: "Governo", texto: "descrição" },
+      { titulo: "Decreto de cidadania", texto: "descrição" },
+      { titulo: "Relações externas", texto: "descrição" },
+      { titulo: "Bençãos", texto: "descrição" },
+      { titulo: "Defesa do reino", texto: "descrição" }
+    ],
+    "clover": [
+      { titulo: "Visão Geral", texto: "descrição" },
+      { titulo: "Governo", texto: "descrição" },
+      { titulo: "Decreto de cidadania", texto: "descrição" },
+      { titulo: "Relações externas", texto: "descrição" },
+      { titulo: "Grimórios", texto: "descrição" },
+      { titulo: "Defesa do reino", texto: "descrição" }
+    ],
+    "grécia": [
+      { titulo: "Visão Geral", texto: "descrição" },
+      { titulo: "Governo", texto: "descrição" },
+      { titulo: "Decreto de cidadania", texto: "descrição" },
+      { titulo: "Relações externas", texto: "descrição" },
+      { titulo: "Armaduras de ouro", texto: "descrição" },
+      { titulo: "Defesa do reino", texto: "descrição" }
+    ],
+    "zhong Ya": [
+      { titulo: "Visão Geral", texto: "descrição" },
+      { titulo: "Governo", texto: "descrição" },
+      { titulo: "Decreto de cidadania", texto: "descrição" },
+      { titulo: "Relações externas", texto: "descrição" },
+      { titulo: "Hextex/Quimtech", texto: "descrição" },
+      { titulo: "Defesa do reino", texto: "descrição" }
+    ],
+    "tapejara": [
+      { titulo: "Visão Geral", texto: "descrição" },
+      { titulo: "Governo", texto: "descrição" },
+      { titulo: "Decreto de cidadania", texto: "descrição" },
+      { titulo: "Relações externas", texto: "descrição" },
+      { titulo: "Akuma no mi", texto: "descrição" },
+      { titulo: "Defesa do reino", texto: "descrição" }
+    ],
+    "rodinamat": [
+      { titulo: "Visão Geral", texto: "descrição" },
+      { titulo: "Governo", texto: "descrição" },
+      { titulo: "Decreto de cidadania", texto: "descrição" },
+      { titulo: "Relações externas", texto: "descrição" },
+      { titulo: "trajes kaiju", texto: "descrição" },
+      { titulo: "Defesa do reino", texto: "descrição" }
+    ],
+  };
+
+  let currentIndex = 0;
+  const carousel = document.getElementById("carousel");
+  const reinoContent = document.getElementById("reino-content");
+  const cards = document.querySelectorAll(".reino-card");
+
+  function renderReino(nome) {
+    const data = reinos[nome];
+    reinoContent.innerHTML = data.map(section => `
+      <div class="reino-section">
+        <div class="section-title">${section.titulo}</div>
+        <div class="section-content">${section.texto}</div>
+      </div>
+    `).join("");
+    document.querySelectorAll(".reino-section").forEach(sec => {
+      sec.addEventListener("click", () => sec.classList.toggle("open"));
+    });
+  }
+
+  function moveSlide(direction) {
+    const total = cards.length;
+    currentIndex = (currentIndex + direction + total) % total;
+    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+    renderReino(cards[currentIndex].dataset.reino);
+  }
+
+  renderReino(cards[currentIndex].dataset.reino);
+</script>
+
+<footer class="footer">
+      <p>© 2025 Penumbra RPG | por Mia Fritz</p>
+    </footer>
+  </body>
+</html>
+</body>
+</html>
