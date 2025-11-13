@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Penumba RPG — Classes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Merriweather&display=swap" rel="stylesheet">
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      font-family: 'Merriweather', serif;
+      background: radial-gradient(circle at top, #2d1740, #1b0e24);
+      color: #f3e9d2;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: relative;
+      text-align: center;
+      padding: 1.5rem 0 1rem;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2rem;
+      color: #d4b36e;
+      text-shadow: 0 0 10px #b56ddf, 0 0 20px #b56ddf;
+    }
+
+    .menu-icon {
+      position: absolute;
+      top: 1.2rem;
+      left: 1rem;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #f3e9d2;
+      text-shadow: 0 0 8px #b56ddf;
+    }
+
+    /* Ícone do menu (visível no topo - clicável) */
+    .menu-toggle {
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      font-size: 1.6rem;
+      color: #f3e9d2;
+      text-shadow: 0 0 8px #b56ddf;
+      cursor: pointer;
+      background: rgba(0,0,0,0.15);
+      padding: 6px 10px;
+      border-radius: 8px;
+      user-select: none;
+    }
+
+    /* menu lateral - padrão fechado (70px) */
+    .menu {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 70px;
+      background: rgba(40,20,60,0.95);
+      transition: width 0.28s ease, transform 0.28s ease;
+      overflow: hidden;
+      z-index: 50;
+      border-right: 1px solid #d4b36e;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* quando hover (desktop) ou .open (mobile), expande */
+    .menu:hover,
+    .menu.open {
+      width: 260px;
+    }
+
+    .menu .menu-inner {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .menu a {
+      color: #f3e9d2;
+      text-decoration: none;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 8px;
+      transition: background 0.18s ease, color 0.18s ease;
+      font-size: 1rem;
+    }
+
+    .menu a .icon {
+      width: 36px;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .menu a:hover {
+      background: rgba(181,109,223,0.08);
+      color: #b56ddf;
+      text-shadow: 0 0 8px #b56ddf;
+    }
+
+    /* carrossel */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      margin: 1rem auto;
+      max-width: 600px;
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .race-card {
+      min-width: 100%;
+      text-align: center;
+    }
+
+    .race-card img {
+      width: 90%;
+      max-height: 250px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #b56ddf77;
+      object-fit: cover;
+    }
+
+    .race-name {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.4rem;
+      margin-top: 0.5rem;
+      color: #d4b36e;
+      text-shadow: 0 0 8px #b56ddf;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 45%;
+      transform: translateY(-50%);
+      font-size: 4rem;
+      color: #b56ddf;
+      text-shadow: 0 0 10px #b56ddf;
+      cursor: pointer;
+      user-select: none;
+      z-index: 2;
+    }
+
+    .arrow.left { left: 30px; }
+    .arrow.right { right: 30px; }
+
+    /* conteúdo das raças */
+    .raca {
+      padding: 2rem 1rem;
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.8;
+      white-space: pre-line;
+      text-align: justify;
+      text-indent: 2em;
+      border-top: 1px solid #d4b36e44;
+    }
+
+    .raca h2 {
+      font-family: 'Cinzel Decorative', serif;
+      color: #b56ddf;
+      text-shadow: 0 0 10px #b56ddf;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    /* mobile */
+    @media (max-width: 600px) {
+      header { font-size: 1.6rem; }
+      .arrow { font-size: 1.6rem; }
+    }
+
+    .menu.open ~ .content,
+    .menu:hover ~ .content {
+      margin-left: 280px;
+    }
+
+    .footer {
+        text-align: center;
+    }
+
+    /* comportamento responsivo (celular) */
+    @media (max-width: 700px) {
+      .site-header { font-size: 1.4rem; padding: 0.9rem; }
+      .menu { width: 0; transform: translateX(-2px); } /* escondido por padrão no mobile */
+      .menu.open { width: 86%; min-width: 260px; } /* ocupa a maior parte da tela */
+      .menu .menu-inner { padding-top: 40px; }
+      .menu a { font-size: 1.05rem; padding: 12px; }
+      .content { margin-left: 0; padding: 1rem; }
+      .menu.open ~ .content { margin-left: 0; } /* o conteúdo não precisa se deslocar no mobile */
+      .menu-toggle { left: 0.8rem; top: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Menu lateral -->
+  <nav class="menu" id="sidebar" aria-label="Menu principal">
+    <div class="menu-inner">
+      <!-- (icone + label) - links para páginas de conteúdo -->
+      <a href="index.html" class="menu-link" data-target="classes.html"><span class="icon">🏠</span><span class="label">Início</span></a>
+      <a href="raças.html" class="menu-link" data-target="raças.html"><span class="icon">🧬</span><span class="label">Raças</span></a>
+      <a href="classes.html" class="menu-link" data-target="classes.html"><span class="icon">⚔️</span><span class="label">Classes</span></a>
+      <a href="reinos.html" class="menu-link" data-target="classes.html"><span class="icon">👑</span><span class="label">reinos</span></a>
+
+        </div>
+  </nav>
+  <header>
+    <div class="menu-icon">☰</div>
+    Classes
+  </header>
+
+  <div class="carousel-container">
+    <div class="arrow left" onclick="moveSlide(-1)">❮</div>
+    <div class="carousel" id="carousel">
+      <div class="race-card" onclick="scrollToRace('artificer')">
+        <img src="assets/humano.png" alt="artificer">
+        <div class="race-name">Artificer</div>
+      </div>
+      <div class="race-card" onclick="scrollToRace('assassino')">
+        <img src="assets/humano.png" alt="assassino">
+        <div class="race-name">Assassino</div>
+      </div>
+      <div class="race-card" onclick="scrollToRace('bardo')">
+        <img src="assets/humano.png" alt="bardo">
+        <div class="race-name">Bardo</div>
+      </div>
+      <div class="race-card" onclick="scrollToRace('berserker')">
+        <img src="assets/humano.png" alt="berserker">
+        <div class="race-name">Berserker</div>
+      </div>
+      <div class="race-card" onclick="scrollToRace('cavaleiro')">
+        <img src="assets/humano.png" alt="cavaleiro">
+        <div class="race-name">Cavaleiro</div>
+      </div>
+      <div class="race-card" onclick="scrollToRace('cartomante')">
+        <img src="assets/humano.png" alt="cartomante">
+        <div class="race-name">Cartomante</div>
+      </div>
+      <div class="race-card" onclick="scrollToRace('feiticeiro')">
+        <img src="assets/humano.png" alt="feiticeiro">
+        <div class="race-name">Feiticeiro</div>
+      </div>
+      <div class="race-card" onclick="scrollToRace('kensei')">
+        <img src="assets/humano.png" alt="kensei">
+        <div class="race-name">Kensei</div>
+      </div>
+      <div class="race-card" onclick="scrollToRace('mago')">
+        <img src="assets/humano.png" alt="mago">
+        <div class="race-name">Mago</div>
+      </div>
+      <div class="race-card" onclick="scrollToRace('monge')">
+        <img src="assets/humano.png" alt="monge">
+        <div class="race-name">Monge</div>
+      </div>
+      <div class="race-card" onclick="scrollToRace('paladinoalgoz')">
+        <img src="assets/humano.png" alt="paladinoalgoz">
+        <div class="race-name">Paladino Algoz</div>
+      </div>
+      <div class="race-card" onclick="scrollToRace('patrulheiro')">
+        <img src="assets/humano.png" alt="patrulheiro">
+        <div class="race-name">Patrulheiro</div>
+      </div>
+      <div class="race-card" onclick="scrollToRace('pirata')">
+        <img src="assets/humano.png" alt="pirata">
+        <div class="race-name">Pirata</div>
+      </div>
+      <div class="race-card" onclick="scrollToRace('samurai')">
+        <img src="assets/humano.png" alt="samurai">
+        <div class="race-name">Samurai</div>
+      </div>
+      <div class="race-card" onclick="scrollToRace('shinobi')">
+        <img src="assets/humano.png" alt="shinobi">
+        <div class="race-name">Shinobi</div>
+      </div>
+    </div>
+    <div class="arrow right" onclick="moveSlide(1)">❯</div>
+  </div>
+
+  <div class="raca">
+      Neste mundo, cada guerreiro, mago ou andarilho carrega dentro de si um poder único, moldado por sua origem, escolhas e provações. As classes são mais do que rótulos:
+são caminhos de vida, filosofias de combate e legados de força. Ser um herói neste cenário não é apenas empunhar uma espada ou conjurar feitiços; é abraçar a essência de sua classe e expandir seus limites a cada batalha. Com o tempo, seus feitos ecoam, e o simples aprendiz pode tornar-se lenda.
+Este guia reúne as classes disponíveis, suas habilidades, vantagens e progressões. Aqui você encontrará a estrutura para forjar sua jornada, seja como um protetor incansável, um destruidor de muralhas, um mestre da furtividade ou um conjurador capaz de dobrar as forças da realidade. Cada classe cresce em poder conforme sobe de nível, refletindo a evolução do personagem. De humano comum a força comparável a fenômenos naturais, a progressão é o testemunho da sua jornada. Escolha com sabedoria, lute com coragem e trilhe o caminho que ecoará na eternidade.
+  </div>
+
+  <!-- Raças -->
+  <div class="raca" id="artificer">
+    <h2>Artificer</h2>
+    Descrição da classe
+</div>
+  <div>
+    <h3 class="raca">
+        Nível 0 -
+    </h3>
+    <h3 class="raca">
+        Nível 2 -
+    </h3>
+    <h3 class="raca">
+        Nível 4 -
+    </h3>
+    <h3 class="raca">
+        Nível 6 -
+    </h3>
+    <h3 class="raca">
+        Nível 8 -
+    </h3>
+  </div>
+
+  <div class="raca" id="assassino">
+    <h2>Assassino</h2>
+    Descrição da classe
+</div>
+  <div>
+    <h3 class="raca">
+        Nível 0 -
+    </h3>
+    <h3 class="raca">
+        Nível 2 -
+    </h3>
+    <h3 class="raca">
+        Nível 4 -
+    </h3>
+    <h3 class="raca">
+        Nível 6 -
+    </h3>
+    <h3 class="raca">
+        Nível 8 -
+    </h3>
+  </div>
+
+  <div class="raca" id="bardo">
+    <h2>Bardo</h2>
+    Descrição da raça
+  </div>
+  <div>
+    <h3 class="raca">
+      Nível 0 - 
+    </h3>
+    <h3 class="raca">
+      Nível 2 -  
+    </h3>
+    <h3 class="raca">
+      Nível 4 - 
+    </h3>
+    <h3 class="raca">
+      Nível 6 - 
+    </h3>
+    <h3 class="raca">
+      Nível 8 - 
+    </h3>
+  </div>
+
+  <div class="raca" id="berserker">
+    <h2>Berserker</h2>
+    Descrição da raça
+  </div>
+  <div>
+    <h3 class="raca">
+      Nível 0 - 
+    </h3>
+    <h3 class="raca">
+      Nível 2 -  
+    </h3>
+    <h3 class="raca">
+      Nível 4 - 
+    </h3>
+    <h3 class="raca">
+      Nível 6 - 
+    </h3>
+    <h3 class="raca">
+      Nível 8 - 
+    </h3>
+  </div>
+
+  <div class="raca" id="cavaleiro">
+    <h2>Cavaleiro</h2>
+    Descrição da raça
+  </div>
+  <div>
+    <h3 class="raca">
+      Nível 0 - 
+    </h3>
+    <h3 class="raca">
+      Nível 2 -  
+    </h3>
+    <h3 class="raca">
+      Nível 4 - 
+    </h3>
+    <h3 class="raca">
+      Nível 6 - 
+    </h3>
+    <h3 class="raca">
+      Nível 8 - 
+    </h3>
+  </div>
+
+  <div class="raca" id="cartomante">
+    <h2>Cartomante</h2>
+    Descrição da raça
+  </div>
+  <div>
+    <h3 class="raca">
+      Nível 0 - 
+    </h3>
+    <h3 class="raca">
+      Nível 2 -  
+    </h3>
+    <h3 class="raca">
+      Nível 4 - 
+    </h3>
+    <h3 class="raca">
+      Nível 6 - 
+    </h3>
+    <h3 class="raca">
+      Nível 8 - 
+    </h3>
+  </div>
+
+  <div class="raca" id="feiticeiro">
+    <h2>Feiticeiro</h2>
+    Descrição da raça
+  </div>
+  <div>
+    <h3 class="raca">
+      Nível 0 - 
+    </h3>
+    <h3 class="raca">
+      Nível 2 -  
+    </h3>
+    <h3 class="raca">
+      Nível 4 - 
+    </h3>
+    <h3 class="raca">
+      Nível 6 - 
+    </h3>
+    <h3 class="raca">
+      Nível 8 - 
+    </h3>
+  </div>
+
+  <div class="raca" id="kensei">
+    <h2>Kensei</h2>
+    Descrição da raça
+  </div>
+  <div>
+    <h3 class="raca">
+      Nível 0 - 
+    </h3>
+    <h3 class="raca">
+      Nível 2 -  
+    </h3>
+    <h3 class="raca">
+      Nível 4 - 
+    </h3>
+    <h3 class="raca">
+      Nível 6 - 
+    </h3>
+    <h3 class="raca">
+      Nível 8 - 
+    </h3>
+  </div>
+
+  <div class="raca" id="mago">
+    <h2>Mago</h2>
+    Descrição da raça
+  </div>
+  <div>
+    <h3 class="raca">
+      Nível 0 - 
+    </h3>
+    <h3 class="raca">
+      Nível 2 -  
+    </h3>
+    <h3 class="raca">
+      Nível 4 - 
+    </h3>
+    <h3 class="raca">
+      Nível 6 - 
+    </h3>
+    <h3 class="raca">
+      Nível 8 - 
+    </h3>
+  </div>
+
+  <div class="raca" id="monge">
+    <h2>Monge</h2>
+    Descrição da raça
+  </div>
+  <div>
+    <h3 class="raca">
+      Nível 0 - 
+    </h3>
+    <h3 class="raca">
+      Nível 2 -  
+    </h3>
+    <h3 class="raca">
+      Nível 4 - 
+    </h3>
+    <h3 class="raca">
+      Nível 6 - 
+    </h3>
+    <h3 class="raca">
+      Nível 8 - 
+    </h3>
+  </div>
+
+  <div class="raca" id="paladinoalgoz">
+    <h2>Paladino Algoz</h2>
+    Descrição da raça
+  </div>
+  <div>
+    <h3 class="raca">
+      Nível 0 - 
+    </h3>
+    <h3 class="raca">
+      Nível 2 -  
+    </h3>
+    <h3 class="raca">
+      Nível 4 - 
+    </h3>
+    <h3 class="raca">
+      Nível 6 - 
+    </h3>
+    <h3 class="raca">
+      Nível 8 - 
+    </h3>
+  </div>
+
+  <div class="raca" id="patrulheiro">
+    <h2>Patrulheiro</h2>
+    Descrição da raça
+  </div>
+  <div>
+    <h3 class="raca">
+      Nível 0 - 
+    </h3>
+    <h3 class="raca">
+      Nível 2 -  
+    </h3>
+    <h3 class="raca">
+      Nível 4 - 
+    </h3>
+    <h3 class="raca">
+      Nível 6 - 
+    </h3>
+    <h3 class="raca">
+      Nível 8 - 
+    </h3>
+  </div>
+
+  <div class="raca" id="pirata">
+    <h2>Pirata</h2>
+    Descrição da raça
+  </div>
+  <div>
+    <h3 class="raca">
+      Nível 0 - 
+    </h3>
+    <h3 class="raca">
+      Nível 2 -  
+    </h3>
+    <h3 class="raca">
+      Nível 4 - 
+    </h3>
+    <h3 class="raca">
+      Nível 6 - 
+    </h3>
+    <h3 class="raca">
+      Nível 8 - 
+    </h3>
+  </div>
+
+  <div class="raca" id="samurai">
+    <h2>Samurai</h2>
+    Descrição da raça
+  </div>
+  <div>
+    <h3 class="raca">
+      Nível 0 - 
+    </h3>
+    <h3 class="raca">
+      Nível 2 -  
+    </h3>
+    <h3 class="raca">
+      Nível 4 - 
+    </h3>
+    <h3 class="raca">
+      Nível 6 - 
+    </h3>
+    <h3 class="raca">
+      Nível 8 - 
+    </h3>
+  </div>
+
+  <div class="raca" id="shinobi">
+    <h2>Shinobi</h2>
+    Descrição da raça
+  </div>
+  <div>
+    <h3 class="raca">
+      Nível 0 - 
+    </h3>
+    <h3 class="raca">
+      Nível 2 -  
+    </h3>
+    <h3 class="raca">
+      Nível 4 - 
+    </h3>
+    <h3 class="raca">
+      Nível 6 - 
+    </h3>
+    <h3 class="raca">
+      Nível 8 - 
+    </h3>
+  </div>
+
+  <script>
+  // --- MENU LATERAL (abre/fecha no clique) ---
+  const menuToggle = document.querySelector('.menu-icon');
+  const menu = document.getElementById('sidebar');
+
+  menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation(); // impede que o clique no botão feche o menu imediatamente
+    menu.classList.toggle('open');
+  });
+
+  // Fecha o menu ao clicar fora (apenas se estiver aberto)
+  document.addEventListener('click', (e) => {
+    const target = e.target;
+
+    // se clicou no botão menu, ignora
+    if (menuToggle.contains(target)) return;
+
+    // se clicou dentro do menu e for link, fecha o menu após um pequeno delay
+    if (menu.contains(target)) {
+      if (target.closest('a')) {
+        setTimeout(() => menu.classList.remove('open'), 100);
+      }
+      return;
+    }
+
+    // se clicou em qualquer outro lugar e o menu estiver aberto, fecha
+    if (menu.classList.contains('open')) {
+      menu.classList.remove('open');
+    }
+  });
+
+  // Fecha o menu com tecla ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('open')) {
+      menu.classList.remove('open');
+    }
+  });
+
+  // --- CARROSSEL DE RAÇAS ---
+  let currentSlide = 0;
+  const carousel = document.getElementById('carousel');
+  const slides = document.querySelectorAll('.race-card');
+
+  function moveSlide(direction) {
+    currentSlide = (currentSlide + direction + slides.length) % slides.length;
+    carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+  }
+
+  // --- SCROLL ATÉ RAÇA ---
+  function scrollToRace(raceId) {
+    const raceElement = document.getElementById(raceId);
+    if (raceElement) {
+      raceElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+</script>
+
+
+<footer class="footer">
+      <p>© 2025 Penumbra RPG | por Mia Fritz</p>
+    </footer>
+  </body>
+</html>
+</body>
+</html>
