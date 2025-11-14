@@ -212,6 +212,18 @@
       to {opacity: 1; transform: translateY(0);}
     }
 
+    .section-img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 15px #b56ddf55;
+  object-fit: cover;
+}
+
+.reino-texto {
+  white-space: pre-line;
+}
+
   </style>
 </head>
 
@@ -314,103 +326,283 @@
 
   // --- CARROSSEL E CONTEÚDO ---
   const reinos = {
-    "egito": [
-      { titulo: "Visão Geral", texto: "descrição" },
-      { titulo: "Governo", texto: "descrição" },
-      { titulo: "Decreto de cidadania", texto: "descrição" },
-      { titulo: "Relações externas", texto: "descrição" },
-      { titulo: "Stands", texto: "descrição" },
-      { titulo: "Defesa do reino", texto: "descrição" }
-    ],
-    "joseon": [
-      { titulo: "Visão Geral", texto: "descrição" },
-      { titulo: "Governo", texto: "descrição" },
-      { titulo: "Decreto de cidadania", texto: "descrição" },
-      { titulo: "Relações externas", texto: "descrição" },
-      { titulo: "Nen", texto: "descrição" },
-      { titulo: "Defesa do reino", texto: "descrição" }
-    ],
-    "mortalia": [
-      { titulo: "Visão Geral", texto: "descrição" },
-      { titulo: "Governo", texto: "descrição" },
-      { titulo: "Decreto de cidadania", texto: "descrição" },
-      { titulo: "Relações externas", texto: "descrição" },
-      { titulo: "Dons de xamã", texto: "descrição" },
-      { titulo: "Defesa do reino", texto: "descrição" }
-    ],
-    "hinokumi": [
-      { titulo: "Visão Geral", texto: "descrição" },
-      { titulo: "Governo", texto: "descrição" },
-      { titulo: "Decreto de cidadania", texto: "descrição" },
-      { titulo: "Relações externas", texto: "descrição" },
-      { titulo: "Zanpakuto", texto: "descrição" },
-      { titulo: "Defesa do reino", texto: "descrição" }
-    ],
-    "temíscera": [
-      { titulo: "Visão Geral", texto: "descrição" },
-      { titulo: "Governo", texto: "descrição" },
-      { titulo: "Decreto de cidadania", texto: "descrição" },
-      { titulo: "Relações externas", texto: "descrição" },
-      { titulo: "Toque divino", texto: "descrição" },
-      { titulo: "Defesa do reino", texto: "descrição" }
-    ],
-    "roma": [
-      { titulo: "Visão Geral", texto: "descrição" },
-      { titulo: "Governo", texto: "descrição" },
-      { titulo: "Decreto de cidadania", texto: "descrição" },
-      { titulo: "Relações externas", texto: "descrição" },
-      { titulo: "Armas divinas", texto: "descrição" },
-      { titulo: "Defesa do reino", texto: "descrição" }
-    ],
-    "fjördheim": [
-      { titulo: "Visão Geral", texto: "descrição" },
-      { titulo: "Governo", texto: "descrição" },
-      { titulo: "Decreto de cidadania", texto: "descrição" },
-      { titulo: "Relações externas", texto: "descrição" },
-      { titulo: "Bençãos", texto: "descrição" },
-      { titulo: "Defesa do reino", texto: "descrição" }
-    ],
-    "clover": [
-      { titulo: "Visão Geral", texto: "descrição" },
-      { titulo: "Governo", texto: "descrição" },
-      { titulo: "Decreto de cidadania", texto: "descrição" },
-      { titulo: "Relações externas", texto: "descrição" },
-      { titulo: "Grimórios", texto: "descrição" },
-      { titulo: "Defesa do reino", texto: "descrição" }
-    ],
-    "grécia": [
-      { titulo: "Visão Geral", texto: "descrição" },
-      { titulo: "Governo", texto: "descrição" },
-      { titulo: "Decreto de cidadania", texto: "descrição" },
-      { titulo: "Relações externas", texto: "descrição" },
-      { titulo: "Armaduras de ouro", texto: "descrição" },
-      { titulo: "Defesa do reino", texto: "descrição" }
-    ],
-    "zhong Ya": [
-      { titulo: "Visão Geral", texto: "descrição" },
-      { titulo: "Governo", texto: "descrição" },
-      { titulo: "Decreto de cidadania", texto: "descrição" },
-      { titulo: "Relações externas", texto: "descrição" },
-      { titulo: "Hextex/Quimtech", texto: "descrição" },
-      { titulo: "Defesa do reino", texto: "descrição" }
-    ],
-    "tapejara": [
-      { titulo: "Visão Geral", texto: "descrição" },
-      { titulo: "Governo", texto: "descrição" },
-      { titulo: "Decreto de cidadania", texto: "descrição" },
-      { titulo: "Relações externas", texto: "descrição" },
-      { titulo: "Akuma no mi", texto: "descrição" },
-      { titulo: "Defesa do reino", texto: "descrição" }
-    ],
-    "rodinamat": [
-      { titulo: "Visão Geral", texto: "descrição" },
-      { titulo: "Governo", texto: "descrição" },
-      { titulo: "Decreto de cidadania", texto: "descrição" },
-      { titulo: "Relações externas", texto: "descrição" },
-      { titulo: "trajes kaiju", texto: "descrição" },
-      { titulo: "Defesa do reino", texto: "descrição" }
-    ],
-  };
+  "egito": [
+    { titulo: "Visão Geral", img: "assets/egito.png", texto: `O Egito não é chamado de berço da humanidade por acaso. No cenário atual, é a nação mais próspera do mundo, com uma qualidade de vida que supera qualquer outro país. Seu território é seguro, vibrante, e governado por uma liderança acolhedora para todos que desejam fazer parte dessa terra de ouro.
+
+Desde que Seth assumiu o título de faraó, o império vive um período de expansão sem precedentes. Não houve perdas, apenas conquistas e integrações. Cada nação que se uniu ao Egito trouxe consigo sua cultura, seus ideais, seus recursos e seu conhecimento — todos absorvidos para fortalecer ainda mais o império, tanto em poder bélico quanto em desenvolvimento intelectual.
+
+Matemáticos, químicos, engenheiros, magos e estudiosos de todas as áreas encontraram ali um novo lar. Aos poucos, ciência, tecnologia e magia deixaram de ser campos separados, fundindo-se em um único pilar de progresso. Assim renasceu um império que o mundo havia esquecido — mas, como dizem os antigos, “de onde vieram, para lá retornarão.”` },
+    { titulo: "Governo", img: "assets/reiegito.png", texto: `Como mensageiro divino, Seth D. Nefertiti assumiu seu posto relativamente jovem — ao menos para alguém de sua linhagem. Essa juventude lhe concedeu uma visão mais objetiva e menos presa aos antigos costumes. Para ele, evolução exige inovação, e Seth a traz com um sorriso confiante nos lábios, sempre guiado por ousadia e entusiasmo.
+
+Sob seu comando, o Egito prosperou em uma velocidade que espantou todas as nações vizinhas. Como uma tempestade de areia que avança e tudo envolve, o império se expandiu, transformando-se em um reino de ouro, magia e abundância. Sua postura diante dos povos incorporados ao império é simples e direta: nenhuma baixa. Cada território é integrado, não destruído — acolhido, não apagado.` },
+    { titulo: "Decreto de cidadania", texto: `` },
+    { titulo: "Relações externas", texto: `O Egito mantém uma postura de neutralidade estratégica. O império evita envolvimentos profundos com outras nações, não por medo, mas por sabedoria: alianças políticas complexas costumam trazer conflitos desnecessários. Assim, suas relações exteriores se limitam a comércio, acordos pacíficos e cooperação mútua, sempre mantendo uma distância segura dos jogos de poder internacionais.
+
+Apesar de possuir um poder militar e mágico capaz de rivalizar qualquer grande potência, Seth acredita que não vale a pena arriscar a estabilidade e a prosperidade do império com disputas externas. Para ele, o Egito só deve mover-se quando a ação for inevitável — e, até lá, permanece como um colosso dourado observando o mundo com calma e cautela.` },
+    { titulo: "Stands", img: "assets/stand.png", texto: `No Egito, aqueles que desejam manifestar sua alma em forma de um espírito de combate — os lendários avatares espirituais do império — precisam primeiro provar a força e a pureza de seu espírito diante dos deuses e dos antigos guardiões.
+
+O caminho até esse poder começa na Pirâmide Central, onde o faraó conduz o ritual mais sagrado do império. Ali, ele perfora o coração do aspirante com uma flecha dourada, um artefato divino que revela o verdadeiro destino daquele que busca o poder.
+
+Ter uma alma virtuosa pode ajudar, mas jamais garante o resultado: a flecha decide sozinha. Alguns despertam espíritos grandiosos; outros, nada. E há ainda aqueles cujo espírito não suporta o julgamento — e simplesmente perece.` },
+    { titulo: "Defesa do reino", texto: `Os Escaravelhos Dourados são a linha de defesa mais venerada do Egito. Eles oferecem seus corpos e almas à proteção do império, canalizando a manifestação divina e projetando seus espíritos em combate. Especialistas em luta corpo a corpo e profundamente versados no poder sagrado, enfrentar um de seus generais é um desafio que poucos no mundo ousariam aceitar.
+
+A Legião do Deserto é formada apenas pelos soldados de maior excelência — em força, técnica e magia. Para ingressar nesse batalhão, o candidato precisa possuir o mais alto nível de educação disponível no império, além de passar por uma série de treinamentos rigorosos e seleções implacáveis. É uma peneira finíssima, que retém apenas os melhores entre os melhores.
+
+Por isso, quando um Escaravelho Dourado aparece como representante de Seth em reuniões ou negociações internacionais, o gesto é visto como um profundo sinal de respeito. Reconhecidos por sua disciplina, erudição e habilidade em batalha, esses guerreiros simbolizam a força absoluta e o orgulho do Egito.` }
+  ],
+
+  "joseon": [
+    { titulo: "Visão Geral", texto: `` },
+    { titulo: "Governo", texto: `` },
+    { titulo: "Decreto de cidadania", texto: `` },
+    { titulo: "Relações externas", texto: `` },
+    { titulo: "Nen", texto: `` },
+    { titulo: "Defesa do reino", texto: `` },
+    { titulo: "Caçadores imperiais", texto: `🪷𝐂𝐚𝐜̧𝐚𝐝𝐨𝐫𝐞𝐬 𝐈𝐦𝐩𝐞𝐫𝐢𝐚𝐢𝐬🌀
+
+Munyeo
+
+- Um recruta e aínda aprendiz na arte da caça, seja de animais, coisas ou mesmo pessoas. Não demonstra grandes benefícios por sua baixa classificação, mas já podendo dar seus primeiros passos dentro da organização. Para chegar a esta classificação, basta saber o uso básico do Nen, e realizar o teste da água para confirmar sua categoria primária. Salário de 750 dracmas.
+-Para iniciar suas atividades, recebe o chamado Beatle-07, uma espécie de smartphone, pesado e super resistente, pelo qual o caçador pode se comunicar com outros membros, marcar locais e se guiar através de mapas, e etc.
+
+Chagwi
+
+- Um patrulheiro que começa a criar costume com os ambientes e táticas de caça. Sua licença como caçador o torna respeitado, e matar na maioria das vezes não é mais um crime. Para chegar a este cargo, basta uma cena de 1.5k. salário de de 1.5k de dracmas.
+-Recebe um equipamento de rank lll para auxiliá-lo, seja em caça ou sobrevivência. As capacidades aprendidas e desenvolvidas permitem a redução em 15% em missões de caça.
+
+Hwarang
+
+- Já se torna um veterano de certo reconhecimento, com poder e talento que é ou reconhecido ou temido pelo povo, com sua devida relevância. Cena de 3k de caracteres. Salário de 2.5k
+-Sua licença garante um desconto de 15% nos produtos do mercado negro. Ganha um equipamento de rank ll.
+
+Guksa
+
+- Um caçador de elite, reconhecido pelo seu exímio controle do Nen, já sendo confiado missões para eliminar ou proteger grandes nomes que confiam em sua patente. 5k de carácteres, salários de  3.5k
+-Novos recursos chegam a seu escopo, podendo receber uma arma ou criatura de rank l para auxiliá-lo, além de um novo smartphone, um novo smartphone de rank l, com atualizações e capacidades novas.
+
+Cheonghon
+
+- Um caçador completo, na segunda mais alta classificação dos Caçadores Imperiais, aqueles que não ostentam a grande fama, são assassinos e espiões de elite dos quais o sucesso é o mínimo esperado. Mas, ao mesmo tempo que mais qualificado e respeitado se torna, mais difíceis são suas tarefas. Deve realizar uma série de 3 missões de 5k de caracteres.
+-Adquire um novo equipamento de rank 0, uma arma de mais alto nível, e além disso, ao respingar seu sangue na Urna Semente, adquire acesso a uma Besta de Nen, uma criatura nascida do Nen também do rank 0.
+
+Os Zodíacos
+- O mais alto posto dos Caçadores, escolhidos diretamente por Isaac Netero a ocupar este posto, sendo os representantes do imperador que comandam seus próprios grupos de caçadores, realizando missões a mando direto da casa imperial. Para chegar a este posto, deve mostrar seu valor, enfrentando um inimigo capaz de trazer uma grande calamidade ao continente e o mundo em uma missão narrada.
+-Podem montar seu próprio grupo de caçadores, mas seu maior destaque, é seu controle de nen que se sobressai aos demais, podendo ter acesso a duas novas categorias de Nen.` }
+  ],
+
+  "mortalia": [
+    { titulo: "Visão Geral", texto: `` },
+    { titulo: "Governo", texto: `` },
+    { titulo: "Decreto de cidadania", texto: `` },
+    { titulo: "Relações externas", texto: `` },
+    { titulo: "Dons de xamã", texto: `` },
+    { titulo: "Defesa do reino", texto: `` }
+  ],
+
+  "hinokumi": [
+    { titulo: "Visão Geral", texto: `` },
+    { titulo: "Governo", texto: `` },
+    { titulo: "Decreto de cidadania", texto: `` },
+    { titulo: "Relações externas", texto: `` },
+    { titulo: "Zanpakuto", texto: `` },
+    { titulo: "Defesa do reino", texto: `` },
+    { titulo: "Gotei 13", texto: `🐉 Gotei 13 – A Guarda de Hinokuni 🗡
+
+Em Hinokuni, todo guerreiro do Exército do Dragão Imperial é, antes de tudo, portador de uma Zanpakutō. Não importa sua posição ou função: a lâmina espiritual é o vínculo entre o indivíduo e a nação, a prova de sua lealdade ao Dragão Carmesim e o fardo de sua própria alma. Sem uma Zanpakutō, não há lugar na Guarda.
+
+
+Soldado Espiritual
+
+O primeiro degrau dentro do exército. Guerreiros que receberam sua Zanpakutō e juraram lealdade a Hinokuni. Ainda em treinamento, aprendem a entender sua lâmina e a viver como parte do coletivo. Salário de 750 ryō.
+
+- Recebem uniforme padrão da guarda e uma Zanpakutō selada, que será forjada junto de sua jornada.
+
+
+Oficial de 6ª Classe
+
+Já não é mais um recruta. Um oficial de patrulha que realiza missões de defesa, escolta e caçada a espíritos hostis. É o primeiro nível onde se espera disciplina e resultados. Cena de 1.5k de caracteres +Aprovação. Salário de 1.5k ryō.
+
+- Recebe um talismã espiritual de comunicação e acesso às missões externas de Hinokuni.
+
+
+Oficial de 3ª Classe
+
+Guerreiros respeitados, que se tornaram nomes de confiança dentro dos esquadrões. Sua Zanpakutō já é tratada como parte de si mesmos. Cena de 3k de caracteres. Salário de 2.5k ryō.
+
+- Ganha direito de portar um artefato espiritual de rank II e desconto de 15% em equipamentos espirituais.
+
+
+Oficial de 1ª Classe
+
+Os pilares da base militar. Oficiais de 1ª Classe são veteranos que carregam peso de batalhas, lideram pequenos destacamentos e são reconhecidos como exemplos de disciplina e honra. Requer 3 missões de 5k caracteres. Salário de 3.5k ryō.
+
+- Recebem um uniforme espiritual reforçado (rank I) e a permissão de forjar uma arma ou armadura espiritual exclusiva.
+
+
+⚜ Vice-Capitão ⚔
+
+O braço direito de cada Capitão. Carrega a confiança direta do comandante de sua divisão e representa o futuro da liderança. Para ascender a esse posto, deve realizar uma missão narrada enfrentando uma ameaça mortal a Hinokuni, ou provar sua força contra o Vice-Capitão atual. Salário de 4k ryō.
+
+- Recebe um uniforme cerimonial que funciona como armadura espiritual de rank 0 e acesso a um artefato espiritual exclusivo.
+
+
+♣ Capitão de Divisão 🐉
+
+Líder absoluto de um dos 13 esquadrões do Exército do Dragão Imperial. Cada Capitão é um bastião de força, honra e disciplina, reconhecido como um dos guerreiros mais poderosos de Hinokuni. Para chegar a esse posto, é necessário realizar uma missão narrada em que prove seu valor diante do próprio Sekar ou salve a nação de uma ameaça. Salário de 5.5k ryō, alem da possibilidade de se tornar um Vizard.
+
+- Comanda sua divisão com autonomia, podendo recrutar soldados, acumular seguidores e criar técnicas exclusivas ligadas à sua Zanpakutō.
+
+
+👑 General-Dragão 🐲
+
+O ápice da hierarquia militar. O General-Dragão é a lâmina que reflete a vontade de Sekar Najik. É ele quem comanda os 13 esquadrões, guia a defesa de Hinokuni e carrega em si a responsabilidade de manter a ordem do reino. Salário de 7.5k ryō semanais.
+
+Possui autoridade absoluta sobre os Capitães, acesso a técnicas proibidas e o título de “Espada do Dragão Carmesim”.` }
+  ],
+
+  "temiscera": [
+    { titulo: "Visão Geral", texto: `` },
+    { titulo: "Governo", texto: `` },
+    { titulo: "Decreto de cidadania", texto: `` },
+    { titulo: "Relações externas", texto: `` },
+    { titulo: "Toque divino", texto: `` },
+    { titulo: "Defesa do reino", texto: `` }
+  ],
+
+  "roma": [
+    { titulo: "Visão Geral", texto: `` },
+    { titulo: "Governo", texto: `` },
+    { titulo: "Decreto de cidadania", texto: `` },
+    { titulo: "Relações externas", texto: `` },
+    { titulo: "Armas divinas", texto: `` },
+    { titulo: "Defesa do reino", texto: `` }
+  ],
+
+  "fjordheim": [
+    { titulo: "Visão Geral", texto: `` },
+    { titulo: "Governo", texto: `` },
+    { titulo: "Decreto de cidadania", texto: `` },
+    { titulo: "Relações externas", texto: `` },
+    { titulo: "Bençãos", texto: `` },
+    { titulo: "Defesa do reino", texto: `` }
+  ],
+
+  "clover": [
+    { titulo: "Visão Geral", texto: `` },
+    { titulo: "Governo", texto: `` },
+    { titulo: "Decreto de cidadania", texto: `` },
+    { titulo: "Relações externas", texto: `` },
+    { titulo: "Grimórios", texto: `` },
+    { titulo: "Defesa do reino", texto: `` },
+    { titulo: "Ordem dos cavaleiros mágicos", texto: `☘𝐎𝐫𝐝𝐞𝐦 𝐝𝐨𝐬 𝐂𝐚𝐯𝐚𝐥𝐞𝐢𝐫𝐨𝐬 𝐌𝐚́𝐠𝐢𝐜𝐨𝐬🌀
+
+Cavaleiro Mágico Junior
+
+- Um novato aínda em treinamento em seu esquadrão, seus benefícios aínda são vagos enquanto não apresenta seus devidos méritos, mas já pode iniciar seus primeiros passos. Para chegar a esta classificação, basta entrar nos cavaleiros mágicos através do exame de admissão. Salário de 750 dracmas.
+-Recebe o valoroso manto de seu esquadrão,. Junto de um ítem mágico indestrutível de comunicação, permitindo se comunicar a distância com qualquer membro de seu esquadrão, além uma vassoura para movimentação.
+
+Cavaleiro Mágico Intermediário.
+
+- Aínda um novato, mas começando a se destacar, a realização de seus feitos deixam aqueles que testemunham seu potencial de olhos abertos. Para chegar a esse posto, basta uma cena de 1.5k de caracteres. Salário de 1.5 dracmas.
+-Recebe desconto de 15% nas missões de evolução de Grimorio, recebe um ítem mágico de rank lll para auxilia-lo em seu crescimento.
+
+Cavaleiro Mágico Sênior
+
+- Já começa a acumular experiência, e se tornar um veterano dentre os cavaleiros mágicos. Seus feitos passam a ser reconhecidos pelo povo, e se torna um nome de relevância. Cena de 3k de caracteres. Salário de 2.5k
+-Um veterano, seu cargo permite a compra de qualquer equipamento mágico com 15% de desconto, além de um equipamento mágico de rank ll.
+
+
+Grão Cavaleiro Mágico
+
+- Não apenas ancorado no controle exímio de sua mana e magia, mas um guerreiro completo, estando na mais alta classificação dos cavaleiros mágicos além dos principais líderes militares. Para chegar a este rank, deve realizar uma série de 3 missões de 5k caracteres. Salário de 3.5k
+-Com suas diversas especializações, recebe uma nova arma como ferramenta mágica ou uma criatura magica como parceira, sendo ela de rank l, para o tornar um guerreiro aínda mais diversificado. Como parabenização, recebe um novo manto, que por si só é um ítem de rank l, feito com linhas mágicas que reforçam a resistência do mago contra ataques energéticos como outros feitiços.
+
+⚜ Vice Capitão ⚔
+
+- O braço direito de seu capitão, e aquele que deve herdar seu posto futuramente, sendo o segundo mais poderoso de seu esquadrão. Para chegar a este posto, deve realizar uma missão narrada em que enfrenta uma grande ameaça a Clover, ou, enfrentando seu vice capitão, e demonstrando seu valor ao capitão. Salário de 4k.
+-Recebe acesso a uma ferramenta mágica e um novo manto que serve como uma armadura de rank 0, ostentando com nobreza sua classificação.
+
+♣ Capitão de Esquadrão ⚜
+
+- Os capitães de diferentes esquadrões que dividem o poder militar de Clover entre si. São reconhecidos como os mais poderosos soldados de Clover, e comandam grandes exércitos e grupos de magos poderosos. Para se tornar um capitão, deve realizar uma missão narrada, em que enfrenta um grande ameaça ao reino, ou, enfrentando seu capitão e se provando mais forte. Seu salário é de 5.5k.
+-Comandando o esquadrão, recebe acesso ao sistema de criação de exércitos apra acumular membros ao esquadrão. Também, recebe 5 feitiços a mais para seu grimorio.
+
+♣ Rei Mago 👑
+
+- O topo da hierarquia dos cavaleiros mágicos, e a maior autoridade militar do reino da magia, sendo o general definitivo e aquele que coordena os cavaleiros mágicos e os capitães do topo, não apenas comandando todas as classificações abaixo, como influenciando diretamente nas decisões da nação. Seu salário é de 7.5k de dracmas semanais.` }
+  ],
+
+  "grecia": [
+    { titulo: "Visão Geral", texto: `` },
+    { titulo: "Governo", texto: `` },
+    { titulo: "Decreto de cidadania", texto: `` },
+    { titulo: "Relações externas", texto: `` },
+    { titulo: "Armaduras de ouro", texto: `` },
+    { titulo: "Defesa do reino", texto: `` }
+  ],
+
+  "zhongya": [
+    { titulo: "Visão Geral", texto: `` },
+    { titulo: "Governo", texto: `` },
+    { titulo: "Decreto de cidadania", texto: `` },
+    { titulo: "Relações externas", texto: `` },
+    { titulo: "Hextex/Quimtech", texto: `` },
+    { titulo: "Defesa do reino", texto: `` }
+  ],
+
+  "tapejara": [
+    { titulo: "Visão Geral", texto: `` },
+    { titulo: "Governo", texto: `` },
+    { titulo: "Decreto de cidadania", texto: `` },
+    { titulo: "Relações externas", texto: `` },
+    { titulo: "Akuma no mi", texto: `` },
+    { titulo: "Defesa do reino", texto: `` },
+    { titulo: "Guardiões custódios", texto: `🌳𝐆𝐮𝐚𝐫𝐝𝐢𝐨̃𝐞𝐬 𝐂𝐮𝐬𝐭𝐨́𝐝𝐢𝐨𝐬🌀
+
+Iandé
+
+- Os jovens e iniciantes filhos da terra, em que apesar de realizarem suas funções militares pela nação, ainda estão no processo de aprendizagem dos costumes e a disciplina da organização e da tribo a qual serve. Salário de 750 dracmas
+-Junto de seu título, recebe um colar, semelhante a um rosário, composto inteiramente de 12 sementes mágicas, que quando consumidas, cancelam os efeitos, maldições e condições impostas sobre ela.
+
+Tembiara
+
+- Um novato de destaque, recebe missões importantes que provém sustento a sua organização e ao povo, começando a ganhar devido respeito. Necessário uma crna de 1.5k de caracteres, salário de 1.5k.
+-Recebe uma arma ou veste de rank III a sua escolha, além de uma arco, também de rank III.
+
+Karúya
+
+- Começa a ganhar respeito militar dentro e fora da organização, não apenas responsável pelo sustento, mas os cidadãos passam a confiar a sua segurança e a ordem a você. Cena de 3k de Caracteres, Salário de 2.5K
+-A conexão dos exércitos com a mana natural e com seus companheiros no reino Clover permite o desconto de 15% em equipamentos mágicos, bem como um equipamento mágico de rank ll.
+
+Aramã
+
+- Um nome de alto valor dentro da nação, sua patente o confere grande relevância dentro da província em que opera, estando na classificação mais alta de sua tribo, abaixo apenas de seus comandantes. 3 missões de 5K, salário de 3.5
+-A árvore o abençoa com um companheiro e guia, recebendo uma criatura aliada de rank I para acompanha-lo, bem como um equipamento de mesmo rank.
+
+🍃 Aimoré 🔰
+
+- O segundo em comando da tribo em que atua, sendo de grande relevância e um comandante das tropas na ausência do seu líder. Para alçar esse posto, deve provar seu valor a Adão, passando por uma provação, a protegendo, ou derrotando o Aimoré atual. Salário de 4K
+-A grandeza de seu cargo é evidenciada pela benção da própria árvore. Que oferece a seus guardiões uma veste de rank 0, composta de sua matéria prima.
+
+🌾 Morubixaba 🔰
+
+- O líder de uma das diferentes tribos espalhadas pelas terras longínquas de Tapejara regida pela árvore de Adão. É escolhido pela própria árvore como parte de sua guarda, e lidera os demais guardiões em nome de sua nação. Deve enfrentar uma nova provação da árvore, enfrentando um grande ininigo ou até mesmo o líder atual de sua tribo para se provar merecedor.
+-Mesmo se não fizer parte da nobreza, têm acesso a criação de exércitos para adquirir mais força militar a sua tribo. Sua conexão profunda com Adão, e as bençãos ao escolhe-lo como guardião, o permite criar novas habilidades para seus poderes do fruto do diabo, podendo ir até mesmo além de seu despertar.
+
+🌳 Tupinambá 👑
+
+- O guardião supremo e topo da hierarquia dos guardiões. Escolhido como um representante de Adão e servindo como o braço direito do governante da nação e o principal comandante de seu poder militar, comandando todas as classificações abaixo, inclusive os líderes das tribos, e também, em Tapejara como um todo. Salário de 7.5K` }
+  ],
+
+  "rodinamat": [
+    { titulo: "Visão Geral", texto: `` },
+    { titulo: "Governo", texto: `` },
+    { titulo: "Decreto de cidadania", texto: `` },
+    { titulo: "Relações externas", texto: `` },
+    { titulo: "Trajes kaiju", texto: `` },
+    { titulo: "Defesa do reino", texto: `` }
+  ],
+};
 
   let currentIndex = 0;
   const carousel = document.getElementById("carousel");
@@ -422,7 +614,11 @@
     reinoContent.innerHTML = data.map(section => `
       <div class="reino-section">
         <div class="section-title">${section.titulo}</div>
-        <div class="section-content">${section.texto}</div>
+        <div class="section-content">
+  ${section.img ? `<img src="${section.img}" class="section-img">` : ""}
+  <p class="reino-texto">${section.texto}</p>
+</div>
+
       </div>
     `).join("");
     document.querySelectorAll(".reino-section").forEach(sec => {
