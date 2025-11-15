@@ -13,11 +13,13 @@
     /* base */
     html,body { height: 100%; }
     body {
-      font-family: 'Merriweather', serif;
-      background: radial-gradient(circle at top, #2d1740, #1b0e24);
-      color: #f3e9d2;
-      overflow-x: hidden;
-    }
+    background-image: url("assets/background.png"); /* caminho da imagem */
+    background-size: cover;       /* cobre a tela inteira */
+    background-repeat: no-repeat; /* não repete */
+    background-attachment: fixed; /* fica fixa ao rolar */
+    background-position: center;  /* centraliza */
+}
+
 
     /* textura suave */
     body::before {
@@ -30,30 +32,26 @@
     }
 
     /* header central */
-    .site-header {
-      text-align: center;
-      padding: 1rem 1.5rem;
-      font-family: 'Cinzel Decorative', serif;
-      font-size: 1.9rem;
-      color: #d4b36e;
-      text-shadow: 0 0 8px #b56ddf;
-      position: relative;
-    }
+.site-header {
+  text-align: center;
+  padding: 1.3rem 1.5rem;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 2rem;
+  color: #d4b36e;
+  text-shadow: 0 0 8px #b56ddf;
 
-    /* Ícone do menu (visível no topo - clicável) */
-    .menu-toggle {
-      position: absolute;
-      left: 1rem;
-      top: 1rem;
-      font-size: 1.6rem;
-      color: #f3e9d2;
-      text-shadow: 0 0 8px #b56ddf;
-      cursor: pointer;
-      background: rgba(0,0,0,0.15);
-      padding: 6px 10px;
-      border-radius: 8px;
-      user-select: none;
-    }
+  /* 💜 A CAIXA ATRÁS DO TÍTULO — AQUI Ó */
+  background: linear-gradient(
+    180deg,
+    rgba(120, 60, 160, 0.25),
+    rgba(40, 20, 60, 0.4)
+  );
+  border-bottom: 1px solid rgba(212,179,110,0.2);
+  backdrop-filter: blur(4px);
+
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  position: relative;
+}
 
     /* menu lateral - padrão fechado (70px) */
     .menu {
@@ -122,14 +120,15 @@
 
     /* cartão de boas-vindas */
     .hero {
-      max-width: 900px;
-      margin: 1rem auto;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
-      padding: 1.6rem;
-      border-radius: 14px;
-      border: 1px solid rgba(212,179,110,0.08);
-      box-shadow: 0 8px 30px rgba(11,6,22,0.6);
-    }
+  background: rgba(20, 10, 35, 0.85); /* caixa bem visível */
+  padding: 1.6rem;
+  border-radius: 14px;
+  border: 1px solid rgba(212,179,110,0.2);
+  box-shadow: 0 8px 30px rgba(11,6,22,0.6);
+  color: #fff9e6;
+  margin-bottom: 20px;
+}
+
 
     .hero h1 {
       font-family: 'Cinzel Decorative', serif;
@@ -174,24 +173,43 @@
       .menu-toggle { left: 0.8rem; top: 0.9rem; }
     }
 
+    /* botão sempre visível */
+.menu-toggle {
+  position: fixed !important;
+  top: 12px !important;
+  left: 12px !important;
+  z-index: 9999 !important;
+  margin: 0 !important;
+  transform: none !important;
+  -webkit-transform: none !important;
+  /* opcional: toca aqui pra deixar maior no celular */
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.18);
+  color: #f3e9d2;
+  cursor: pointer;
+}
   </style>
 </head>
 <body>
+  <!-- botão do menu colocado direto no BODY (fora do header) -->
+  <div class="menu-toggle" id="menuBtn" aria-label="Abrir menu">☰</div>
+
   <!-- Menu lateral -->
   <nav class="menu" id="sidebar" aria-label="Menu principal">
     <div class="menu-inner">
       <!-- (icone + label) - links para páginas de conteúdo -->
       <a href="raças.html" class="menu-link" data-target="raças.html"><span class="icon">🧬</span><span class="label">Raças</span></a>
       <a href="classes.html" class="menu-link" data-target="classes.html"><span class="icon">⚔️</span><span class="label">Classes</span></a>
-      <a href="reinos.html" class="menu-link" data-target="classes.html"><span class="icon">👑</span><span class="label">reinos</span></a>
+      <a href="reinos.html" class="menu-link" data-target="reinos.html"><span class="icon">👑</span><span class="label">Reinos</span></a>
       <a href="sistemas.html" class="menu-link" data-target="sistemas.html"><span class="icon">📄</span><span class="label">Sistemas</span></a>
     </div>
   </nav>
 
   <!-- Cabeçalho -->
   <header class="site-header">
-    <div class="menu-toggle" id="menuBtn" aria-label="Abrir menu">☰</div>
     Penumbra RPG
+    <h2>O nascer de uma nova era</h2>
   </header>
 
   <!-- Conteúdo principal -->
@@ -201,9 +219,9 @@
       <p>
         Este é o ponto de partida para o mundo de Penumbra RPG — histórias, raças e classes e muito mais.
         Clique no ícone ☰ no canto superior esquerdo para navegar. 
+      </p>
     </div>
 
-    <main class="content" id="mainContent">
     <div class="hero">
       <h1>Sobre o RPG</h1>
       <p>
@@ -211,17 +229,16 @@
 
    ┈ׁ─ֽ─ׁ Contamos com sistemas diversos, e ao mesmo tempo, são simples para que qualquer um possa jogar e se divertir. Aqui é possível ser desde um vendedor até um rei de todo um país. Sinta-se livre para explorar!
      ┈ׁ─ֽ─ׁ Temos também várias raças e classes, podendo gerar combinações para agradar qualquer um. E relaxe se não essas não estão do seu agrado, pois a lista está sempre ganhando mais adições!
-
+      </p>
     </div>
 
-    <div class="raca">
-          — "𝗡𝗮̃𝗼 𝘀𝗲𝗶 𝗰𝗼𝗺𝗼 𝘀𝗲𝗿𝗮́ 𝗮 𝘁𝗲𝗿𝗰𝗲𝗶𝗿𝗮 𝗴𝘂𝗲𝗿𝗿𝗮, 𝗺𝗮𝘀 𝗮 𝗾𝘂𝗮𝗿𝘁𝗮, 𝘀𝗲𝗿𝗮́ 𝗰𝗼𝗺 𝗽𝗮𝘂𝘀 𝗲 𝗽𝗲𝗱𝗿𝗮𝘀."
-
-𝗣𝗼𝗿 𝗺𝗶𝗹𝗵𝗮𝗿𝗲𝘀 𝗱𝗲 𝗮𝗻𝗼𝘀, 𝗮 𝗿𝗮𝗰̧𝗮 𝗵𝘂𝗺𝗮𝗻𝗮 𝗱𝗲𝗺𝗼𝗻𝘀𝘁𝗿𝗼𝘂 𝗻𝗼𝘁𝗮́𝘃𝗲𝗹 𝗿𝗲𝘀𝗶𝗹𝗶𝗲̂𝗻𝗰𝗶𝗮, 𝗰𝗼𝗺 𝘀𝗲𝘂𝘀 𝗺𝗮𝗶𝘀 𝗱𝗶𝘃𝗲𝗿𝘀𝗼𝘀 𝗽𝗼𝘃𝗼𝘀 𝘀𝗲𝗻𝗱𝗼 𝗰𝗮𝗽𝗮𝘇𝗲𝘀 𝗱𝗲 𝘀𝘂𝗽𝗲𝗿𝗮𝗿 𝗰𝗿𝗶𝘀𝗲𝘀 𝘃𝗲𝗿𝗱𝗮𝗱𝗲𝗶𝗿𝗮𝗺𝗲𝗻𝘁𝗲 𝗵𝗶𝘀𝘁𝗼́𝗿𝗶𝗰𝗮𝘀, 𝗲 𝗻𝗮̃𝗼 𝗮𝗽𝗲𝗻𝗮𝘀 𝘀𝗼𝗯𝗿𝗲𝘃𝗶𝘃𝗲𝗿, 𝗰𝗼𝗺𝗼 𝗺𝗮𝗻𝘁𝗲𝗿 𝗮 𝘀𝘂𝗮 𝗰𝗶𝘃𝗶𝗹𝗶𝘇𝗮𝗰̧𝗮̃𝗼 𝘀𝗲𝗺𝗽𝗿𝗲 𝗲𝘃𝗼𝗹𝘂𝗶𝗻𝗱𝗼 𝗰𝗮𝗱𝗮 𝘃𝗲𝘇 𝗺𝗮𝗶𝘀, 𝗻𝗼 𝗲𝗻𝘁𝗮𝗻𝘁𝗼, 𝘀𝗲𝗿𝗶𝗮 𝗮 𝗵𝘂𝗺𝗮𝗻𝗶𝗱𝗮𝗱𝗲 𝗰𝗮𝗽𝗮𝘇 𝗱𝗲 𝗹𝗶𝗱𝗮𝗿 𝗲 𝗺𝗮𝗻𝘁𝗲𝗿 𝗲𝘀𝘀𝗲 𝗱𝗲𝘀𝗲𝗻𝘃𝗼𝗹𝘃𝗶𝗺𝗲𝗻𝘁𝗼 𝗰𝗼𝗻𝘁𝗶𝗻𝘂𝗼 𝗰𝗼𝗺 𝗮 𝗻𝗼𝘁𝗶́𝗰𝗶𝗮 𝗱𝗲 𝗾𝘂𝗲 𝗮 𝗲𝘀𝗽𝗲́𝗰𝗶𝗲 𝗵𝘂𝗺𝗮𝗻𝗮 𝗻𝗮̃𝗼 𝗺𝗮𝗶𝘀 𝘀𝗲𝗿𝗶𝗮 𝘂́𝗻𝗶𝗰𝗮 𝗲 𝘀𝗼𝗯𝗲𝗿𝗮𝗻𝗮 𝘀𝗼𝗯𝗿𝗲 𝗼 𝗽𝗹𝗮𝗻𝗲𝘁𝗮?
-
-𝗤𝘂𝗮𝗻𝗱𝗼 𝗮 𝗵𝘂𝗺𝗮𝗻𝗶𝗱𝗮𝗱𝗲 𝗲𝘀𝘁𝗮𝘃𝗮 𝗲𝗺 𝘀𝗲𝘂 𝗮𝘂𝗴𝗲, 𝗲𝗻𝘁𝗿𝗲 𝗼𝘀 𝗮𝗻𝗼𝘀 𝗱𝗲 𝟮𝟬𝟮𝟬 𝗲 𝟮𝟬𝟯𝟬, 𝘃𝗶𝘂 𝗮 𝘁𝗲𝗿𝗿𝗮 𝘀𝗲𝗿 𝗽𝗮𝗹𝗰𝗼 𝗱𝗲 𝘂𝗺 𝗲𝘃𝗲𝗻𝘁𝗼 𝗿𝗲𝗽𝗲𝗻𝘁𝗶𝗻𝗼, 𝗼 𝗴𝗿𝗮𝗻𝗱𝗲 𝗲𝘃𝗲𝗻𝘁𝗼, 𝗾𝘂𝗲 𝗽𝗮𝘀𝘀𝗮𝗿𝗶𝗮 𝘀𝗲𝗿 𝗰𝗵𝗮𝗺𝗮𝗱𝗼 𝗱𝗲 "𝗖𝗼𝗻𝘃𝗲𝗿𝗴𝗲̂𝗻𝗰𝗶𝗮 𝗖𝗲𝗹𝗲𝘀𝘁𝗶𝗮𝗹", "𝗔𝗹𝗶𝗻𝗵𝗮𝗺𝗲𝗻𝘁𝗼 𝗨𝗻𝗶𝘃𝗲𝗿𝘀𝗮𝗹" 𝗢𝘂, 𝘀𝗶𝗺𝗽𝗹𝗲𝘀𝗺𝗲𝗻𝘁𝗲, "𝗔 𝗙𝘂𝘀𝗮̃𝗼" 𝗡𝗲𝘀𝘁𝗲 𝗲𝘃𝗲𝗻𝘁𝗼, 𝘀𝘂𝗽𝗼𝘀𝘁𝗮𝗺𝗲𝗻𝘁𝗲 𝗵𝗼𝘂𝘃𝗲 𝘂𝗺 𝗮𝗹𝗶𝗻𝗵𝗮𝗺𝗲𝗻𝘁𝗼 𝗲𝗻𝘁𝗿𝗲 𝗱𝗶𝗳𝗲𝗿𝗲𝗻𝘁𝗲𝘀 𝗺𝘂𝗻𝗱𝗼𝘀 𝗲 𝗱𝗶𝗺𝗲𝗻𝘀𝗼̃𝗲𝘀 𝗱𝗲 𝗰𝗮𝘂𝘀𝗮 𝗱𝗲𝘀𝗰𝗼𝗻𝗵𝗲𝗰𝗶𝗱𝗮, 𝗰𝗼𝗺 𝗲𝘀𝘁𝗮 𝘂𝗻𝗶𝗳𝗶𝗰𝗮𝗰̧𝗮̃𝗼, 𝗱𝗶𝗳𝗲𝗿𝗲𝗻𝘁𝗲𝘀 𝗰𝗶𝘃𝗶𝗹𝗶𝘇𝗮𝗰̧𝗼̃𝗲𝘀 𝗱𝗲 𝗻𝗼𝘃𝗮𝘀 𝗲𝘀𝗽𝗲́𝗰𝗶𝗲𝘀, 𝗰𝗼𝗻𝘁𝗮𝗱𝗮𝘀 𝗺𝘂𝗶𝘁𝗮𝘀 𝘃𝗲𝘇𝗲𝘀 𝗲𝗺 𝗹𝗶𝘃𝗿𝗼𝘀 𝗱𝗲 𝗳𝗮𝗻𝘁𝗮𝘀𝗶𝗮 𝗰𝗼𝗺𝗲𝗰̧𝗮𝗿𝗮𝗺 𝗮 𝘀𝘂𝗿𝗴𝗶𝗿 𝗻𝗲𝘀𝘁𝗲 𝗺𝘂𝗻𝗱𝗼, 𝗲 𝗼 𝗽𝗹𝗮𝗻𝗲𝘁𝗮 𝗰𝗼𝗺𝗼 𝘂𝗺 𝘁𝗼𝗱𝗼 𝘀𝗲 𝗿𝗲𝗳𝗼𝗿𝗺𝗼𝘂, 𝗰𝗼𝗺 𝗼 𝘀𝘂𝗿𝗴𝗶𝗺𝗲𝗻𝘁𝗼 𝗱𝗲 𝗻𝗼𝘃𝗮𝘀 𝘁𝗲𝗿𝗿𝗮𝘀. 𝗔𝗻𝗷𝗼𝘀, 𝗱𝗲𝗺𝗼̂𝗻𝗶𝗼𝘀, 𝗲𝗹𝗳𝗼𝘀, 𝗼𝗿𝗰𝘀, 𝗲𝗻𝘁𝗿𝗲 𝗼𝘂𝘁𝗿𝗮𝘀, 𝗮𝗴𝗼𝗿𝗮, 𝘀𝗲 𝗰𝗼𝗻𝗳𝗶𝗿𝗺𝗮𝘃𝗮𝗺 𝗿𝗲𝗮𝗶𝘀 𝗲 𝗰𝗮𝗺𝗶𝗻𝗵𝗮𝘃𝗮𝗺 𝗽𝗼𝗿 𝗲𝘀𝘁𝗮 𝘁𝗲𝗿𝗿𝗮 𝗮𝗼 𝗹𝗮𝗱𝗼 𝗱𝗼𝘀 𝗵𝘂𝗺𝗮𝗻𝗼𝘀, 𝗲 𝘀𝘂𝗮 𝗽𝗿𝗲𝘀𝗲𝗻𝗰̧𝗮, 𝗳𝗼𝗶 𝗮 𝗿𝗮𝘇𝗮̃𝗼 𝗱𝗲 𝗱𝗶𝘃𝗲𝗿𝘀𝗼𝘀 𝗰𝗼𝗻𝗳𝗹𝗶𝘁𝗼𝘀 𝗾𝘂𝗲 𝘀𝗲 𝗶𝗻𝗶𝗰𝗶𝗮𝘃𝗮𝗺. 𝗔𝗾𝘂𝗲𝗹𝗲𝘀 𝗾𝘂𝗲 𝗰𝗵𝗲𝗴𝗮𝘃𝗮𝗺 𝗮 𝘁𝗲𝗿𝗿𝗮 𝗲𝗿𝗮𝗺 𝗽𝗼𝗿 𝘃𝗲𝘇𝗲𝘀 𝗯𝗿𝘂𝘁𝗮𝗹𝗶𝘇𝗮𝗱𝗼𝘀 𝗽𝗼𝗿 𝘀𝘂𝗮 𝗲𝘅𝗶𝘀𝘁𝗲̂𝗻𝗰𝗶𝗮 𝗰𝗼𝗻𝗳𝗹𝗶𝘁𝗮𝗿 𝗰𝗼𝗺 𝗰𝗲𝗿𝘁𝗮𝘀 𝗽𝗲𝗿𝗰𝗲𝗽𝗰̧𝗼̃𝗲𝘀 𝗿𝗲𝗹𝗶𝗴𝗶𝗼𝘀𝗮𝘀, 𝗮𝗹𝘃𝗼𝘀 𝗱𝗲 𝗺𝗲𝗱𝗼 𝗽𝗼𝗿 𝗮𝗾𝘂𝗲𝗹𝗲𝘀 𝗾𝘂𝗲 𝘁𝗲𝗺𝗶𝗮𝗺 𝗼 𝗱𝗲𝘀𝗰𝗼𝗻𝗵𝗲𝗰𝗶𝗱𝗼 𝗲 𝗼 𝗽𝗼𝗱𝗲𝗿 𝗾𝘂𝗲 𝗲𝘀𝘀𝗮𝘀 𝗿𝗮𝗰̧𝗮𝘀 𝗽𝗼𝘀𝘀𝘂𝗶́𝗮𝗺, 𝗲 𝗮 𝗲𝘅𝗶𝘀𝘁𝗲̂𝗻𝗰𝗶𝗮 𝗱𝗲𝘀𝘁𝗲𝘀 𝘀𝗲𝗿𝗲𝘀 𝗳𝗼𝗶 𝗿𝗲𝘀𝗽𝗼𝗻𝗱𝗶𝗱𝗮 𝗰𝗼𝗺 𝘃𝗶𝗼𝗹𝗲̂𝗻𝗰𝗶𝗮. 𝗔 𝗰𝗮𝗰̧𝗮 𝗽𝗼𝗿 𝗲𝘀𝘁𝗲𝘀 𝗽𝗼𝘃𝗼𝘀 𝗾𝘂𝗲 𝗮𝗺𝗲𝗮𝗰̧𝗮𝘃𝗮𝗺 𝗮 𝘀𝗼𝗯𝗲𝗿𝗮𝗻𝗶𝗮 𝗵𝘂𝗺𝗮𝗻𝗮 𝗱𝗼 𝗺𝘂𝗻𝗱𝗼 𝘀𝗲 𝗶𝗻𝗶𝗰𝗶𝗮𝘃𝗮, 𝗻𝗮𝗰̧𝗼̃𝗲𝘀 𝘀𝗲 𝗱𝗶𝘃𝗶𝗱𝗶𝗮𝗺 𝗲𝗻𝘁𝗿𝗲 𝗼𝘀 𝗴𝗿𝘂𝗽𝗼𝘀 𝗾𝘂𝗲, 𝗽𝗼𝗿 𝗺𝗲𝗱𝗼, 𝗰𝗼𝗻𝘁𝗿𝗶𝗯𝘂𝗶́𝗮𝗺 𝗽𝗮𝗿𝗮 𝗼 𝗲𝘅𝘁𝗲𝗿𝗺𝗶́𝗻𝗶𝗼, 𝗲 𝗮𝗾𝘂𝗲𝗹𝗲𝘀, 𝗱𝗲𝘀𝗲𝗷𝗮𝘃𝗮𝗺 𝘀𝗮𝗹𝘃𝗮-𝗹𝗼𝘀, 𝘀𝗲𝗷𝗮 𝗽𝗼𝗿 𝗶𝗻𝘁𝗲𝗿𝗲𝘀𝘀𝗲 𝗼𝘂 𝗽𝗲𝗹𝗼 𝗽𝗼𝘂𝗰𝗼 𝗱𝗲𝘀𝗲𝗷𝗼 𝗱𝗲 𝗰𝗶𝘃𝗶𝗹𝗶𝗱𝗮𝗱𝗲 𝗾𝘂𝗲 𝗮𝗶́𝗻𝗱𝗮 𝗿𝗲𝘀𝘁𝗮𝘃𝗮. 𝗘𝗻𝘁𝗿𝗲 𝗮𝘀 𝗮𝗿𝗺𝗮𝘀 𝗵𝘂𝗺𝗮𝗻𝗮𝘀 𝗲 𝗮 𝗺𝗮𝗴𝗶𝗮 𝗾𝘂𝗲 𝗿𝗲𝗰𝗲́𝗺 𝗽𝗿𝗼𝘃𝗼𝘂-𝘀𝗲 𝗿𝗲𝗮𝗹, 𝗼 𝘂́𝗻𝗶𝗰𝗼 𝗳𝗶𝗺 𝗽𝗼𝘀𝘀𝗶́𝘃𝗲𝗹 𝘀𝗲 𝗽𝗿𝗼𝘃𝗼𝘂 𝗮 𝗴𝘂𝗲𝗿𝗿𝗮, 𝗾𝘂𝗲 𝗻𝗼𝘃𝗮𝗺𝗲𝗻𝘁𝗲, 𝗲𝗻𝗴𝗹𝗼𝗯𝗮𝘃𝗮 𝗼 𝗺𝘂𝗻𝗱𝗼 𝗶𝗻𝘁𝗲𝗶𝗿𝗼 𝗲𝗺 𝘂𝗺 𝗰𝗼𝗻𝗳𝗿𝗼𝗻𝘁𝗼. 𝗔𝗼 𝗽𝗼𝗻𝘁𝗼 𝗱𝗲 𝗾𝘂𝗲 𝗮 𝗵𝘂𝗺𝗮𝗻𝗶𝗱𝗮𝗱𝗲 𝗰𝗼𝗻𝘁𝗿𝗶𝗯𝘂𝗶 𝗽𝗮𝗿𝗮 𝗮 𝗽𝗿𝗼́𝗽𝗿𝗶𝗮 𝗱𝗲𝘀𝘁𝗿𝘂𝗶𝗰̧𝗮̃𝗼, 𝗽𝗲𝗿𝗰𝗲𝗯𝗲𝗻𝗱𝗼 𝗾𝘂𝗲 𝗮𝘀 𝗯𝗼𝗺𝗯𝗮𝘀 𝗾𝘂𝗲 𝗱𝗲𝗶𝘅𝗮𝘃𝗮𝗺 𝘂𝗺 𝗰𝗼𝗴𝘂𝗺𝗲𝗹𝗼 𝗱𝗲 𝗳𝗼𝗴𝗼 𝗽𝗮𝗿𝗮 𝘁𝗿𝗮́𝘀 𝗲𝗺 𝘀𝘂𝗮 𝗲𝘅𝗽𝗹𝗼𝘀𝗮̃𝗼, 𝗲𝗿𝗮 𝗮 𝘂́𝗻𝗶𝗰𝗮 𝗮𝗿𝗺𝗮 𝗳𝘂𝗻𝗰𝗶𝗼𝗻𝗮𝗹 𝗰𝗼𝗻𝘁𝗿𝗮 𝗮 𝗺𝗮𝗴𝗶𝗮, 𝗲 𝗰𝗼𝗺 𝗶𝘀𝘁𝗼 𝗽𝗼𝗽𝘂𝗹𝗮𝗰̧𝗼̃𝗲𝘀 𝗶𝗻𝘁𝗲𝗶𝗿𝗮𝘀 𝗳𝗼𝗿𝗮𝗺 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗮𝗺𝗲𝗻𝘁𝗲 𝗱𝗶𝘇𝗶𝗺𝗮𝗱𝗮𝘀, 𝗾𝘂𝗮𝘀𝗲 𝘁𝗼𝗱𝗼 𝗼 𝗱𝗲𝘀𝗲𝗻𝘃𝗼𝗹𝘃𝗶𝗺𝗲𝗻𝘁𝗼 𝘁𝗲𝗰𝗻𝗼𝗹𝗼́𝗴𝗶𝗰𝗼 𝗱𝗲 𝗺𝗶𝗹𝗲̂𝗻𝗶𝗼𝘀 𝘀𝗲 𝗽𝗲𝗿𝗱𝗲𝘂, 𝗽𝗮𝗶́𝘀𝗲𝘀 𝗶𝗻𝘁𝗲𝗶𝗿𝗼𝘀 𝗰𝗮𝗶́𝗿𝗮𝗺 𝗮 𝗶𝗻𝗲𝘅𝗶𝘀𝘁𝗲̂𝗻𝗰𝗶𝗮, 𝗲 𝗼𝘀 𝗾𝘂𝗲 𝗿𝗲𝘀𝗶𝘀𝘁𝗶𝗿𝗮𝗺, 𝗳𝗼𝗿𝗮𝗺 𝗳𝗼𝗿𝗰̧𝗮𝗱𝗼𝘀 𝗮 𝘀𝗲 𝗿𝗲𝗲𝘀𝘁𝗿𝘂𝘁𝘂𝗿𝗮𝗿 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗮𝗺𝗲𝗻𝘁𝗲, 𝗽𝗮𝗿𝗮 𝗺𝗮𝗻𝘁𝗲𝗿 𝗮 𝘀𝗼𝗰𝗶𝗲𝗱𝗮𝗱𝗲 𝘀𝗼𝗯𝗿𝗲 𝗰𝗼𝗻𝘁𝗿𝗼𝗹𝗲 𝗮𝗴𝗼𝗿𝗮 𝗲𝗺 𝘂𝗺 𝗺𝘂𝗻𝗱𝗼 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗮𝗺𝗲𝗻𝘁𝗲 𝗮𝗿𝗰𝗮𝗶𝗰𝗼. 𝗔𝘁𝘂𝗮𝗹𝗺𝗲𝗻𝘁𝗲, 𝗰𝗲𝗿𝗰𝗮 𝗱𝗲 𝟯.𝟯𝟬𝟬 𝗮𝗻𝗼𝘀 𝗮𝗽𝗼́𝘀 𝗮 𝗖𝗼𝗻𝘃𝗲𝗿𝗴𝗲̂𝗻𝗰𝗶𝗮, 𝗲𝗺 𝘂𝗺 𝗺𝘂𝗻𝗱𝗼 𝗷𝗮́ 𝗿𝗲𝗲𝘀𝘁𝗿𝘂𝘁𝘂𝗿𝗮𝗱𝗼 𝗼𝗻𝗱𝗲 𝗮 𝗲𝘅𝗶𝘀𝘁𝗲̂𝗻𝗰𝗶𝗮 𝗱𝗲 𝗱𝗶𝘃𝗲𝗿𝘀𝗮𝘀 𝗿𝗮𝗰̧𝗮𝘀 𝗲𝘀𝘁𝗮́ 𝗻𝗼 𝘀𝗲𝗻𝘀𝗼 𝗰𝗼𝗺𝘂𝗺, 𝗼 𝗺𝘂𝗻𝗱𝗼 𝗷𝗮́ 𝘃𝗼𝗹𝘁𝗮𝘃𝗮 𝗮 𝘀𝗲 𝗱𝗲𝘀𝗲𝗻𝘃𝗼𝗹𝘃𝗲𝗿, 𝗰𝗼𝗺 𝗽𝗲𝘀𝗾𝘂𝗶𝘀𝗮𝗱𝗼𝗿𝗲𝘀 𝗰𝗼𝗻𝘀𝗲𝗴𝘂𝗶𝗻𝗱𝗼 𝗱𝗲𝘀𝘃𝗲𝗻𝗱𝗮𝗿 𝗽𝗮𝗿𝘁𝗲 𝗱𝗮𝘀 𝗮𝗻𝘁𝗶𝗴𝗮𝘀 𝘁𝗲𝗰𝗻𝗼𝗹𝗼𝗴𝗶𝗮𝘀 𝗵𝘂𝗺𝗮𝗻𝗮𝘀, 𝗲 𝗼 𝗺𝘂𝗻𝗱𝗼 𝘀𝗲 𝗲𝗻𝗰𝗼𝗻𝘁𝗿𝗮𝘃𝗮 𝗲𝗺 𝘂𝗺𝗮 𝗳𝗮𝘀𝗲 𝘀𝗲𝗺𝗲𝗹𝗵𝗮𝗻𝘁𝗲 𝗮𝗼 𝗾𝘂𝗲 𝗼𝘀 𝗵𝗼𝗺𝗲𝗻𝘀 𝗱𝗮 𝗮𝗻𝘁𝗶𝗴𝘂𝗶𝗱𝗮𝗱𝗲 𝗰𝗵𝗮𝗺𝗮𝘃𝗮𝗺 𝗱𝗲 𝗶𝗱𝗮𝗱𝗲 𝗺𝗲́𝗱𝗶𝗮.
-
+    <div class="hero">
+      <p>
+        — "𝗡𝗮̃𝗼 𝘀𝗲𝗶 𝗰𝗼𝗺𝗼 𝘀𝗲𝗿𝗮́ 𝗮 𝘁𝗲𝗿𝗰𝗲𝗶𝗿𝗮 𝗴𝘂𝗲𝗿𝗿𝗮, 𝗺𝗮𝘀 𝗮 𝗾𝘂𝗮𝗿𝘁𝗮, 𝘀𝗲𝗿𝗮́ 𝗰𝗼𝗺 𝗽𝗮𝘂𝘀 𝗲 𝗽𝗲𝗱𝗿𝗮𝘀." 𝗣𝗼𝗿 𝗺𝗶𝗹𝗵𝗮𝗿𝗲𝘀 𝗱𝗲 𝗮𝗻𝗼𝘀, 𝗮 𝗿𝗮𝗰̧𝗮 𝗵𝘂𝗺𝗮𝗻𝗮 𝗱𝗲𝗺𝗼𝗻𝘀𝘁𝗿𝗼𝘂 𝗻𝗼𝘁𝗮́𝘃𝗲𝗹 𝗿𝗲𝘀𝗶𝗹𝗶𝗲̂𝗻𝗰𝗶𝗮, 𝗰𝗼𝗺 𝘀𝗲𝘂𝘀 𝗺𝗮𝗶𝘀 𝗱𝗶𝘃𝗲𝗿𝘀𝗼𝘀 𝗽𝗼𝘃𝗼𝘀 𝘀𝗲𝗻𝗱𝗼 𝗰𝗮𝗽𝗮𝘇𝗲𝘀 𝗱𝗲 𝘀𝘂𝗽𝗲𝗿𝗮𝗿 𝗰𝗿𝗶𝘀𝗲𝘀 𝘃𝗲𝗿𝗱𝗮𝗱𝗲𝗶𝗿𝗮𝗺𝗲𝗻𝘁𝗲 𝗵𝗶𝘀𝘁𝗼́𝗿𝗶𝗰𝗮𝘀, 𝗲 𝗻𝗮̃𝗼 𝗮𝗽𝗲𝗻𝗮𝘀 𝘀𝗼𝗯𝗿𝗲𝘃𝗶𝘃𝗲𝗿, 𝗰𝗼𝗺𝗼 𝗺𝗮𝗻𝘁𝗲𝗿 𝗮 𝘀𝘂𝗮 𝗰𝗶𝘃𝗶𝗹𝗶𝘇𝗮𝗰̧𝗮̃𝗼 𝘀𝗲𝗺𝗽𝗿𝗲 𝗲𝘃𝗼𝗹𝘂𝗶𝗻𝗱𝗼 𝗰𝗮𝗱𝗮 𝘃𝗲𝘇 𝗺𝗮𝗶𝘀, 𝗻𝗼 𝗲𝗻𝘁𝗮𝗻𝘁𝗼, 𝘀𝗲𝗿𝗶𝗮 𝗮 𝗵𝘂𝗺𝗮𝗻𝗶𝗱𝗮𝗱𝗲 𝗰𝗮𝗽𝗮𝘇 𝗱𝗲 𝗹𝗶𝗱𝗮𝗿 𝗲 𝗺𝗮𝗻𝘁𝗲𝗿 𝗲𝘀𝘀𝗲 𝗱𝗲𝘀𝗲𝗻𝘃𝗼𝗹𝘃𝗶𝗺𝗲𝗻𝘁𝗼 𝗰𝗼𝗻𝘁𝗶𝗻𝘂𝗼 𝗰𝗼𝗺 𝗮 𝗻𝗼𝘁𝗶́𝗰𝗶𝗮 𝗱𝗲 𝗾𝘂𝗲 𝗮 𝗲𝘀𝗽𝗲́𝗰𝗶𝗲 𝗵𝘂𝗺𝗮𝗻𝗮 𝗻𝗮̃𝗼 𝗺𝗮𝗶𝘀 𝘀𝗲𝗿𝗶𝗮 𝘂́𝗻𝗶𝗰𝗮 𝗲 𝘀𝗼𝗯𝗲𝗿𝗮𝗻𝗮 𝘀𝗼𝗯𝗿𝗲 𝗼 𝗽𝗹𝗮𝗻𝗲𝘁𝗮? 𝗤𝘂𝗮𝗻𝗱𝗼 𝗮 𝗵𝘂𝗺𝗮𝗻𝗶𝗱𝗮𝗱𝗲 𝗲𝘀𝘁𝗮𝘃𝗮 𝗲𝗺 𝘀𝗲𝘂 𝗮𝘂𝗴𝗲, 𝗲𝗻𝘁𝗿𝗲 𝗼𝘀 𝗮𝗻𝗼𝘀 𝗱𝗲 𝟮𝟬𝟮𝟬 𝗲 𝟮𝟬𝟯𝟬, 𝘃𝗶𝘂 𝗮 𝘁𝗲𝗿𝗿𝗮 𝘀𝗲𝗿 𝗽𝗮𝗹𝗰𝗼 𝗱𝗲 𝘂𝗺 𝗲𝘃𝗲𝗻𝘁𝗼 𝗿𝗲𝗽𝗲𝗻𝘁𝗶𝗻𝗼, 𝗼 𝗴𝗿𝗮𝗻𝗱𝗲 𝗲𝘃𝗲𝗻𝘁𝗼, 𝗾𝘂𝗲 𝗽𝗮𝘀𝘀𝗮𝗿𝗶𝗮 𝘀𝗲𝗿 𝗰𝗵𝗮𝗺𝗮𝗱𝗼 𝗱𝗲 "𝗖𝗼𝗻𝘃𝗲𝗿𝗴𝗲̂𝗻𝗰𝗶𝗮 𝗖𝗲𝗹𝗲𝘀𝘁𝗶𝗮𝗹", "𝗔𝗹𝗶𝗻𝗵𝗮𝗺𝗲𝗻𝘁𝗼 𝗨𝗻𝗶𝘃𝗲𝗿𝘀𝗮𝗹" 𝗢𝘂, 𝘀𝗶𝗺𝗽𝗹𝗲𝘀𝗺𝗲𝗻𝘁𝗲, "𝗔 𝗙𝘂𝘀𝗮̃𝗼" 𝗡𝗲𝘀𝘁𝗲 𝗲𝘃𝗲𝗻𝘁𝗼, 𝘀𝘂𝗽𝗼𝘀𝘁𝗮𝗺𝗲𝗻𝘁𝗲 𝗵𝗼𝘂𝘃𝗲 𝘂𝗺 𝗮𝗹𝗶𝗻𝗵𝗮𝗺𝗲𝗻𝘁𝗼 𝗲𝗻𝘁𝗿𝗲 𝗱𝗶𝗳𝗲𝗿𝗲𝗻𝘁𝗲𝘀 𝗺𝘂𝗻𝗱𝗼𝘀 𝗲 𝗱𝗶𝗺𝗲𝗻𝘀𝗼̃𝗲𝘀 𝗱𝗲 𝗰𝗮𝘂𝘀𝗮 𝗱𝗲𝘀𝗰𝗼𝗻𝗵𝗲𝗰𝗶𝗱𝗮, 𝗰𝗼𝗺 𝗲𝘀𝘁𝗮 𝘂𝗻𝗶𝗳𝗶𝗰𝗮𝗰̧𝗮̃𝗼, 𝗱𝗶𝗳𝗲𝗿𝗲𝗻𝘁𝗲𝘀 𝗰𝗶𝘃𝗶𝗹𝗶𝘇𝗮𝗰̧𝗼̃𝗲𝘀 𝗱𝗲 𝗻𝗼𝘃𝗮𝘀 𝗲𝘀𝗽𝗲́𝗰𝗶𝗲𝘀, 𝗰𝗼𝗻𝘁𝗮𝗱𝗮𝘀 𝗺𝘂𝗶𝘁𝗮𝘀 𝘃𝗲𝘇𝗲𝘀 𝗲𝗺 𝗹𝗶𝘃𝗿𝗼𝘀 𝗱𝗲 𝗳𝗮𝗻𝘁𝗮𝘀𝗶𝗮 𝗰𝗼𝗺𝗲𝗰̧𝗮𝗿𝗮𝗺 𝗮 𝘀𝘂𝗿𝗴𝗶𝗿 𝗻𝗲𝘀𝘁𝗲 𝗺𝘂𝗻𝗱𝗼, 𝗲 𝗼 𝗽𝗹𝗮𝗻𝗲𝘁𝗮 𝗰𝗼𝗺𝗼 𝘂𝗺 𝘁𝗼𝗱𝗼 𝘀𝗲 𝗿𝗲𝗳𝗼𝗿𝗺𝗼𝘂, 𝗰𝗼𝗺 𝗼 𝘀𝘂𝗿𝗴𝗶𝗺𝗲𝗻𝘁𝗼 𝗱𝗲 𝗻𝗼𝘃𝗮𝘀 𝘁𝗲𝗿𝗿𝗮𝘀. 𝗔𝗻𝗷𝗼𝘀, 𝗱𝗲𝗺𝗼̂𝗻𝗶𝗼𝘀, 𝗲𝗹𝗳𝗼𝘀, 𝗼𝗿𝗰𝘀, 𝗲𝗻𝘁𝗿𝗲 𝗼𝘂𝘁𝗿𝗮𝘀, 𝗮𝗴𝗼𝗿𝗮, 𝘀𝗲 𝗰𝗼𝗻𝗳𝗶𝗿𝗺𝗮𝘃𝗮𝗺 𝗿𝗲𝗮𝗶𝘀 𝗲 𝗰𝗮𝗺𝗶𝗻𝗵𝗮𝘃𝗮𝗺 𝗽𝗼𝗿 𝗲𝘀𝘁𝗮 𝘁𝗲𝗿𝗿𝗮 𝗮𝗼 𝗹𝗮𝗱𝗼 𝗱𝗼𝘀 𝗵𝘂𝗺𝗮𝗻𝗼𝘀, 𝗲 𝘀𝘂𝗮 𝗽𝗿𝗲𝘀𝗲𝗻𝗰̧𝗮, 𝗳𝗼𝗶 𝗮 𝗿𝗮𝘇𝗮̃𝗼 𝗱𝗲 𝗱𝗶𝘃𝗲𝗿𝘀𝗼𝘀 𝗰𝗼𝗻𝗳𝗹𝗶𝘁𝗼𝘀 𝗾𝘂𝗲 𝘀𝗲 𝗶𝗻𝗶𝗰𝗶𝗮𝘃𝗮𝗺. 𝗔𝗾𝘂𝗲𝗹𝗲𝘀 𝗾𝘂𝗲 𝗰𝗵𝗲𝗴𝗮𝘃𝗮𝗺 𝗮 𝘁𝗲𝗿𝗿𝗮 𝗲𝗿𝗮𝗺 𝗽𝗼𝗿 𝘃𝗲𝘇𝗲𝘀 𝗯𝗿𝘂𝘁𝗮𝗹𝗶𝘇𝗮𝗱𝗼𝘀 𝗽𝗼𝗿 𝘀𝘂𝗮 𝗲𝘅𝗶𝘀𝘁𝗲̂𝗻𝗰𝗶𝗮 𝗰𝗼𝗻𝗳𝗹𝗶𝘁𝗮𝗿 𝗰𝗼𝗺 𝗰𝗲𝗿𝘁𝗮𝘀 𝗽𝗲𝗿𝗰𝗲𝗽𝗰̧𝗼̃𝗲𝘀 𝗿𝗲𝗹𝗶𝗴𝗶𝗼𝘀𝗮𝘀, 𝗮𝗹𝘃𝗼𝘀 𝗱𝗲 𝗺𝗲𝗱𝗼 𝗽𝗼𝗿 𝗮𝗾𝘂𝗲𝗹𝗲𝘀 𝗾𝘂𝗲 𝘁𝗲𝗺𝗶𝗮𝗺 𝗼 𝗱𝗲𝘀𝗰𝗼𝗻𝗵𝗲𝗰𝗶𝗱𝗼 𝗲 𝗼 𝗽𝗼𝗱𝗲𝗿 𝗾𝘂𝗲 𝗲𝘀𝘀𝗮𝘀 𝗿𝗮𝗰̧𝗮𝘀 𝗽𝗼𝘀𝘀𝘂𝗶́𝗮𝗺, 𝗲 𝗮 𝗲𝘅𝗶𝘀𝘁𝗲̂𝗻𝗰𝗶𝗮 𝗱𝗲𝘀𝘁𝗲𝘀 𝘀𝗲𝗿𝗲𝘀 𝗳𝗼𝗶 𝗿𝗲𝘀𝗽𝗼𝗻𝗱𝗶𝗱𝗮 𝗰𝗼𝗺 𝘃𝗶𝗼𝗹𝗲̂𝗻𝗰𝗶𝗮. 𝗔 𝗰𝗮𝗰̧𝗮 𝗽𝗼𝗿 𝗲𝘀𝘁𝗲𝘀 𝗽𝗼𝘃𝗼𝘀 𝗾𝘂𝗲 𝗮𝗺𝗲𝗮𝗰̧𝗮𝘃𝗮𝗺 𝗮 𝘀𝗼𝗯𝗲𝗿𝗮𝗻𝗶𝗮 𝗵𝘂𝗺𝗮𝗻𝗮 𝗱𝗼 𝗺𝘂𝗻𝗱𝗼 𝘀𝗲 𝗶𝗻𝗶𝗰𝗶𝗮𝘃𝗮, 𝗻𝗮𝗰̧𝗼̃𝗲𝘀 𝘀𝗲 𝗱𝗶𝘃𝗶𝗱𝗶𝗮𝗺 𝗲𝗻𝘁𝗿𝗲 𝗼𝘀 𝗴𝗿𝘂𝗽𝗼𝘀 𝗾𝘂𝗲, 𝗽𝗼𝗿 𝗺𝗲𝗱𝗼, 𝗰𝗼𝗻𝘁𝗿𝗶𝗯𝘂𝗶́𝗮𝗺 𝗽𝗮𝗿𝗮 𝗼 𝗲𝘅𝘁𝗲𝗿𝗺𝗶́𝗻𝗶𝗼, 𝗲 𝗮𝗾𝘂𝗲𝗹𝗲𝘀, 𝗱𝗲𝘀𝗲𝗷𝗮𝘃𝗮𝗺 𝘀𝗮𝗹𝘃𝗮-𝗹𝗼𝘀, 𝘀𝗲𝗷𝗮 𝗽𝗼𝗿 𝗶𝗻𝘁𝗲𝗿𝗲𝘀𝘀𝗲 𝗼𝘂 𝗽𝗲𝗹𝗼 𝗽𝗼𝘂𝗰𝗼 𝗱𝗲𝘀𝗲𝗷𝗼 𝗱𝗲 𝗰𝗶𝘃𝗶𝗹𝗶𝗱𝗮𝗱𝗲 𝗾𝘂𝗲 𝗮𝗶́𝗻𝗱𝗮 𝗿𝗲𝘀𝘁𝗮𝘃𝗮. 𝗘𝗻𝘁𝗿𝗲 𝗮𝘀 𝗮𝗿𝗺𝗮𝘀 𝗵𝘂𝗺𝗮𝗻𝗮𝘀 𝗲 𝗮 𝗺𝗮𝗴𝗶𝗮 𝗾𝘂𝗲 𝗿𝗲𝗰𝗲́𝗺 𝗽𝗿𝗼𝘃𝗼𝘂-𝘀𝗲 𝗿𝗲𝗮𝗹, 𝗼 𝘂́𝗻𝗶𝗰𝗼 𝗳𝗶𝗺 𝗽𝗼𝘀𝘀𝗶́𝘃𝗲𝗹 𝘀𝗲 𝗽𝗿𝗼𝘃𝗼𝘂 𝗮 𝗴𝘂𝗲𝗿𝗿𝗮, 𝗾𝘂𝗲 𝗻𝗼𝘃𝗮𝗺𝗲𝗻𝘁𝗲, 𝗲𝗻𝗴𝗹𝗼𝗯𝗮𝘃𝗮 𝗼 𝗺𝘂𝗻𝗱𝗼 𝗶𝗻𝘁𝗲𝗶𝗿𝗼 𝗲𝗺 𝘂𝗺 𝗰𝗼𝗻𝗳𝗿𝗼𝗻𝘁𝗼. 𝗔𝗼 𝗽𝗼𝗻𝘁𝗼 𝗱𝗲 𝗾𝘂𝗲 𝗮 𝗵𝘂𝗺𝗮𝗻𝗶𝗱𝗮𝗱𝗲 𝗰𝗼𝗻𝘁𝗿𝗶𝗯𝘂𝗶 𝗽𝗮𝗿𝗮 𝗮 𝗽𝗿𝗼́𝗽𝗿𝗶𝗮 𝗱𝗲𝘀𝘁𝗿𝘂𝗶𝗰̧𝗮̃𝗼, 𝗽𝗲𝗿𝗰𝗲𝗯𝗲𝗻𝗱𝗼 𝗾𝘂𝗲 𝗮𝘀 𝗯𝗼𝗺𝗯𝗮𝘀 𝗾𝘂𝗲 𝗱𝗲𝗶𝘅𝗮𝘃𝗮𝗺 𝘂𝗺 𝗰𝗼𝗴𝘂𝗺𝗲𝗹𝗼 𝗱𝗲 𝗳𝗼𝗴𝗼 𝗽𝗮𝗿𝗮 𝘁𝗿𝗮́𝘀 𝗲𝗺 𝘀𝘂𝗮 𝗲𝘅𝗽𝗹𝗼𝘀𝗮̃𝗼, 𝗲𝗿𝗮 𝗮 𝘂́𝗻𝗶𝗰𝗮 𝗮𝗿𝗺𝗮 𝗳𝘂𝗻𝗰𝗶𝗼𝗻𝗮𝗹 𝗰𝗼𝗻𝘁𝗿𝗮 𝗮 𝗺𝗮𝗴𝗶𝗮, 𝗲 𝗰𝗼𝗺 𝗶𝘀𝘁𝗼 𝗽𝗼𝗽𝘂𝗹𝗮𝗰̧𝗼̃𝗲𝘀 𝗶𝗻𝘁𝗲𝗶𝗿𝗮𝘀 𝗳𝗼𝗿𝗮𝗺 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗮𝗺𝗲𝗻𝘁𝗲 𝗱𝗶𝘇𝗶𝗺𝗮𝗱𝗮𝘀, 𝗾𝘂𝗮𝘀𝗲 𝘁𝗼𝗱𝗼 𝗼 𝗱𝗲𝘀𝗲𝗻𝘃𝗼𝗹𝘃𝗶𝗺𝗲𝗻𝘁𝗼 𝘁𝗲𝗰𝗻𝗼𝗹𝗼́𝗴𝗶𝗰𝗼 𝗱𝗲 𝗺𝗶𝗹𝗲̂𝗻𝗶𝗼𝘀 𝘀𝗲 𝗽𝗲𝗿𝗱𝗲𝘂, 𝗽𝗮𝗶́𝘀𝗲𝘀 𝗶𝗻𝘁𝗲𝗶𝗿𝗼𝘀 𝗰𝗮𝗶́𝗿𝗮𝗺 𝗮 𝗶𝗻𝗲𝘅𝗶𝘀𝘁𝗲̂𝗻𝗰𝗶𝗮, 𝗲 𝗼𝘀 𝗾𝘂𝗲 𝗿𝗲𝘀𝗶𝘀𝘁𝗶𝗿𝗮𝗺, 𝗳𝗼𝗿𝗮𝗺 𝗳𝗼𝗿𝗰̧𝗮𝗱𝗼𝘀 𝗮 𝘀𝗲 𝗿𝗲𝗲𝘀𝘁𝗿𝘂𝘁𝘂𝗿𝗮𝗿 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗮𝗺𝗲𝗻𝘁𝗲, 𝗽𝗮𝗿𝗮 𝗺𝗮𝗻𝘁𝗲𝗿 𝗮 𝘀𝗼𝗰𝗶𝗲𝗱𝗮𝗱𝗲 𝘀𝗼𝗯𝗿𝗲 𝗰𝗼𝗻𝘁𝗿𝗼𝗹𝗲 𝗮𝗴𝗼𝗿𝗮 𝗲𝗺 𝘂𝗺 𝗺𝘂𝗻𝗱𝗼 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗮𝗺𝗲𝗻𝘁𝗲 𝗮𝗿𝗰𝗮𝗶𝗰𝗼. 𝗔𝘁𝘂𝗮𝗹𝗺𝗲𝗻𝘁𝗲, 𝗰𝗲𝗿𝗰𝗮 𝗱𝗲 𝟯.𝟯𝟬𝟬 𝗮𝗻𝗼𝘀 𝗮𝗽𝗼́𝘀 𝗮 𝗖𝗼𝗻𝘃𝗲𝗿𝗴𝗲̂𝗻𝗰𝗶𝗮, 𝗲𝗺 𝘂𝗺 𝗺𝘂𝗻𝗱𝗼 𝗷𝗮́ 𝗿𝗲𝗲𝘀𝘁𝗿𝘂𝘁𝘂𝗿𝗮𝗱𝗼 𝗼𝗻𝗱𝗲 𝗮 𝗲𝘅𝗶𝘀𝘁𝗲̂𝗻𝗰𝗶𝗮 𝗱𝗲 𝗱𝗶𝘃𝗲𝗿𝘀𝗮𝘀 𝗿𝗮𝗰̧𝗮𝘀 𝗲𝘀𝘁𝗮́ 𝗻𝗼 𝘀𝗲𝗻𝘀𝗼 𝗰𝗼𝗺𝘂𝗺, 𝗼 𝗺𝘂𝗻𝗱𝗼 𝗷𝗮́ 𝘃𝗼𝗹𝘁𝗮𝘃𝗮 𝗮 𝘀𝗲 𝗱𝗲𝘀𝗲𝗻𝘃𝗼𝗹𝘃𝗲𝗿, 𝗰𝗼𝗺 𝗽𝗲𝘀𝗾𝘂𝗶𝘀𝗮𝗱𝗼𝗿𝗲𝘀 𝗰𝗼𝗻𝘀𝗲𝗴𝘂𝗶𝗻𝗱𝗼 𝗱𝗲𝘀𝘃𝗲𝗻𝗱𝗮𝗿 𝗽𝗮𝗿𝘁𝗲 𝗱𝗮𝘀 𝗮𝗻𝘁𝗶𝗴𝗮𝘀 𝘁𝗲𝗰𝗻𝗼𝗹𝗼𝗴𝗶𝗮𝘀 𝗵𝘂𝗺𝗮𝗻𝗮𝘀, 𝗲 𝗼 𝗺𝘂𝗻𝗱𝗼 𝘀𝗲 𝗲𝗻𝗰𝗼𝗻𝘁𝗿𝗮𝘃𝗮 𝗲𝗺 𝘂𝗺𝗮 𝗳𝗮𝘀𝗲 𝘀𝗲𝗺𝗲𝗹𝗵𝗮𝗻𝘁𝗲 𝗮𝗼 𝗾𝘂𝗲 𝗼𝘀 𝗵𝗼𝗺𝗲𝗻𝘀 𝗱𝗮 𝗮𝗻𝘁𝗶𝗴𝘂𝗶𝗱𝗮𝗱𝗲 𝗰𝗵𝗮𝗺𝗮𝘃𝗮𝗺 𝗱𝗲 𝗶𝗱𝗮𝗱𝗲 𝗺𝗲́𝗱𝗶𝗮.
+      </p>
     </div>
+
+  </main>
 
   <script>
     // controle do menu para mobile/desktop
