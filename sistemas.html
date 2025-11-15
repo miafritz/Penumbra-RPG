@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Penumba RPG — Sistemas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Merriweather&display=swap" rel="stylesheet">
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      font-family: 'Merriweather', serif;
+      background: radial-gradient(circle at top, #2d1740, #1b0e24);
+      color: #f3e9d2;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: relative;
+      text-align: center;
+      padding: 1.5rem 0 1rem;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2rem;
+      color: #d4b36e;
+      text-shadow: 0 0 10px #b56ddf, 0 0 20px #b56ddf;
+    }
+
+    .menu-toggle {
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      font-size: 1.6rem;
+      color: #f3e9d2;
+      text-shadow: 0 0 8px #b56ddf;
+      cursor: pointer;
+      background: rgba(0,0,0,0.15);
+      padding: 6px 10px;
+      border-radius: 8px;
+      user-select: none;
+      z-index: 101;
+    }
+
+    .menu {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 70px;
+      background: rgba(40,20,60,0.95);
+      transition: width 0.28s ease, transform 0.28s ease;
+      overflow: hidden;
+      z-index: 100;
+      border-right: 1px solid #d4b36e;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu:hover,
+    .menu.open {
+      width: 260px;
+    }
+
+    .menu .menu-inner {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .menu a {
+      color: #f3e9d2;
+      text-decoration: none;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 8px;
+      transition: background 0.18s ease, color 0.18s ease;
+      font-size: 1rem;
+    }
+
+    .menu a .icon {
+      width: 36px;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .menu a:hover {
+      background: rgba(181,109,223,0.08);
+      color: #b56ddf;
+      text-shadow: 0 0 8px #b56ddf;
+    }
+
+    @media (max-width: 700px) {
+      .menu { width: 0; transform: translateX(-2px); }
+      .menu.open { width: 86%; min-width: 260px; }
+      .menu .menu-inner { padding-top: 40px; }
+      .menu a { font-size: 1.05rem; padding: 12px; }
+      .menu-toggle { display: block; }
+    }
+
+    /* --- ABAS ---*/
+    #sistemas-container {
+      max-width: 750px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .sistema-section {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      margin: 1rem 0;
+      padding: 1rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .sistema-section:hover {
+      background: rgba(255,255,255,0.09);
+    }
+
+    .section-title {
+      font-family: 'Cinzel Decorative', serif;
+      color: #d4b36e;
+      text-shadow: 0 0 10px #b56ddf;
+      font-size: 1.3rem;
+    }
+
+    .section-content {
+      display: none;
+      margin-top: 0.6rem;
+      color: #f3e9d2;
+      text-align: justify;
+      white-space: pre-line;
+    }
+
+    .sistema-section.open .section-content {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .footer {
+        text-align: center;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-5px);} 
+      to {opacity: 1; transform: translateY(0);} 
+    }
+
+  </style>
+</head>
+
+<body>
+<div class="menu-toggle" id="menuToggle">☰</div>
+
+<nav class="menu" id="sidebar">
+  <div class="menu-inner">
+    <a href="index.html"><span class="icon">🏠</span>Início</a>
+    <a href="raças.html"><span class="icon">🧬</span>Raças</a>
+    <a href="classes.html"><span class="icon">⚔️</span>Classes</a>
+    <a href="reinos.html"><span class="icon">👑</span>Reinos</a>
+  </div>
+</nav>
+
+<header>Sistemas</header>
+
+<div id="sistemas-container">
+
+    <div class="sistema-section">
+    <div class="section-title">Bônus por nível</div>
+    <div class="section-content">Níveis Básicos (1–5): humanos e sobre-humanos
+
+1 – Humano comum
+Força: até 120kg
+Velocidade: até 30km/h
+
+2 – Atleta
+Força: até 400kg
+Velocidade: até 60km/h
+
+3 – Strongman
+Força: até 900kg
+Velocidade: até 100km/h
+
+4 – Sobrehumano
+Força: capaz de quebrar concreto armado / virar um carro com as mãos
+Velocidade: até 200km/h (mais rápido que um carro de corrida)
+
+5 – Super-humano
+Força: capaz de derrubar uma casa média
+Velocidade: até 400km/h (mais rápido que uma moto esportiva)
+
+
+Níveis Avançados (6–10): destruição em larga escala
+
+6 – Colosso
+Força: capaz de destruir vários prédios / quarteirão
+Velocidade: até 800km/h (quase Mach 1 – quebra a barreira do som)
+
+7 – Titã
+Força: destrói um bairro inteiro
+Velocidade: Mach 2
+
+8 – Cataclismo
+Força: destrói uma cidade
+Velocidade: Mach 3
+
+9 – Apocalipse Urbano
+Força: destrói uma metrópole / capital
+Velocidade: Mach 4
+
+10 – Devastador Regional
+Força: destrói um estado médio
+Velocidade: Mach 5
+
+
+Níveis Épicos - Apenas com Buffs e Raça Mutável (11–15): escala continental e planetária
+
+11 – Colosso Mundial
+Força: destrói uma região do tamanho da Amazônia
+Velocidade: Mach 7
+
+12 – Aniquilador
+Força: destrói um país médio
+Velocidade: Mach 10
+
+13 – Destruidor de Impérios
+Força: destrói um país continental (Brasil, Rússia, China)
+Velocidade: Mach 12
+
+14 – Extinção
+Força: destrói continentes inteiros
+Velocidade: Mach 15
+
+15 – Juízo Final
+Força: comparável a um meteoro que extingue espécies / escala planetária
+Velocidade: Mach 20</div>
+  </div>
+
+  <div class="sistema-section">
+    <div class="section-title">Administração e evolução de reinos</div>
+    <div class="section-content">Vamos lá, como todos já bem sabe, os reinos no RPG até então não tiveram grandes usos, ou sequer muito destaques além de guerras. Por isso, apresento-lhes esse sistema, admito, ele ficou um pouco complexo, mas vai tornar os reinos mais do que apenas um pedaço de terra. 
+
+Tamanho dos reinos - 
+
+No atual momento, todos os reinos serão considerados de tamanho pequeno, independente de seu território, pois vou considerar que todos possuem apenas a capital como cidade, a capital que por sua vez é considerada uma cidade média. 
+
+Vilas e cidades tem funções diferentes, vilas vão gerar recursos, como alimentos e afins, esses que vão ser mandados para as cidades, as cidades que por sua vez, geram verba para o governante e para o reino com impostos. Caso a quantidade de vilas não seja o bastante para suprir a cidade, o valor do imposto será descontado para tal, para cada uma cidade média, deve haver no mínimo duas vilas, para suprir uma cidade grande, devem haver 4 vilas. 
+
+Construir uma vila, tem o valor de 10K, ela não irá gerar lucro, mas vai garantir que que você mantenha o lucro das cidades. Uma cidade média, custa o valor de 20K para ser construída, porém, vai lhe render todos os sábados 5K apenas de imposto. Uma cidade grande, por sua vez, tem o valor de 30K para ser construída, porém, lhe renderá 10K todos os sábados apenas de impostos. Caso queira, também pode gastar 30K para fazer da capital atual uma cidade grande. 
+
+Melhorias de reino -
+
+Agora, caso tenha interesse em deixar seu reino mais atrativo, ou simplesmente lucrar mais, entraremos na parte de melhorias do reino. Toda cidade criada, começará na classe baixa, neste ponto, as casas são feitas de madeira, palha e barro, nada na cidade é realmente grandioso e ela sequer possui barreiras. Porém, caso você invista 15K em uma cidade média, ou 25K em uma cidade grande, elas passaram a ser cidades de classe média, essa cuje é a classe que a capital começa. 
+
+Cidades de classe média, tanto cidades médias e grandes, passam a ter suas casas feitas de matérias de melhor qualidade, tendo suas bases feitas em pedras e suas paredes e portas de melhor qualidade, impedindo que soldados que possuam apenas equipamentos de ferro invadam sozinhos, precisando de no mínimo uma dúzia de soldados para derrubar uma única porta, além da cidade receber um sistema de esgoto simples e um confiável muro de madeira. Neste ponto, cidades médias geram 10K de valor em imposto todos os sábados, enquanto cidades grandes geram 15K. 
+
+Agora, indo para o ápice, a última melhoria possível para cidades, onde eles passam a ser consideradas de classe alta. Para levar uma cidade média a classe alta, é preciso investir 25K e 40K para cidades grandes. Cidades de classe alta possuem suas casas feitas quase inteiramente de pedra, sendo impossível de serem queimadas em ataques, além de terem portas que só podem serem quebradas com magias ou Explosivos. A cidade também recebe um enorme muro de pedra ao seu redor, sendo uma das mais confiáveis proteções. E quanto ao sistema de esgoto, é evoluído para algo muito além, sendo grande o bastante para quase esconder um pequeno exército ou grupo especial. Cidades médias de classe alta, geram em impostos 20K, enquanto cidades grande iram gerar um total de 30K em impostos.</div>
+  </div>
+
+  <div class="sistema-section">
+    <div class="section-title">Recrutamento de tropas e criação de exércitos.</div>
+    <div class="section-content">Em momentos de guerra, exércitos sempre são necessários. Geralmente, plebeus e nobres não precisam se preocupar com isso, uma vez que o exército para proteger o reino e lutar suas guerras é responsabilidade do rei ou rainha da área. Entretanto, nada os impede de formar seu próprio exército, seja para revoluções, travar batalhas pessoais, saquear, ou simplesmente servir como uma força mercenária, sendo um exército de aluguel para os governantes que podem pagar.
+
+Todos os reinos, seja ele governado por um player ou npc, começam com 4 mil soldados. Todos utilizando armaduras leves, como gambersons ou cotas de malha, assim como armas de ferro. Caso o governante deseje adquirir itens melhores para seu exército, ele deve comprar os mesmos na loja, unidade por unidade, até que a quantidade que ele deseje de soldados esteja com equipado com tal item, estes soldados rasos tem uma força level 4, e não possuem nenhum poder ou habilidade.
+
+Para aumentar o seu número de soldados, deve contatar um dos adms, e descontar do saldo de seu personagem uma quantia de 5 mil dracmas. Após isso, o adm irá jogar um dado de 12 lados, o número que cair será quantidade de soldados que você conseguiu. Podendo variar entre mil soldados, e doze mil soldados. Quanto mais bem equipado e maior seu exército, maior sua chance de vencer guerras, ou se proteger de possíveis ataques.
+
+Comandantes. 
+
+Grandes exércitos não podem ser comandados por uma única pessoa, por isso, existe a opção de criar Comandantes, caso seu exército passe de 10 mil soldados. Comandantes são npcs especiais, que podem ter uma característica única, como uma habilidade ou técnica, assim como também são os mais confiáveis de seu exército, estando sempre a disposição para com você. Comandantes podem vir a possuir armas ou itens mágicos, caso você os de para eles, apesar de sua principal função ser servir como ponte para que o exército entenda perfeitamente suas ordens, eles podem participar diretamente do combate, caso assim deseje. Entretanto, você terá de narrar cada ação que quiser que seus Comandantes façam em campo. Comandantes também podem ser players, entretanto, deve se escolher com cuidado. Um npc não vai lhe trair, um player talvez o faça. Na escolha de um npc, ele será level 8, podendo ter dois poderes e duas habilidades, abrindo exceções caso o npc seja entregue como recompensa de missão.</div>
+  </div>
+
+  <div class="sistema-section">
+    <div class="section-title">Propriedades</div>
+    <div class="section-content">Aqueles que conquistaram o título de nobre, ou superior, agora tem o direito de adquirir uma, ou mais propriedades. As propriedades podem variar muito, podendo ser um mercado, uma taverna, uma madeireira, etc... Cada propriedade, tem um custo inicial de 10 mil dracmas, para serem construídas, e um custo extra de 5 mil dracmas, para serem melhoradas, com o limite de 5 melhorias por propriedade. As melhorias podem variar, podendo ser um segundo andar, cômodos para viajantes, ou simplesmente uma reforma geral, deixando o ambiente mais nobre. Uma propriedade padrão, renderá 2 mil dracmas extras todo sábado, com uma adição de mil dracmas, pata cada melhoria, tendo um total de 7 mil adicional por semana, caso a propriedade esteja com as 5 melhorias.
+
+Algumas propriedades, ainda, podem fornecer certos bônus para o player, como itens por preços mais baratos, ou uma facilidade maior na hora de criar itens ou poções. Mas em troca dessa facilidade, as vezes será necessário que o player faça determinadas missões, como escoltar uma carroça de mercadoria, ou pegar um grupo de ladrões que estão dando prejuízo. E caso o player não queria, ou não tenha tempo, ele pode recorrer a gastar parte do seu dinheiro contratando mercenários, ou outros jogadores para fazerem o serviço. A ajuda de um mercenário corta a necessidade de fazer a missão, mas tem o valor de 2 mil dracmas. Enquanto o valor do player, pode variar, mas nunca passando muito das 2 mil dracmas.</div>
+  </div>
+
+  <div class="sistema-section">
+    <div class="section-title">Materiais</div>
+    <div class="section-content">A confecção de quaisquer objetos é intrinsecamente depende dos materiais do qual será produzido, sejam objetos domésticos, ferramentas de trabalho, armas, e claro, equipamentos mágicos. Neste mundo em que a natureza do mundo se encontrou com a fantasia, a própria natureza sofreu com intensas alterações, novas áreas surgindo, ocupação de novas criaturas que estabeleceram uma nova cadeia alimentar, e novos materiais começaram a nascer, mudando completamente a forma que a forja e construção humana funcionava.
+
+Este é um guia para a classificação de raridade e qualidade dos materiais a serem usados na construção de qualquer objeto.
+
+Rank VI – Comuns
+
+- Madeira
+- Pedra
+- Cobre
+- Bronze
+- Ferro Bruto
+- Alumínio 
+- Ossos
+- Peles
+- Tecidos
+- Lã
+
+Rank V – Incomuns
+
+- Ferro forjado
+- Aço Carbono
+- Madeira de Ébano
+- Jade
+- Quartzo
+- Madeira Fossilizada
+- Aço Inoxidável
+- Marfim
+- Papéis
+- Vidro
+- Cerâmica
+
+Rank lV – Raros
+
+- Aço Damasco
+- Prata
+- Ouro
+- Obsidiana
+- Ametista
+- Couro
+- Coral endurecido
+- Osso fossilizado
+- Presas de Carnivoros
+- Diamantes
+- Plásticos 
+- Borracha
+
+Rank III – Mágicos Comuns
+Apartir deste ponto, estão os materiais novos deste mundo, que têm magia e as novas.
+
+Pele de Javali Calidônio
+ - Couro de grande resistência, possuindo resistência média a cortes e magias elementais. Vestes dela são pesadas e quentes, mas não tão pesadas quanto armaduras metálicas.
+
+Chifre de Cervoluz
+ - Chifres de cervos que se destacam pelo brilho azulado emanado de seus chifres durante a noite. Além de usada para gerar claridade, amplifica e acelera poderes de cura.
+
+Penas de Pássaro-Trovão
+ - Suas penas podem ser usadas na confecção de armas para atribuir danos elétricos a seus ataques, como cortes, por exemplo, embora não permita controle de eletricidade geral.
+
+Seda de Shelob
+ - Teia extraída de uma espécie de aranhas gigantes, utilizada na fabricação de um tecido de proteção, protegendo contra impactos e cortes leves, e flexível o bastante para manter uma movimentação livre. Por vezes é usado para acolchoar armaduras de materiais com maior durabilidade.
+
+Pedra Ecoante
+ - Pedra capaz de amplificar e guardar sons e vibrações, podendo ser usado na criação de sinalizadores e alarmes rústicos. Pode ser usado em armas de impacto, como martelos.
+
+Minério Rubro Escarlate
+ - Minérios que absorveram energia e luz solar por um grande período de tempo. São usadas na criação das chamadas Nichirin-Tō, armas que quando usadas para decepar os pontos vitais de onis e vampiros, são capazes de mata-los.
+
+Núcleo Vulcânico
+ - Um material rochoso que surge dos vulcões em ocasiões especiais, seu interior guarda grande energia térmica, com armas criadas com ele conseguindo emitir grande calor e chamad enquanto manuseadas.
+
+Bruma Sólida
+ - Material metálico capaz de produzir uma espécie de neblina, servindo para ocultação e dificultando a percepção adversária.
+
+Glicínias
+ - Flores especiais que podem ser usadas em combate a onis, podendo proteger locais inteiros através do cultivo, criação de amuletos e a queima na forma de incenso. Também, pode ser usado para criar um veneno fatal a onis.
+
+Rank II – Mágicos Incomuns
+
+Mithrill
+ - Uma variação fortificada da prata, tendo o mesmo efeito e efetividade contra criaturas da noite como licantropes. Apesar da resistência extrema, é um material leve, podendo ser utilizado mesmo em níveis mais baixos.
+
+Ferro do Rei Demônio
+ - Ferro concentrado, retirado do sangue que aínda corre no crânio demoníaco deixado na região esquecida no interior do reino de Clover. Apesar de em rasa quantidade, sua mana demoníaca ainda flui pelo material e as armas criadas com ela, que passará a fluir pelo corpo de quem a utilizar, alimentando as energias já utilizadas pelo seu corpo, as fortalecendo e tornando tremendamente efetivas contra anjos e demônios.
+
+Amazonium
+ - Uma liga metálica única da terra de Temiscera, suas propriedades impedem que seja controlada por poderes adversários, seja por manipulações magnéticas, telecineticas, mágicas, ou na imposição de efeitos e ordens a ela, sendo um material completamente independente e fiel a seu portador.
+
+Pau de Adão
+ - Madeira extraída diretamente da titânica árvore em Tapejara, tendo uma resistência colossal que chega próximo a metais mágicos como Mithrill e Uru em durabilidade. Apesar de aínda se tratar de madeira não é afetada por venenos comuns e é super resistente a chamas, mesmo mágicas. Sua principal habilidade se consiste no fato de que mesmo as partes arrancadas de Adão mantém plena vitalidade, com equipamentos feitos através de sua madeira se regenerando e voltando a sua forma mesmo sofrendo danos graves.
+
+Folhas de Adão
+ - As folhas da árvore de Adão, quando cortadas permite ser extraída uma grande quantidade de seiva com propriedades curativas, que pode ser derramado sobre membros para se recuperar rapidamente de cortes ou dores musculares, mas especialmente quando usado como ingrediente para poções, desde poções curativas, a poções que permitem o aumento e fortalecimento temporário de poder mágico, e também fortalecer usuários de akuma no mi.
+
+Ferro Amaldiçoado
+ - Mineral nascido em cavernas profundas no arquipélago de Hino, recheadas de espíritos amaldiçoados. Este material possui energia amaldiçoado própria, podendo ser usada para atingir espíritos amaldiços e outros seres espirituais. A energia amaldiçoada se espalha pelo corpo de quem o utiliza, fortalecendo seu físico e permitindo a visualização destes espíritos, mesmo a quem possuir pouca ou nenhuma energia amaldiçoado.
+
+Chifre de Unicórnio
+ - Ítem comumente usado na criação de varinhas mágicas. Poderes e magia podem ser conduzidos através dele, intensificando seus efeitos, aprimorando poderes de cura, ou tornando feitiços de ataque aínda mais poderosos.
+
+Pedra Elemental
+ - Rochas surgidas da concentração de elementos mágicos. Quando usada como acessório por alguém que possua controle sobre determinado elemento, aumenta drasticamente a potência elementar do tal.
+
+Pedras Guardiãs
+ - Rochas especiais que carregam energia própria, podendo ser usadas em amuletos de proteção, protegendo contra energias negativas, espíritos revoltosos ou amaldiçoados, e fortalecendo técnicas de proteção.
+
+Cristal Sangrento
+ - Um mineral que cristaliza em torno de locais onde milhares morreram em desespero. Seu interior pulsa como se fosse um coração aprisionado, vibrando energia amaldiçoada em estado bruto. Armas incrustadas com Cristal Sangrento tornam os golpes mais cruéis: cada ferida aberta se mantém sangrando além do normal, drenando tanto a força física quanto espiritual da vítima. Entretanto, o cristal também exige tributo, quanto mais dano ele inflige, mais ele consome a vitalidade do próprio usuário, exigindo equilíbrio ou insanidade para dominá-lo.
+
+Kryptonita
+ - Um material extraterrestre que contém uma radiação inofensiva para quase todos os seres, no entanto, a proximidade, contato e armas feitas por este material podem ferir kryptonianos facilmente, além de reduzir suas forças. 
+
+Rank I – Mágicos Raros
+
+Vidro de Dragão
+ - Uma variante quase mítica de obsidiana, que mantém sua incrível de corte mas tendo a mesma durabilidade de rígidos metais. São capazes de manter o ciclo da vida e da morte em funcionamento, onde inimigos mortalmente feridos não são capazes de recorrer a sua imortalidade, bem como não podem voltar a vida.
+
+Cristal de Mana
+ - Um minério composto completamente de mana cristalizada, comumente encontrado nas áreas com grande acúmulo de mana no Reino de Clover. Seus usos são variados, desde um fortalecedor de feitiços a níveis extremos, recurso para energia infinita de sistemas e máquinas mágicas, ou por vezes, um recurso que absorve e acumula mana.
+
+Pedras Mágicas
+ - Semelhante a pedras de proteção, mas na realidade, chaves para a mana negativa que reside no submundo, fonte de magias proibidas e demoníacas que permitem ultrapassar os limites naturais: curas podem virar regeneração ou ressurreição, e poderes ganham novos efeitos ampliados. Entretando, o corpo do usuário é consumido e corrompido por essa mana negativa a cada uso, até que o uso excessivo o leve a perda total da consciência ou de seu corpo para o domínio de um demônio superior.(Confira com um ADM os efeitos da magia proibida em seus poderes, e as consequências do uso.)
+
+Uru
+ - O metal dos deuses, encontrado principalmente em ruínas e cavernas subterrâneas de Fjördheim. Um material mágico, que quando usado para criação de objetos, principalmente armas, podem ser feito um acordo de fidelidade e controle total com seu portador, fazendo com que a arma possa ser usada unicamente por ele, com outros que tentarem sequer conseguindo movê-la do chão, além de seu portador conseguir controlá-la a distância.
+
+Helíote
+ - Um metal vindo diretamente do sol. Além de sua imensa resistência, seja a impacto ou calor, as armas criadas com este material podem alcançar um estágio em que  se acendem, liberando energia solar, e mudam de forma para uma nova forma, com uma arma podendo se tornar outra completamente diferente. Por conter energia solar, é efetiva para matar onis e vampiros.
+
+Oceanite
+ - Um minério que têm energia do mar concentrada, da própria mãe natureza que rejeita o não natural. Quando em contato com o alvo ele fica incapaz de utilizar seus poderes, sendo muito utilizado para produzir armas, equipamentos de contenção, algemas e correntes.
+
+Couro de Dragão
+ - Couro usado especialmente para vestimentas de combate, como armaduras e capas. As vestes produzidas com suas escamas são completamente imunes a poderes e magia elemental, bem como a qualquer tentativa de corte.
+
+Chifre de Alicornio
+ - Chifres de uma variante de unicórnios alados, sua capacidade de canalização e condução de mana e poder se mantém, mas com ainda mais intensidade. Ataques usados através dele podem romper quaisquer defesas.
+
+Vibranium
+ - Um metal de extrema resistência, com a capacidade especial de absorver e acumular impacto, impacto este, que pode ser liberado através de gatilhos para gerar ondas de choque que causam grande dano.
+
+Cinzas de Fênix
+ - As cinzas das aves do renascimento carregam grande capacidade de cura, quando diluídas, podem ser utilizadas em poções e elixir com diversos efeitos benéficos, como fortalecimento mágico ou de técnicas de fogo, e como contra medida a maldições. Queimar as cinzas sobre um corpo ferido ou já sem vida, geram chamas que podem reviver o alvo, e após isso, curar suas demais feridas, no entanto, as chamas se apagam se o usuário se mover demais, sendo necessário que permaneça parado para continuar sua recuperação.
+
+Lótus Espectral 
+ - Uma flor espiritual rara que nasce em lugares onde as fronteiras entre vida e morte se entrelaçam. Quando fundida a uma arma ou talismã, cria uma aura invisível que duplica a força dos golpes contra qualquer alvo que possua essência espiritual, sejam espíritos, clones, invocações ou usuários de alguma energia. Contra inimigos comuns, o efeito ainda se manifesta como um impacto extra, como se duas lâminas atingissem ao mesmo tempo. O brilho pálido da flor vibra a cada ataque certeiro, lembrando que a arma carrega o peso de incontáveis ecos do além.
+
+Juryoku Jōtai
+ - Pedaços de seres outrora vivos que acumularam uma gama abissal de energia amaldiçoada consigo. As técnicas de maldição de um feiticeiro são amplificadas com o uso desses itens, onde por si, não podem ser negadas ou anuladas. A amplificação enérgica se torna tamanha, que se torna quase inviável resistir aos efeitos somados.
+
+Rank 0 – Mágicos Lendários
+
+Madeira de Yggdrasil
+ - Madeira extraída da própria árvore do mundo, cujos ramos e galhos sustentam o universo. O material está além da resistência da madeira comum, além de uma durabilidade surreal, venenos ou chamas, mesmo que mágicos, não costumam surtir grande efeito, e sua vitalidade não pode ser roubada. Armas criadas com essa árvore quase esotérica são capazes de romper e atravessar o espaço, ignorando defesas e atingindo seres em qualquer plano. Quando usado em armaduras ou defesas, impede ao portador sofrer com qualquer tipo de controle, se tornando isento das leis do universo, mesmo a poderes que manipulem a gravidade, espaço ou tempo.
+
+Seiva de Yggdrasil
+ - A seiva extraída da árvore armazena aínda mais poder, podendo ser usada como um mineral na construção de equipamentos. O que for construído com ela é capaz de atravessar mundos e criar fendas no espaço, podendo gerar portais para transporte, invadir ou escapar de dimensões e espaços criados por outros, podendo também atingir inimigos em outros planos.
+
+Lágrima Celeste
+ - O nome dado a um minério que se forma da cristalização de uma estrela cadente. Carrega grande energia cósmica concentrada, permitindo controle dessa energia através de armas ou tornar projéteis explosivos mais destrutivos.
+
+Adamantina
+ - Um metal quase mítico, reconhecido por sua durabilidade sem fim. Após os equipamentos serem moldados, não podem mais sofrer alterações em seu estado físico, não podendo ser danificados por meios comuns independente da força aplicada.
+
+Rocha de Sekkiseki
+ - Uma solidificação Mineral que surge de tempos em tempos nas profundezas. O Mineral em si, possui propriedades únicas, sendo capaz de absorver infinitamente qualquer fonte Enérgica que se aproxime dele, convertendo em energia pra si próprio se expandir dentre os túneis naturais. Usando esse Mineral em alguma arma, ou amuleto, o roubo enérgico se converte em poder pra si próprio.</div>
+  </div>
+
+  <div class="sistema-section">
+    <div class="section-title">Caça</div>
+    <div class="section-content">Em um mundo repleto de criaturas mágicas, plantas nunca antes vistas, biomas que desafiam as leis da física, e regiões repletas de mistério. Obviamente, seria possível enfrentar o desconhecido. Este sistema é para aqueles que querem caçar, coletar recursos únicos e raros, ou mesmo aqueles que estão apenas atrás de um novo desafio. Os recursos e criaturas são definidos por um rank, criaturas e plantas de rank VI são as mais fracas, ou comuns. Criaturas de rank I, são raras, e muito fortes. Enquanto criaturas de rank 0, são monstros e plantas lendárias, coisas que ninguém sabe se realmente existem ou não. Feras dignas de lendas. 
+
+Os ranks 
+
+VI - Plantas e animais comuns
+(Exemplo - Pardais, cervos, ervas daninhas, orquídeas.) 
+
+V - plantas e animais incomuns 
+(Exemplo - Alces, pica-pau, roseiras, girassóis.) 
+
+IV - plantas e animais - raros.
+(Exemplo - Ursos, lobos, vitória-regia, cactus.)
+
+III - Plantas e animais mágicos comuns
+(Exemplos - Pássaro-trovão, tigre dos céus, rosa azul.)
+
+II - Plantas e animais mágicos incomuns
+(Unicórnios, lobos amaldiçoados, lírio aranha azul.)
+
+I - Plantas e animais mágicos raros
+(Exemplo - Fênix, grifo, imortalys.) 
+
+0 - Criaturas lendárias 
+(Exemplo - Kraken, Hydra, dragões dourados.)
+
+_Para derrotar uma dessas criaturas ou coletar tal recurso, é necessário uma cena com um certo número de caracteres. Criaturas de rank VI precisam de uma cena de 500 caracteres. Rank V, 1000 caracteres. Rank IV, 1500 caracteres. Rank III, 2000 caracteres. Rank II, 3000 caracteres. Rank I, 4000 caracteres. Rank 0, missão narrada de evento.</div>
+  </div>
+
+  <div class="sistema-section">
+    <div class="section-title">Criação de itens</div>
+    <div class="section-content">Primeiramente, irei separar os itens por categorias, para não haver confusão. No começo, vamos falar de armas e armaduras. Assim como para caçar, ou coletar recursos. As armas e armaduras possuem níveis. Que assim como a caça, vão de VI, até 0.
+
+Rank VI
+
+Equipamentos de nível. VI, são armas de metal e roupas de pele. Estás não requerem nenhuma especialidade, ou mesmo bancada especial para serem criadas, apenas do recuso utilizando. Para fazer um equipamento de Rank VI, é necessário uma cena de 600 caracteres e o material. Itens desse nível não possuem nenhuma habilidade especial, além de terem a pior resistência.
+
+Rank V
+
+Equipamentos de rank V, são equipamentos de couro, e armas de metal como aço. Sendo necessário uma cena de 1000 caracteres. Equipamentos dessa raridade não possuem habilidades especiais, mas são melhores que o do rank anterior, sendo o caminho para a modernização.
+
+Rank IV
+
+Equipamento de Rank IV, são os equipamentos não mágicos mais avançados, sendo armaduras de placa completas, ou espadas de metais mais rígidos como tungstênio, sendo necessário uma cena de 2500 caracteres para se criar um desses itens. Assim como anteriormente, não possuem habilidades, mas são superiores a suas antecessoras em resistência.
+
+Rank III
+
+Equipamentos de rank III, aqui começamos a utilizar metais mágicos, mesmo que básicos, equipamentos desse rank requerem uma cena de 4000 caracteres. Os equipamentos por sua vez, podem possuir um poder, somando com a habilidade do material escolhido.
+ 
+Rank II
+
+Equipamentos de rank II, equipamentos mais avançados, usando materiais melhores, ou criações mais complexas como máquinas. Estas requerem uma cena de 6000 caracteres, com o equipamento podendo ter até 2 poderes, além das habilidades do material.
+ 
+Rank I
+
+Equipamentos de rank I, simplesmente os melhores itens, sendo até então os mais fortes, necessitando de uma cena de 8000 para os forjar. Eles podem possuir até 2 poderes e duas habilidades, somada a do material.
+
+Rank 0
+
+Equipamentos de rank 0, itens lendários, dignos de histórias divinas, sendo tão raros e caros que alguns os consideram apenas como história. Para forjar um desses é necessário uma cena de 12000 caracteres. Sendo itens dessa categoria, os mais fortes, podendo ter 3 poderes e 3 habilidade, somada as do material.</div>
+  </div>
+
+  <div class="sistema-section">
+    <div class="section-title">Estilos de luta</div>
+    <div class="section-content">Os estilos de luta do RPG são artes marciais que possuem o efeito de poderes, podendo, por exemplo gerar e e controlar de forma limitada determinado elemento, permitir o controle de energias como chi, ou apenas causar efeitos em seu adversário através de golpes físicos. Por serem efeitos "naturais" provindos de uma arte marcial, assim como bônus de raça e classe, negação e Selamento de poderes não possui efeito sobre os estilos, e eles não podem ser copiados.
+
+  Algumas raças e flasses recebem estilos de luta já em seus bônus, podendo escolher e criar um extra sem a necessidade de cena alguma para isso, para que as demais aprendam um estilo próprio, é necessário aprender por uma cena de 5k de caracteres para desenvolver seu estilo, e para aprender estilos criados por outro personagem, o sistema é o mesmo.
+
+ Cada personagem pode aprender até 3 estilos de luta, onde apenas 1 deles poderá ter sido criado pelo próprio personagem(com excessão aos estilos extras por raça e classe), os demais estilos, são ocupados por estilos criado por outros personagens que você pode aprender, no entanto, para que possa aprender o estilo, deve ter a permissão do player que foi o seu primeiro, ou é o mais antigo usuário no RPG, e deve pedir a permissão caso tenha interesse.
+
+Abaixo, a lista de estilos de luta já ocupados no RPG, e o personagem que é seu usuário original;
+
+- Respiração do Sol ~ Yoriichi Tsugikuni
+- Zetten ~ Asta
+- Hakuda ~ Chihiro Rokuhira
+- ⁠Jutsushiki Tenkai: Jaenan ~ Hoon Goe-Su
+- Punho do Tritão ~ Kai Lothbrook
+- Punho Bêbado ~ Sekar Najik
+- Baile Eterno ~ Inapira Hermetis
+- Estilo Perna Negra ~ Mirko
+- Mahou-Jutsu ~Abaddon Guaracy Damu</div>
+  </div>
+
+  <div class="sistema-section">
+    <div class="section-title">Missões</div>
+    <div class="section-content">No sistema de missões do Penumbra, cada tarefa concluída garante XP proporcional ao desafio, sendo essencial para a progressão de nível. Para avançar, o jogador deve acumular +1.000 XP multiplicado pelo nível desejado (nível 1 → 2.000 XP, nível 2 → 3.000 XP, nível 3 → 4.000 XP, e assim por diante).
+
+A partir do nível 5, além da XP necessária, é obrigatório cumprir ao menos uma missão narrada por ADM para subir. Isso garante que o avanço seja marcado por momentos únicos e narrativas memoráveis.
+
+Outro ponto importante é o cuidado com a escrita: cada missão exige um mínimo fixo de caracteres para ser considerada válida. Além disso, para cada +100 caracteres extras além do mínimo, o jogador recebe XP adicional, incentivando descrições mais imersivas e criativas.
+
+As atualizações das missões acontecem toda segunda-feira, publicadas nos avisos e no grupo de missões.
+</div>
+  </div>
+
+</div>
+
+<script>
+// MENU
+const menuToggle = document.getElementById('menuToggle');
+const menu = document.getElementById('sidebar');
+
+menuToggle.addEventListener('click', (e) => {
+  e.stopPropagation();
+  menu.classList.toggle('open');
+});
+
+document.addEventListener('click', (e) => {
+  if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
+    menu.classList.remove('open');
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') menu.classList.remove('open');
+});
+
+// ABAS
+const sections = document.querySelectorAll('.sistema-section');
+sections.forEach(sec => {
+  sec.addEventListener('click', () => {
+    sec.classList.toggle('open');
+  });
+});
+</script>
+
+<footer class="footer">
+      <p>© 2025 Penumbra RPG | por Mia Fritz</p>
+    </footer>
+  </body>
+</html>
