@@ -38,9 +38,9 @@
   font-family: 'Cinzel Decorative', serif;
   font-size: 2rem;
   color: #d4b36e;
-  text-shadow: 0 0 8px #b56ddf;
+  text-shadow: 0px 0px 10px #b56ddf;
 
-  /* 💜 A CAIXA ATRÁS DO TÍTULO — AQUI Ó */
+  /*CAIXA ATRÁS DO TÍTULO*/
   background: linear-gradient(
     180deg,
     rgba(120, 60, 160, 0.25),
@@ -56,7 +56,7 @@
     /* menu lateral - padrão fechado (70px) */
     .menu {
       position: fixed;
-      left: 0;
+      right: 0;
       top: 0;
       height: 100%;
       width: 70px;
@@ -169,14 +169,14 @@
       .menu a { font-size: 1.05rem; padding: 12px; }
       .content { margin-left: 0; padding: 1rem; }
       .menu.open ~ .content { margin-left: 0; } /* o conteúdo não precisa se deslocar no mobile */
-      .menu-toggle { left: 0.8rem; top: 0.9rem; }
+      .menu-toggle { right: 0.8rem; top: 0.9rem; }
     }
 
     /* botão sempre visível */
 .menu-toggle {
   position: fixed !important;
   top: 12px !important;
-  left: 12px !important;
+  right: 12px !important;
   z-index: 9999 !important;
   margin: 0 !important;
   transform: none !important;
@@ -188,6 +188,103 @@
   color: #f3e9d2;
   cursor: pointer;
 }
+
+/* --- CARROSSEL DE NOTÍCIAS --- */
+.news-section {
+    background: #f2efe6;
+    padding: 2.5rem 1.6rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 0;
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: 
+        url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+    background-size: 450px;
+    color: #000;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel img {
+    max-height: 400px;
+    border-radius: 10px;
+    border: 1px solid rgba(212,179,110,0.3);
+    box-shadow: 0 0 15px rgba(0,0,0,0.7);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(20, 10, 35, 0.75);
+    color: #d4b36e;
+    border: none;
+    font-size: 2rem;
+    padding: 8px 14px;
+    cursor: pointer;
+    border-radius: 8px;
+    backdrop-filter: blur(3px);
+}
+
+.carousel-btn.left {
+    left: 10px;
+}
+
+.carousel-btn.right {
+    right: 10px;
+}
+
+.carousel-btn:hover {
+    background: rgba(181,109,223,0.25);
+}
+
+.news-info {
+    margin-top: 15px;
+    color: #fff6e0;
+}
+
+.news-date {
+    font-size: 0.8rem;
+    color: hsl(231, 100%, 77%);
+}
+
+.news-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.4rem;
+    margin: 6px 0;
+    color: #b56ddf;
+}
+
+.news-text {
+    line-height: 1.7;
+    white-space: pre-line;
+    text-align: justify;
+    color: #000;
+}
+
+/* Fade suave ao trocar imagem */
+.carousel img {
+    transition: opacity 0.25s ease;
+}
+
+.carousel img.fade-out {
+    opacity: 0; /* desaparece */
+}
+
+
   </style>
 </head>
 <body>
@@ -220,6 +317,26 @@
         Clique no ícone ☰ no canto superior esquerdo para navegar. 
       </p>
     </div>
+
+    <!-- CARROSSEL DE NOTÍCIAS -->
+<section class="news-section">
+    <div class="carousel">
+        <button class="carousel-btn left" id="prevBtn">⟨</button>
+
+        <img id="carouselImage" src="assets/noticia1.png" alt="Notícia">
+
+        <button class="carousel-btn right" id="nextBtn">⟩</button>
+    </div>
+
+    <div class="news-info">
+        <p class="news-date" id="newsDate">12/11/2025</p>
+        <h2 class="news-title" id="newsTitle">Título da Notícia 1</h2>
+        <p class="news-text" id="newsText">
+            Aqui entra o conteúdo da notícia número 1. Escreve o texto normalmente,
+            pode colocar 3–4 linhas, funciona tranquilo.
+        </p>
+    </div>
+</section>
 
     <div class="hero">
       <h1>Sobre o RPG</h1>
@@ -278,6 +395,82 @@
         sidebar.classList.remove('open');
       }
     });
+
+    const noticias = [
+    {
+        img: "assets/iconefav.png",
+        data: "16/11/2025",
+        titulo: "Lançamento Penumbra RPG!",
+        texto: "O lançamento oficial do site Penumbra RPG ocorreu em 16/11/2025. Os membros da administração agradecem á equipe pelo esforço e a centralização de conteúdos do RPG."
+    },
+    {
+    img: "assets/novomembronews.png",
+    data: "16/11/2025",
+    titulo: "A volta dos que não foram",
+    texto: `Na manhã de ontem, o que deveria ser uma conversa pacífica sobre a evolução peculiar de certas raças mágicas rapidamente se transformou em um espetáculo digno dos maiores livros de história — ou dos piores programas de auditório.
+
+A discussão começou com uma observação simples: “Algumas raças evoluem de formas muito estranhas comparadas a outras.”
+Até aí, nada demais.
+
+Mas como todo bom grupo de aventureiros emocionalmente instáveis, o debate teleportou diretamente para o Tártaro das Polêmicas: “O que exatamente diferencia um demônio de outro demônio com outro nome de demônio?”
+
+A partir deste momento, estudiosos, pseudo-especialistas, palpiteiros e criaturas aleatórias começaram a jogar opiniões com mais força do que magos jogam bola de fogo.
+A situação escalou rapidamente — como sempre acontece nesse grupo — e nem mesmo os observadores neutros sobreviveram ao impacto.
+
+No auge do caos, uma frase de intensidade… poética… foi lançada no campo de batalha verbal. Frase essa que, ironicamente, é utilizada pelo grupo com tanta frequência que já deveria constar no glossário oficial. Mas subitamente, TODOS resolveram virar paladinos da etiqueta e da moralidade. Pesquisadores chamam esse fenômeno de “Hipocrisia Coletiva Espontânea”, uma condição comum em grupos que se inflamam por migalhas.
+
+Após o incidente, a oradora original foi tratada como um monstro mitológico recém-invocado — enquanto a participante que distribui inconveniências diariamente permaneceu intocada, protegida pela clássica capa da “Normalidade Seletiva”.
+
+Testemunhas afirmam que, no final, apenas um administrador demonstrou sinais de vida inteligente e tentou resolver a situação. Estudiosos, porém, dividem opiniões se sua motivação foi genuína… ou se ele apenas percebeu que, sem a única desenvolvedora do site — responsável por elevar o RPG a um patamar melhor — o império digital ruiria mais rápido que um castelo de areia no deserto.
+
+Os demais ficaram tão imóveis que pesquisadores cogitaram que haviam sido petrificados.
+
+Hoje, após um breve exílio autoimposto, a protagonista do caos retorna ao RPG com a maturidade de quem sabe: não foi um debate, foi um estudo antropológico sobre como um grupo cai no desastre com a velocidade de um goblin sem supervisão.
+
+A comunidade aguarda ansiosamente a próxima reunião diplomática. Especialistas apostam que o próximo colapso virá ao discutir se orcs deveriam ter sobrancelhas.`
+},
+
+    {
+        img: "assets/saganews.jpg",
+        data: "15/11/2025",
+        titulo: "Saga inaugural abala Clover",
+        texto: `Teve início a primeira grande saga reconhecida pelos altos conselhos. Quatro aventureiros foram oficialmente destacados para investigar e conter a ameaça que se aproxima de Clover, cujo território tem apresentado sinais preocupantes de ruptura mágica.
+
+Relatos indicam que forças desconhecidas avançam sobre as defesas da região, colocando em risco não apenas a cidade, mas o equilíbrio entre as nações vizinhas. Esta é a primeira vez que uma missão de jogadores passa a influenciar diretamente os rumos da história registrada, marcando um novo capítulo na forma como eventos são conduzidos no mundo.
+
+As autoridades pedem calma à população, mas reforçam a importância da missão. O desfecho dessa saga poderá definir o futuro de Clover — e talvez o destino de todos nós.`
+    }
+];
+
+let currentIndex = 0;
+
+function changeNews(direction) {
+  const img = document.getElementById("carouselImage");
+  const title = document.getElementById("newsTitle");
+  const date = document.getElementById("newsDate");
+  const text = document.getElementById("newsText");
+
+  img.classList.add("fade-out");
+
+  setTimeout(() => {
+    currentIndex += direction;
+
+    const total = noticias.length;
+    if (currentIndex < 0) currentIndex = total - 1;
+    if (currentIndex >= total) currentIndex = 0;
+
+    img.src = noticias[currentIndex].img;
+    title.textContent = noticias[currentIndex].titulo;
+    date.textContent = noticias[currentIndex].data;
+    text.textContent = noticias[currentIndex].texto;
+
+    img.classList.remove("fade-out");
+  }, 250);
+}
+
+document.getElementById("nextBtn").addEventListener("click", () => changeNews(1));
+document.getElementById("prevBtn").addEventListener("click", () => changeNews(-1));
+
   </script>
 <footer class="footer">
       <p>© 2025 Penumbra RPG | por Mia Fritz</p>

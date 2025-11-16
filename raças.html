@@ -26,9 +26,9 @@
     }
 
     .menu-icon {
-      position: absolute;
+      position: fixed;
       top: 1.2rem;
-      left: 1rem;
+      right: 1rem;
       font-size: 1.8rem;
       cursor: pointer;
       color: #f3e9d2;
@@ -37,23 +37,25 @@
 
     /* Ícone do menu (visível no topo - clicável) */
     .menu-toggle {
-      position: absolute;
-      left: 1rem;
-      top: 1rem;
-      font-size: 1.6rem;
-      color: #f3e9d2;
-      text-shadow: 0 0 8px #b56ddf;
-      cursor: pointer;
-      background: rgba(0,0,0,0.15);
-      padding: 6px 10px;
-      border-radius: 8px;
-      user-select: none;
-    }
+  position: fixed !important;
+  top: 12px !important;
+  right: 12px !important;
+  z-index: 9999 !important;
+  margin: 0 !important;
+  transform: none !important;
+  -webkit-transform: none !important;
+  /* opcional: toca aqui pra deixar maior no celular */
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.18);
+  color: #f3e9d2;
+  cursor: pointer;
+}
 
     /* menu lateral - padrão fechado (70px) */
     .menu {
       position: fixed;
-      left: 0;
+      right: 0;
       top: 0;
       height: 100%;
       width: 70px;
